@@ -361,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 406668985}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.234, y: 1.83, z: 8}
+  m_LocalPosition: {x: -1.234, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025dd8ac4c715d64eb9bf892bd4a0c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Note: {fileID: 3693880570851372189, guid: d60d895a65680114883084d163c33078, type: 3}
   Effect1: {fileID: 1843550443}
   Effect2: {fileID: 116878102}
   BtnCollider1: {fileID: 1404054560}
@@ -607,6 +608,8 @@ MonoBehaviour:
   LineBase: {fileID: 1959048427}
   Line1: {fileID: 406668986}
   Line2: {fileID: 1722860152}
+  SponePos1: {fileID: 1349520903}
+  SponePos2: {fileID: 127058289}
 --- !u!1 &878093903
 GameObject:
   m_ObjectHideFlags: 0
