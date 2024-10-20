@@ -7,6 +7,8 @@ public class NoteMoveManager : MonoBehaviour
     public float speed; 
     private float yMove;
     private float default_pos;
+
+    public bool running;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,6 +20,14 @@ public class NoteMoveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if(running)
+        {
+            RunningGame();
+        }   
+    }
+
+    public void RunningGame()
+    {
         this.transform.Translate(new Vector3(0f, yMove));
     }
 

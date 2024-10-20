@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class InputRecordManager2K : MonoBehaviour
 {
@@ -47,12 +48,17 @@ public class InputRecordManager2K : MonoBehaviour
             {
                 Debug.Log("Record End" + LineBase.transform.position.y);
                 Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
-                for(int i = 0; i < noteList.Count; i++)
+                using (StreamWriter outputFile = new StreamWriter(@".\Assets\RecordData\NoteData1.txt"))
                 {
-                    Debug.Log(noteList[i]);
+                    outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
+                    for (int i = 0; i < noteList.Count; i++)
+                    {
+                        outputFile.WriteLine(noteList[i]);
+                    }
                 }
                 recordEnd = true;
             }
+
         }
     }
 
