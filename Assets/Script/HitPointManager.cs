@@ -7,61 +7,93 @@ public class HitPointManager : MonoBehaviour
     public Transform Line;
     public GameObject ParticleEffect;
 
-    private bool LongKeyPushed = false;
     private bool checkEffect = false;
 
-    public bool HitEffect(Transform NotePosition, bool isLongNote)
+    public bool HitEffect(Transform Note)
     {
         if(!checkEffect)
         {
+            Transform NotePosition = Note.GetChild(0).transform;
             // Before Check Note
-            Debug.Log(NotePosition.position.y - Line.position.y);
             if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
             {
                 ParticleEffect.SetActive(true);
-                if (isLongNote) LongKeyPushed = isLongNote;
                 checkEffect = true;
                 return true;
             } else
             {
                 // Miss Note
-                checkEffect = true;
                 return false;
             }
         } else
         {
-            //After Check Note
-            if (LongKeyPushed) return true;
-            //이거 해결
-            else return false;
+            return false;
         }
     }
 
-    public bool CheckCurrect(Transform NotePosition, bool isLongNote, bool isHit)
+    public bool LongHitEffect(Transform Note, bool LongHit)
     {
-
-        if(!isLongNote) StartCoroutine(OffEffect());
-        else ParticleEffect.SetActive(false);
-
-        if(isHit)
+        if (!checkEffect)
         {
+            Transform NoteStartPosition = Note.GetChild(0).transform;
+            // Before Check Note
+            if(!LongHit)
+            {
+                if (NoteStartPosition.position.y - Line.position.y < 1.5f && NoteStartPosition.position.y - Line.position.y > -1.5f)
+                {
+                    ParticleEffect.SetActive(true);
+                    checkEffect = true;
+                    return true;
+                }
+                else
+                {
+                    // Miss Note
+                    return false;
+                }
+            } else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    public bool CheckCurrect(Transform Note, bool isLongNote)
+    {
+        if (!isLongNote) StartCoroutine(OffEffect());
+        else
+        {
+            ParticleEffect.SetActive(false);
+        }
+
+        checkEffect = false;
+
+        if(!isLongNote)
+        {
+            Transform NotePosition = Note.GetChild(0).transform;
             if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
             {
-                Debug.Log("Hit");
-                LongKeyPushed = false;
                 return true;
             }
             else
             {
-                Debug.Log("Miss");
-                LongKeyPushed = false;
                 return false;
             }
         } else
         {
-            Debug.Log("Miss");
-            LongKeyPushed = false;
-            return false;
+            Transform NoteEndPosition = Note.GetChild(1).transform;
+            if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
     

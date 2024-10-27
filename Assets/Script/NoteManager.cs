@@ -9,8 +9,13 @@ public class NoteManager : MonoBehaviour
     public bool isRecordNote;
     public bool isLongNote;
     public float noteLength = 0f;
+
+    [SerializeField]
+    private bool noteChecked = false;
+
+    private bool longhitNote = false;
     private bool hitNote = false;
-    private void Awake()
+    private void Start()
     {
         SetNoteState();
         if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
@@ -36,35 +41,62 @@ public class NoteManager : MonoBehaviour
     {
         if(!isRecordNote)
         {
-            if (!collision.tag.Equals("MissLine"))
+            //When Note Hit MissLine
+            if(!noteChecked)
             {
-                hitNote = collision.gameObject.GetComponent<HitPointManager>().HitEffect(gameObject.transform.GetChild(0).transform, isLongNote);
-                Debug.Log(hitNote);
-            }
-            else
-            {
-                if (!hitNote)
+                if (collision.tag.Equals("MissLine"))
                 {
                     hitNote = false;
+                    noteChecked = true;
+                }
+                else
+                {
+                    if(!isLongNote)
+                    {
+                        hitNote = collision.gameObject.GetComponent<HitPointManager>().HitEffect(gameObject.transform);
+                        noteChecked = true;
+                    } else
+                    {
+                        hitNote = collision.gameObject.GetComponent<HitPointManager>().LongHitEffect(gameObject.transform, longhitNote);
+                        longhitNote = true;
+                        noteChecked = true;
+                    }
                 }
             }
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(!isRecordNote)
+        if (!isRecordNote)
         {
-            if (!collision.tag.Equals("MissLine"))
+            if (noteChecked)
             {
-                CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform.GetChild(1).transform, isLongNote, hitNote));
+                if(hitNote)
+                {
+                    if (collision.tag.Equals("BtnLine"))
+                    {
+                        CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote));
+                    }
+                }
+
+                if (collision.tag.Equals("MissLine"))
+                {
+                    if(!isLongNote)
+                    {
+                        CheckCurrect(false);
+                    } else
+                    {
+                        if(!hitNote) CheckCurrect(false);
+                    }
+                }
             }
         }
     }
 
     void CheckCurrect(bool isHit)
     {
+        Debug.Log(isHit);
         if (isHit) gameObject.SetActive(false);
     }
 }

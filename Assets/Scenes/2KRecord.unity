@@ -5893,6 +5893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  running: 1
 --- !u!4 &1959048429
 Transform:
   m_ObjectHideFlags: 0

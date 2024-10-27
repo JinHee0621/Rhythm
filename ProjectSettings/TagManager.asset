@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Note
   - MissLine
+  - BtnLine
   layers:
   - Default
   - TransparentFX
