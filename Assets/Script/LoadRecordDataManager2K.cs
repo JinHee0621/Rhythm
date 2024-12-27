@@ -17,7 +17,7 @@ public class LoadRecordDataManager2K : MonoBehaviour
 
     void Awake()
     {
-        string[] lines = File.ReadAllLines(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        string[] lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         foreach (string data in lines)
         {
             if(Line_index > 0)

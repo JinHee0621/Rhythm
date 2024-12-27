@@ -28,6 +28,8 @@ public class InputRecordManager2K : MonoBehaviour
     float btn1Time = 0f;
     float btn2Time = 0f;
 
+    float beforeYPosition = 0f;
+
     bool Line1NoteSpone = false;
     bool Line2NoteSpone = false;
     bool recordEnd = false;
@@ -48,7 +50,7 @@ public class InputRecordManager2K : MonoBehaviour
             {
                 Debug.Log("Record End" + LineBase.transform.position.y);
                 Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
-                using (StreamWriter outputFile = new StreamWriter(@".\Assets\RecordData\NoteData1.txt"))
+                using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData1.txt"))//@".\Assets\RecordData\NoteData1.txt"))
                 {
                     outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
                     for (int i = 0; i < noteList.Count; i++)
@@ -83,7 +85,17 @@ public class InputRecordManager2K : MonoBehaviour
             {
                 newNote1.GetComponentInChildren<NoteManager>().noteLength = btn1Time;
                 newNote1.GetComponentInChildren<NoteManager>().SetNoteState();
-                string noteInfo = "Btn1|" + newNote1.transform.localPosition.y + "|" + btn1Time;
+                float currentYPosition = newNote1.transform.localPosition.y;
+                if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
+                {
+                    //When Input Note time is far
+                    beforeYPosition = newNote1.transform.localPosition.y;
+                } else if(currentYPosition - beforeYPosition < 0.5f) {
+                    //When Input Note time is near
+                    currentYPosition = beforeYPosition;
+                }
+
+                string noteInfo = "Btn1|" + currentYPosition + "|" + btn1Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line1NoteSpone = false;
@@ -118,6 +130,20 @@ public class InputRecordManager2K : MonoBehaviour
             {
                 newNote2.GetComponentInChildren<NoteManager>().noteLength = btn2Time;
                 newNote2.GetComponentInChildren<NoteManager>().SetNoteState();
+                float currentYPosition = newNote2.transform.localPosition.y;
+                if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
+                {
+                    Debug.Log(currentYPosition - beforeYPosition);
+                    //When Input Note time is far
+                    beforeYPosition = newNote2.transform.localPosition.y;
+                }
+                else if (currentYPosition - beforeYPosition < 0.5f)
+                {
+                    //When Input Note time is near
+                    currentYPosition = beforeYPosition;
+                }
+
+
                 string noteInfo = "Btn2|" + newNote2.transform.localPosition.y + "|" + btn2Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
