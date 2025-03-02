@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
+    public ScoreManager scoreManager;
+    
     [SerializeField]
     private float hitTime = 0f;
     public bool isRecordNote;
     public bool isLongNote;
     public float noteLength = 0f;
+    
 
     [SerializeField]
     private bool noteChecked = false;
 
     private bool longhitNote = false;
     private bool hitNote = false;
+
     private void Start()
     {
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         SetNoteState();
         if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
         {
@@ -96,7 +101,14 @@ public class NoteManager : MonoBehaviour
 
     void CheckCurrect(bool isHit)
     {
-        Debug.Log(isHit);
-        if (isHit) gameObject.SetActive(false);
+        if (isHit)
+        {
+            scoreManager.AddScore();
+            scoreManager.AddCombo();
+            gameObject.SetActive(false);
+        } else
+        {
+            scoreManager.ResetCombo();
+        }
     }
 }

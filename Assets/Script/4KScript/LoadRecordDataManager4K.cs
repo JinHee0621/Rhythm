@@ -5,6 +5,7 @@ using System.IO;
 
 public class LoadRecordDataManager4K : MonoBehaviour
 {
+    public ScoreManager scoreManager;
     public string Song_Name;
 
     public GameObject Note;
@@ -20,6 +21,7 @@ public class LoadRecordDataManager4K : MonoBehaviour
     void Awake()
     {
         string[] lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        scoreManager.NoteCountInit((lines.Length - 1));
         foreach (string data in lines)
         {
             if(Line_index > 0)
