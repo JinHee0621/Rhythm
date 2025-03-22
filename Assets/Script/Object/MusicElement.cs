@@ -17,7 +17,5 @@ public class MusicElement : MonoBehaviour
         this.difficulty = diff;
         this.accuracy = acc;
         this.music_score = score;
-
-        
     }
 }
