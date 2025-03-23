@@ -18,17 +18,30 @@ public class MusicListManager : MonoBehaviour
      void Start()
     {
         SetMusicInfo(musicList[0]);
+        InitMusicList();
     }
 
 
     void Update()
     {
+        //Select Music when push arrow button 
         if (Input.GetKey(KeyCode.UpArrow) == true)
         {
             SelectBeforeMusic();
         } else if(Input.GetKey(KeyCode.DownArrow) == true)
         {
             SelectNextMusic();
+        }
+    }
+
+    public void InitMusicList()
+    {
+        float nextYPos = 0f;
+        for (int i = 0; i < musicList.Count; i++)
+        {
+            //music position first init 50f,0f,0f -> I don't know why..
+            musicList[i].gameObject.transform.localPosition = new Vector3(-50f, nextYPos, 0f);
+            nextYPos -= 90f;
         }
     }
 
@@ -65,6 +78,7 @@ public class MusicListManager : MonoBehaviour
 
     IEnumerator MoveMusicList()
     {
+        //Update Method is too fast, so put 0.5 sec delay 
         MusicElement curr = musicList[current_music];
         SetMusicInfo(curr);
         yield return new WaitForSeconds(0.5f);
