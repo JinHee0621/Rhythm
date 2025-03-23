@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MusicListManager : MonoBehaviour
 {
@@ -12,13 +14,14 @@ public class MusicListManager : MonoBehaviour
     public Text select_Music_Acc;
        
     public int current_music = 0;
+    public GameObject musicListCont;
     public List<MusicElement> musicList = new List<MusicElement>();
     private bool moveList = false;
 
      void Start()
     {
-        SetMusicInfo(musicList[0]);
         InitMusicList();
+        SetMusicInfo(musicList[0]);
     }
 
 
@@ -40,7 +43,7 @@ public class MusicListManager : MonoBehaviour
         for (int i = 0; i < musicList.Count; i++)
         {
             //music position first init 50f,0f,0f -> I don't know why..
-            musicList[i].gameObject.transform.localPosition = new Vector3(-50f, nextYPos, 0f);
+            musicList[i].gameObject.transform.localPosition = new Vector3(50f, nextYPos, 0f);
             nextYPos -= 90f;
         }
     }
@@ -49,7 +52,11 @@ public class MusicListManager : MonoBehaviour
     {
         if(!moveList)
         {
-            if (current_music > 0) current_music -= 1;
+            if (current_music > 0)
+            {
+                current_music -= 1;
+                musicListCont.transform.DOLocalMoveY(musicListCont.transform.localPosition.y - 180f, 0.5f);
+            }
             else current_music = 0;
             moveList = true;
             StartCoroutine(MoveMusicList());
@@ -60,7 +67,11 @@ public class MusicListManager : MonoBehaviour
     {
         if(!moveList)
         {
-            if (current_music < (musicList.Count - 1)) current_music += 1;
+            if (current_music < (musicList.Count - 1))
+            {
+                current_music += 1;
+                musicListCont.transform.DOLocalMoveY(musicListCont.transform.localPosition.y + 180f, 0.5f);
+            }
             else current_music = (musicList.Count - 1);
             moveList = true;
             StartCoroutine(MoveMusicList());
@@ -73,8 +84,29 @@ public class MusicListManager : MonoBehaviour
         select_Music_Diff.text = curr.difficulty.ToString();
         select_Music_Acc.text = curr.accuracy.ToString() + "%";
         select_Music_Score.text = curr.music_score.ToString();
+        curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z),1.5f);
+        MoveOtherMusicPos();
     }
 
+    public void MoveOtherMusicPos()
+    {
+        for (int i = 0; i < musicList.Count; i++)
+        {
+            if(i != current_music)
+            {
+                if(Math.Abs(i - current_music) == 2)
+                {
+                    musicList[i].transform.DOLocalMove(new Vector3(75f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
+                } else if(Math.Abs(i - current_music) == 1)
+                {
+                    musicList[i].transform.DOLocalMove(new Vector3(45f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
+                } else
+                {
+                    musicList[i].transform.DOLocalMove(new Vector3(105f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
+                } 
+            }
+        }
+    }
 
     IEnumerator MoveMusicList()
     {
