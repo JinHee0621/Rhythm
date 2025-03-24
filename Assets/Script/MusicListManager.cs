@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class MusicListManager : MonoBehaviour
@@ -34,6 +35,10 @@ public class MusicListManager : MonoBehaviour
         } else if(Input.GetKey(KeyCode.DownArrow) == true)
         {
             SelectNextMusic();
+        } else if(Input.GetKeyDown(KeyCode.Return))
+        {
+            //Select Music
+            Debug.Log(current_music);
         }
     }
 
