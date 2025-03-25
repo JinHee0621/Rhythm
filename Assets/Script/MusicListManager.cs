@@ -37,8 +37,7 @@ public class MusicListManager : MonoBehaviour
             SelectNextMusic();
         } else if(Input.GetKeyDown(KeyCode.Return))
         {
-            //Select Music
-            Debug.Log(current_music);
+            SelectMusic();
         }
     }
 
@@ -120,6 +119,20 @@ public class MusicListManager : MonoBehaviour
         SetMusicInfo(curr);
         yield return new WaitForSeconds(0.5f);
         moveList = false;
+    }
+
+    public void SelectMusic()
+    {
+        GameObject selected = musicList[current_music].gameObject;
+        //selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 1f);
+        StartCoroutine(SelectAnim(selected));
+    }
+
+    IEnumerator SelectAnim(GameObject selected)
+    {
+        selected.transform.DOLocalMove(new Vector3(-50f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 1f);
     }
 
 }
