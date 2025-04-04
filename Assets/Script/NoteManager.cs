@@ -81,10 +81,11 @@ public class NoteManager : MonoBehaviour
                 {
                     if (collision.tag.Equals("BtnLine"))
                     {
+                        Debug.Log(collision.gameObject.transform);
                         CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote));
                     }
                 }
-
+                            
                 if (collision.tag.Equals("MissLine"))
                 {
                     if(!isLongNote)

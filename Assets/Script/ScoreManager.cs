@@ -14,18 +14,9 @@ public class ScoreManager : MonoBehaviour
     private int current_combo = 0;
     public Text comboText;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private float accuracy_rate = 100.00f;
+    private float current_accuracy = 0f;
+    public Text accuracyText;
 
     public void CheckFind()
     {
@@ -43,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         current_score += note_score;
         ShowScore();
     }
+
     public void ShowScore()
     {
         scoreText.text = current_score.ToString();
