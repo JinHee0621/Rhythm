@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
 
     private float accuracy_rate = 100.00f;
     private float current_accuracy = 0f;
+    public int in_note_count = 0;
     public Text accuracyText;
 
     public void CheckFind()
@@ -55,5 +56,10 @@ public class ScoreManager : MonoBehaviour
     public void ShowCombo()
     {
         comboText.text = current_combo.ToString();
+    }
+
+    public void CheckAccuracy(float data)
+    {
+
     }
 }
