@@ -60,6 +60,15 @@ public class ScoreManager : MonoBehaviour
 
     public void CheckAccuracy(float data)
     {
+        in_note_count += 1;
+        current_accuracy += data;
+        accuracy_rate = (current_accuracy / in_note_count);
+        string rate_text = accuracy_rate.ToString("0.00") + "%";
+        accuracyText.text = rate_text;
+    }
 
+    public void reset_note_count()
+    {
+        in_note_count = 0;
     }
 }
