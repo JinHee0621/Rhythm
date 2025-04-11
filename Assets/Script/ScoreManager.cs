@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,8 +61,35 @@ public class ScoreManager : MonoBehaviour
 
     public void CheckAccuracy(float data)
     {
+        float absData = Math.Abs(data);
+        float inAcc = 0f;
+
+        //Accuracy Range
+        if(absData != 100)
+        {
+            if (absData > 0f && absData < 0.3)
+            {
+                inAcc = 100f;
+            }
+            else if (absData >= 0.3f && absData < 0.5)
+            {
+                inAcc = 90f;
+            }
+            else if (absData >= 0.5f && absData < 0.7)
+            {
+                inAcc = 70f;
+            }
+            else
+            {
+                inAcc = 50f;
+            }
+        } else
+        {
+            inAcc = 0;
+        }
+
         in_note_count += 1;
-        current_accuracy += data;
+        current_accuracy += inAcc;
         accuracy_rate = (current_accuracy / in_note_count);
         string rate_text = accuracy_rate.ToString("0.00") + "%";
         accuracyText.text = rate_text;
