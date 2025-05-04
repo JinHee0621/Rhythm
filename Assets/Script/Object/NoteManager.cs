@@ -105,10 +105,10 @@ public class NoteManager : MonoBehaviour
    
     void CheckCurrect(bool isHit, float range)
     {
-        scoreManager.CheckAccuracy(range);
+        float hitAcc = scoreManager.CheckAccuracy(range);
         if (isHit)
         {
-            scoreManager.AddScore();
+            scoreManager.AddScore(hitAcc);
             scoreManager.AddCombo();
             gameObject.SetActive(false);
         } else

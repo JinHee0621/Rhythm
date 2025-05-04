@@ -59,6 +59,11 @@ public class InputRecordManager4K : MonoBehaviour
     GameObject newNote3 = null;
     GameObject newNote4 = null;
 
+    private float line1Position = 0f;
+    private float line2Position = 0f;
+    private float line3Position = 0f;
+    private float line4Position = 0f;
+
     void Update()
     {
         InputBtn1(Input.GetKey(inputBtnKey1));
@@ -72,7 +77,7 @@ public class InputRecordManager4K : MonoBehaviour
             {
                 Debug.Log("Record End" + LineBase.transform.position.y);
                 Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
-                using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData1.txt"))//@".\Assets\RecordData\NoteData1.txt"))
+                using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData2.txt"))//@".\Assets\RecordData\NoteData1.txt"))
                 {
                     outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
                     for (int i = 0; i < noteList.Count; i++)
@@ -94,10 +99,12 @@ public class InputRecordManager4K : MonoBehaviour
             Btn1Anim.SetBool("ButtonPush", true);
             Effect1.color = new Color(Effect1.color.r, Effect1.color.g, Effect1.color.b, 1);
             btn1Time += 1f;
+ 
             if (!Line1NoteSpone)
             {
                 newNote1 = Instantiate(Note, Line1);
                 newNote1.transform.position = SponePos1.position;
+                line1Position = newNote1.transform.localPosition.y;
                 Line1NoteSpone = true;
             }
         }
@@ -107,7 +114,7 @@ public class InputRecordManager4K : MonoBehaviour
             {
                 newNote1.GetComponentInChildren<NoteManager>().noteLength = btn1Time;
                 newNote1.GetComponentInChildren<NoteManager>().SetNoteState();
-                float currentYPosition = newNote1.transform.localPosition.y;
+                float currentYPosition = line1Position;
                 if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
                 {
                     //When Input Note time is far
@@ -119,6 +126,7 @@ public class InputRecordManager4K : MonoBehaviour
 
                 string noteInfo = "Btn1|" + currentYPosition + "|" + btn1Time;
                 noteCnt += 1;
+                line1Position = 0f;
                 noteList.Add(noteInfo);
                 Line1NoteSpone = false;
             }

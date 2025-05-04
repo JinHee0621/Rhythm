@@ -31,9 +31,9 @@ public class ScoreManager : MonoBehaviour
         note_score = MAX_SCORE / note_cnt;
     }
 
-    public void AddScore()
+    public void AddScore(float acc)
     {
-        current_score += note_score;
+        current_score += (int)( note_score * (acc / 100) );
         ShowScore();
     }
 
@@ -59,7 +59,7 @@ public class ScoreManager : MonoBehaviour
         comboText.text = current_combo.ToString();
     }
 
-    public void CheckAccuracy(float data)
+    public float CheckAccuracy(float data)
     {
         float absData = Math.Abs(data);
         float inAcc = 0f;
@@ -93,6 +93,8 @@ public class ScoreManager : MonoBehaviour
         accuracy_rate = (current_accuracy / in_note_count);
         string rate_text = accuracy_rate.ToString("0.00") + "%";
         accuracyText.text = rate_text;
+
+        return inAcc;
     }
 
     public void reset_note_count()
