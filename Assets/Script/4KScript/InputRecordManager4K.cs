@@ -104,7 +104,7 @@ public class InputRecordManager4K : MonoBehaviour
             {
                 newNote1 = Instantiate(Note, Line1);
                 newNote1.transform.position = SponePos1.position;
-                line1Position = newNote1.transform.localPosition.y;
+                //line1Position = ;
                 Line1NoteSpone = true;
             }
         }
@@ -114,7 +114,7 @@ public class InputRecordManager4K : MonoBehaviour
             {
                 newNote1.GetComponentInChildren<NoteManager>().noteLength = btn1Time;
                 newNote1.GetComponentInChildren<NoteManager>().SetNoteState();
-                float currentYPosition = line1Position;
+                float currentYPosition = newNote1.transform.localPosition.y;
                 if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
                 {
                     //When Input Note time is far
@@ -124,9 +124,9 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
-                string noteInfo = "Btn1|" + currentYPosition + "|" + btn1Time;
+                string noteInfo = "Btn1|" + (currentYPosition - (btn1Time * 0.01f)) + "|" + btn1Time;
                 noteCnt += 1;
-                line1Position = 0f;
+                //line1Position = 0f;
                 noteList.Add(noteInfo);
                 Line1NoteSpone = false;
             }
@@ -163,7 +163,7 @@ public class InputRecordManager4K : MonoBehaviour
                 float currentYPosition = newNote2.transform.localPosition.y;
                 if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
                 {
-                    Debug.Log(currentYPosition - beforeYPosition);
+                    //Debug.Log(currentYPosition - beforeYPosition);
                     //When Input Note time is far
                     beforeYPosition = newNote2.transform.localPosition.y;
                 }
@@ -174,7 +174,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn2|" + newNote2.transform.localPosition.y + "|" + btn2Time;
+                string noteInfo = "Btn2|" + (currentYPosition - (btn2Time * 0.01f)) + "|" + btn2Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line2NoteSpone = false;
@@ -213,7 +213,7 @@ public class InputRecordManager4K : MonoBehaviour
                 float currentYPosition = newNote3.transform.localPosition.y;
                 if (beforeYPosition == 0f || (currentYPosition - beforeYPosition > 0.5f))
                 {
-                    Debug.Log(currentYPosition - beforeYPosition);
+                    //Debug.Log(currentYPosition - beforeYPosition);
                     //When Input Note time is far
                     beforeYPosition = newNote3.transform.localPosition.y;
                 }
@@ -224,7 +224,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn3|" + newNote3.transform.localPosition.y + "|" + btn3Time;
+                string noteInfo = "Btn3|" + (currentYPosition - (btn3Time * 0.01f)) + "|" + btn3Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line3NoteSpone = false;
@@ -273,7 +273,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn4|" + newNote4.transform.localPosition.y + "|" + btn4Time;
+                string noteInfo = "Btn4|" + (currentYPosition - (btn4Time * 0.01f)) + "|" + btn4Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line4NoteSpone = false;

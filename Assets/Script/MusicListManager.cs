@@ -132,6 +132,7 @@ public class MusicListManager : MonoBehaviour
         selected.transform.DOLocalMove(new Vector3(-60f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.25f);
         yield return new WaitForSeconds(0.25f);
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
+        yield return new WaitForSeconds(0.75f);
         SelectMusicManager.Instance.SelectMusic(select_Music_Name.text, select_Music_Score.text);
     }
 

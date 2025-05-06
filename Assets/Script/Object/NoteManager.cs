@@ -34,7 +34,7 @@ public class NoteManager : MonoBehaviour
     public void SetNoteState()
     {
         Vector3 reSizeVec = new Vector3(1.25f, 0.25f, 1f);
-        if (noteLength >= 50) reSizeVec.y = 0.02f * noteLength; 
+        if (noteLength >= 150) reSizeVec.y = 0.01f * noteLength; 
         gameObject.transform.localScale = reSizeVec;
 
         Vector3 reSetPosition = new Vector3(0f, reSizeVec.y / 2, 0f);

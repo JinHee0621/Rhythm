@@ -18,7 +18,8 @@ public class HitPointManager : MonoBehaviour
             if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
             {
                 ParticleEffect.SetActive(true);
-                checkEffect = true;
+                //checkEffect Value is unnecessary
+                //checkEffect = true;
                 return true;
             } else
             {
