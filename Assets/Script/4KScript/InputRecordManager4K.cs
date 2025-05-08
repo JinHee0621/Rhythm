@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class InputRecordManager4K : MonoBehaviour
 {
@@ -59,10 +60,7 @@ public class InputRecordManager4K : MonoBehaviour
     GameObject newNote3 = null;
     GameObject newNote4 = null;
 
-    private float line1Position = 0f;
-    private float line2Position = 0f;
-    private float line3Position = 0f;
-    private float line4Position = 0f;
+    private float recentPosition = -100f;
 
     void Update()
     {
@@ -86,10 +84,31 @@ public class InputRecordManager4K : MonoBehaviour
                     }
                 }
                 recordEnd = true;
+                recentPosition = -100f;
             }
 
         }
     }
+
+    private float NotePosition(float paramPos)
+    {
+
+        float positionY = paramPos;
+
+        if (recentPosition == -100f) recentPosition = positionY;
+        else
+        { 
+            if (Math.Abs(recentPosition - positionY) < 0.1f)
+            {
+                positionY = recentPosition;
+            } else
+            {
+                recentPosition = positionY;
+            }
+        }
+        return positionY;
+    }
+
 
     public void InputBtn1(bool input)
     {
@@ -104,7 +123,6 @@ public class InputRecordManager4K : MonoBehaviour
             {
                 newNote1 = Instantiate(Note, Line1);
                 newNote1.transform.position = SponePos1.position;
-                //line1Position = ;
                 Line1NoteSpone = true;
             }
         }
@@ -124,9 +142,8 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
-                string noteInfo = "Btn1|" + (currentYPosition - (btn1Time * 0.01f)) + "|" + btn1Time;
+                string noteInfo = "Btn1|" + NotePosition(currentYPosition - (btn1Time * 0.01f)) + "|" + btn1Time;
                 noteCnt += 1;
-                //line1Position = 0f;
                 noteList.Add(noteInfo);
                 Line1NoteSpone = false;
             }
@@ -174,7 +191,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn2|" + (currentYPosition - (btn2Time * 0.01f)) + "|" + btn2Time;
+                string noteInfo = "Btn2|" + NotePosition(currentYPosition - (btn2Time * 0.01f)) + "|" + btn2Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line2NoteSpone = false;
@@ -224,7 +241,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn3|" + (currentYPosition - (btn3Time * 0.01f)) + "|" + btn3Time;
+                string noteInfo = "Btn3|" + NotePosition(currentYPosition - (btn3Time * 0.01f)) + "|" + btn3Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line3NoteSpone = false;
@@ -273,7 +290,7 @@ public class InputRecordManager4K : MonoBehaviour
                 }
 
 
-                string noteInfo = "Btn4|" + (currentYPosition - (btn4Time * 0.01f)) + "|" + btn4Time;
+                string noteInfo = "Btn4|" + NotePosition(currentYPosition - (btn4Time * 0.01f)) + "|" + btn4Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line4NoteSpone = false;
