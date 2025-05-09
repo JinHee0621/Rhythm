@@ -5,12 +5,14 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     public ScoreManager scoreManager;
-    
+
     //[SerializeField]
     //private float hitTime = 0f;
+    public int noteId;
     public bool isRecordNote;
     public bool isLongNote;
     public float noteLength = 0f;
+
     
 
     [SerializeField]

@@ -46,6 +46,7 @@ public class LoadRecordDataManager4K : MonoBehaviour
                     newNote.transform.localPosition = new Vector3(0f, position_y, -3);
                     newNote.GetComponentInChildren<NoteManager>().noteLength = noteLength;
                     newNote.GetComponentInChildren<NoteManager>().SetNoteState();
+                    newNote.GetComponentInChildren<NoteManager>().noteId = Line_index;
                 }
             }
             Line_index += 1;

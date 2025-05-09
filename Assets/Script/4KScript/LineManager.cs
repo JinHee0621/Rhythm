@@ -9,6 +9,7 @@ public class LineManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(gameObject.name + ": " + collision.gameObject.name);
+        Debug.Log(gameObject.name + ": " + collision.gameObject.name + "," + collision.GetComponent<NoteManager>().noteId);
+        //Debug.Log(collision.gameObject.name + "," + collision.GetComponent<NoteManager>().noteId + " : " + ( transform.position.y - collision.transform.position.y));
     }
 }

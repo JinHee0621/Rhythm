@@ -38,14 +38,13 @@ public class InputManager4K : MonoBehaviour
     {
         if (input)
         {
-            BtnCollider1.enabled = true;
             Btn1Anim.SetBool("ButtonPush", true);
             Effect1.color = new Color(Effect1.color.r, Effect1.color.g, Effect1.color.b, 1);
+            ColliderEnabled(BtnCollider1);
         } else
         {
-            BtnCollider1.enabled = false;
             Btn1Anim.SetBool("ButtonPush", false);
-            StartCoroutine(ColorDisabled(Effect1));
+            ColliderDisabled(BtnCollider1);
         }
     }
 
@@ -53,15 +52,15 @@ public class InputManager4K : MonoBehaviour
     {
         if (input)
         {
-            BtnCollider2.enabled = true;
             Btn2Anim.SetBool("ButtonPush", true);
             Effect2.color = new Color(Effect2.color.r, Effect2.color.g, Effect2.color.b, 1);
+            ColliderEnabled(BtnCollider2);
         }
         else
         {
-            BtnCollider2.enabled = false;
             Btn2Anim.SetBool("ButtonPush", false);
-            StartCoroutine(ColorDisabled(Effect2));
+            //StartCoroutine(ColorDisabled(Effect2));
+            ColliderDisabled(BtnCollider2);
         }
     }
 
@@ -69,15 +68,15 @@ public class InputManager4K : MonoBehaviour
     {
         if (input)
         {
-            BtnCollider3.enabled = true;
             Btn3Anim.SetBool("ButtonPush", true);
             Effect3.color = new Color(Effect3.color.r, Effect3.color.g, Effect3.color.b, 1);
+            ColliderEnabled(BtnCollider3);
         }
         else
         {
-            BtnCollider3.enabled = false;
             Btn3Anim.SetBool("ButtonPush", false);
-            StartCoroutine(ColorDisabled(Effect3));
+            //StartCoroutine(ColorDisabled(Effect3));
+            ColliderDisabled(BtnCollider3);
         }
     }
 
@@ -86,15 +85,15 @@ public class InputManager4K : MonoBehaviour
     {
         if (input)
         {
-            BtnCollider4.enabled = true;
             Btn4Anim.SetBool("ButtonPush", true);
             Effect4.color = new Color(Effect4.color.r, Effect4.color.g, Effect4.color.b, 1);
+            ColliderEnabled(BtnCollider4);
         }
         else
         {
-            BtnCollider4.enabled = false;
             Btn4Anim.SetBool("ButtonPush", false);
-            StartCoroutine(ColorDisabled(Effect4));
+            //StartCoroutine(ColorDisabled(Effect4));
+            ColliderDisabled(BtnCollider4);
         }
     }
 
@@ -110,6 +109,35 @@ public class InputManager4K : MonoBehaviour
         } else
         {
             target.color = new Color(target.color.r, target.color.g, target.color.b, 0);
+        }
+    }
+
+    public void ColliderEnabled(BoxCollider2D coll)
+    {
+        coll.enabled = true;
+        coll.size = new Vector2(coll.size.x, 0.1f);
+        StartCoroutine(ColliderResize(coll));
+    }
+
+    public void ColliderDisabled(BoxCollider2D coll)
+    {
+        coll.enabled = false;
+        StopCoroutine(ColliderResize(coll));
+    }
+
+
+    IEnumerator ColliderResize(BoxCollider2D coll)
+    {
+        if(coll.size.y >= 3f)
+        {
+            yield return null;
+        } else
+        {
+            float nextSizeY = coll.size.y;
+            nextSizeY += 0.1f;
+            coll.size = new Vector2(coll.size.x, nextSizeY);
+            yield return new WaitForSeconds(0.001f);
+            StartCoroutine(ColliderResize(coll));
         }
     }
 }
