@@ -43,7 +43,7 @@ public class HitPointManager : MonoBehaviour
                 if (NoteStartPosition.position.y - Line.position.y < 1.5f && NoteStartPosition.position.y - Line.position.y > -1.5f)
                 {
                     ParticleEffect.SetActive(true);
-                    checkEffect = true;
+                    //checkEffect = true;
                     return true;
                 }
                 else
@@ -65,16 +65,11 @@ public class HitPointManager : MonoBehaviour
 
     public bool CheckCurrect(Transform Note, bool isLongNote)
     {
-        if (!isLongNote) StartCoroutine(OffEffect());
-        else
-        {
-            ParticleEffect.SetActive(false);
-        }
-
         checkEffect = false;
 
         if(!isLongNote)
         {
+            StartCoroutine(OffEffect());
             Transform NotePosition = Note.GetChild(0).transform;
             if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
             {
@@ -86,6 +81,7 @@ public class HitPointManager : MonoBehaviour
             }
         } else
         {
+            ParticleEffect.SetActive(false);
             Transform NoteEndPosition = Note.GetChild(1).transform;
             if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
             {

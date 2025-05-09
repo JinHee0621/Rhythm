@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 275125673}
   - component: {fileID: 275125674}
   - component: {fileID: 275125675}
+  - component: {fileID: 275125676}
   m_Layer: 0
   m_Name: 2Button
   m_TagString: BtnLine
@@ -408,6 +409,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Line: {fileID: 1923629363}
   ParticleEffect: {fileID: 2062206174}
+--- !u!114 &275125676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275125672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8998a6274f024a6cbc890a8b01fccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRunning: 0
 --- !u!1 &324445845
 GameObject:
   m_ObjectHideFlags: 0
@@ -10930,6 +10944,7 @@ GameObject:
   - component: {fileID: 1010571378}
   - component: {fileID: 1010571380}
   - component: {fileID: 1010571379}
+  - component: {fileID: 1010571381}
   m_Layer: 0
   m_Name: 4Button
   m_TagString: BtnLine
@@ -11014,6 +11029,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1596966, y: 2.9518135}
   m_EdgeRadius: 0
+--- !u!114 &1010571381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010571377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8998a6274f024a6cbc890a8b01fccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRunning: 0
 --- !u!1 &1090324476
 GameObject:
   m_ObjectHideFlags: 0
@@ -16478,6 +16506,7 @@ GameObject:
   - component: {fileID: 1585124440}
   - component: {fileID: 1585124441}
   - component: {fileID: 1585124442}
+  - component: {fileID: 1585124443}
   m_Layer: 0
   m_Name: 1Button
   m_TagString: BtnLine
@@ -16562,6 +16591,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Line: {fileID: 1521700662}
   ParticleEffect: {fileID: 324445845}
+--- !u!114 &1585124443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585124439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8998a6274f024a6cbc890a8b01fccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRunning: 0
 --- !u!1 &1664906185
 GameObject:
   m_ObjectHideFlags: 0
@@ -16639,6 +16681,7 @@ GameObject:
   - component: {fileID: 1783077599}
   - component: {fileID: 1783077601}
   - component: {fileID: 1783077600}
+  - component: {fileID: 1783077602}
   m_Layer: 0
   m_Name: 3Button
   m_TagString: BtnLine
@@ -16723,6 +16766,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1596966, y: 2.951813}
   m_EdgeRadius: 0
+--- !u!114 &1783077602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783077598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8998a6274f024a6cbc890a8b01fccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRunning: 0
 --- !u!1 &1792637561
 GameObject:
   m_ObjectHideFlags: 0
