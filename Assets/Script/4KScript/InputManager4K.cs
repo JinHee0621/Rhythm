@@ -20,7 +20,6 @@ public class InputManager4K : MonoBehaviour
     public BoxCollider2D BtnCollider3;
     public BoxCollider2D BtnCollider4;
 
-
     public Animator Btn1Anim;
     public Animator Btn2Anim;
     public Animator Btn3Anim;
@@ -122,7 +121,6 @@ public class InputManager4K : MonoBehaviour
     public void ColliderDisabled(BoxCollider2D coll)
     {
         coll.enabled = false;
-        StopCoroutine(ColliderResize(coll));
     }
 
 
@@ -130,6 +128,8 @@ public class InputManager4K : MonoBehaviour
     {
         if(coll.size.y >= 3f)
         {
+            yield return new WaitForSeconds(0.07f);
+            coll.enabled = false;
             yield return null;
         } else
         {

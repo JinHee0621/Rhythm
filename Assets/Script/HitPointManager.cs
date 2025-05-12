@@ -19,7 +19,7 @@ public class HitPointManager : MonoBehaviour
             {
                 ParticleEffect.SetActive(true);
                 //checkEffect Value is unnecessary
-                //checkEffect = true;
+                checkEffect = true;
                 return true;
             } else
             {
@@ -43,7 +43,7 @@ public class HitPointManager : MonoBehaviour
                 if (NoteStartPosition.position.y - Line.position.y < 1.5f && NoteStartPosition.position.y - Line.position.y > -1.5f)
                 {
                     ParticleEffect.SetActive(true);
-                    //checkEffect = true;
+                    checkEffect = true;
                     return true;
                 }
                 else
