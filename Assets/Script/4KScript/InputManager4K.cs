@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InputManager4K : MonoBehaviour
 {
+    [SerializeField]
+    private float noteRes = 0.025f;
 
     KeyCode inputBtnKey1 = KeyCode.D;
     KeyCode inputBtnKey2 = KeyCode.F;
@@ -135,7 +137,7 @@ public class InputManager4K : MonoBehaviour
         } else
         {
             float nextSizeY = coll.size.y;
-            nextSizeY += 0.1f;
+            nextSizeY += noteRes;
             coll.size = new Vector2(coll.size.x, nextSizeY);
             yield return new WaitForSeconds(0.001f);
             StartCoroutine(ColliderResize(coll));
