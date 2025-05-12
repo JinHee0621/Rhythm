@@ -129,7 +129,8 @@ public class InputManager4K : MonoBehaviour
         if(coll.size.y >= 3f)
         {
             yield return new WaitForSeconds(0.07f);
-            coll.enabled = false;
+            //When Player hit Long Note then collider is enabled
+            if(!coll.GetComponent<HitPointManager>().longCheck) coll.enabled = false;
             yield return null;
         } else
         {

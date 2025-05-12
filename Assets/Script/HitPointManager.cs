@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitPointManager : MonoBehaviour
 {
+    public bool longCheck = false;
     public Transform Line;
     public GameObject ParticleEffect;
 
@@ -44,11 +45,13 @@ public class HitPointManager : MonoBehaviour
                 {
                     ParticleEffect.SetActive(true);
                     //checkEffect = true;
+                    longCheck = true;
                     return true;
                 }
                 else
                 {
                     // Miss Note
+                    longCheck = false;
                     return false;
                 }
             } else
@@ -83,6 +86,7 @@ public class HitPointManager : MonoBehaviour
         {
             ParticleEffect.SetActive(false);
             Transform NoteEndPosition = Note.GetChild(1).transform;
+            longCheck = false;
             if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
             {
                 return true;
