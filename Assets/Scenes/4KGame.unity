@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1923629363}
   ParticleEffect: {fileID: 2062206174}
 --- !u!1 &324445845
@@ -10801,6 +10802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192565eeb20604c4cbde1b597bc6dad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteRes: 0.025
   Effect1: {fileID: 1136798825}
   Effect2: {fileID: 1125248241}
   Effect3: {fileID: 912581622}
@@ -10967,6 +10969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1664906186}
   ParticleEffect: {fileID: 816349791}
 --- !u!61 &1010571380
@@ -16560,6 +16563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1521700662}
   ParticleEffect: {fileID: 324445845}
 --- !u!1 &1664906185
@@ -16676,6 +16680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1213222720}
   ParticleEffect: {fileID: 1223876563}
 --- !u!61 &1783077601
