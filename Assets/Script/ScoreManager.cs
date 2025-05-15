@@ -20,6 +20,8 @@ public class ScoreManager : MonoBehaviour
     public int in_note_count = 0;
     public Text accuracyText;
 
+    public ResultManager resultManager;
+
     public void CheckFind()
     {
         Debug.Log("Find Score");
@@ -70,22 +72,27 @@ public class ScoreManager : MonoBehaviour
             if (absData > 0f && absData < 0.3)
             {
                 inAcc = 100f;
+                resultManager.CheckHitTypeCount(0);
             }
             else if (absData >= 0.3f && absData < 0.5)
             {
                 inAcc = 90f;
+                resultManager.CheckHitTypeCount(1);
             }
             else if (absData >= 0.5f && absData < 0.7)
             {
                 inAcc = 70f;
+                resultManager.CheckHitTypeCount(2);
             }
             else
             {
                 inAcc = 50f;
+                resultManager.CheckHitTypeCount(3);
             }
         } else
         {
             inAcc = 0;
+            resultManager.CheckHitTypeCount(4);
         }
 
         in_note_count += 1;
@@ -94,6 +101,10 @@ public class ScoreManager : MonoBehaviour
         string rate_text = accuracy_rate.ToString("0.00") + "%";
         accuracyText.text = rate_text;
 
+        if(in_note_count == total_note_count)
+        {
+            resultManager.ShowResult();
+        }
         return inAcc;
     }
 
