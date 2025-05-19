@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class ScoreManager : MonoBehaviour
     public Text accuracyText;
 
     public ResultManager resultManager;
+
+    //public Text[] hitText = new Text[5];
+    public Text hitText;
+    private String[] accuracyUiText = {"Perfect","Greate","Soso","Bad","Miss"};
+
 
     public void CheckFind()
     {
@@ -72,26 +78,31 @@ public class ScoreManager : MonoBehaviour
             if (absData > 0f && absData < 0.3)
             {
                 inAcc = 100f;
+                ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
             else if (absData >= 0.3f && absData < 0.5)
             {
                 inAcc = 90f;
+                ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
             else if (absData >= 0.5f && absData < 0.7)
             {
                 inAcc = 70f;
+                ShowAccText(2);
                 resultManager.CheckHitTypeCount(2);
             }
             else
             {
                 inAcc = 50f;
+                ShowAccText(3);
                 resultManager.CheckHitTypeCount(3);
             }
         } else
         {
             inAcc = 0;
+            ShowAccText(4);
             resultManager.CheckHitTypeCount(4);
         }
 
@@ -106,6 +117,22 @@ public class ScoreManager : MonoBehaviour
             resultManager.ShowResult();
         }
         return inAcc;
+    }
+
+    public void ShowAccText(int type)
+    {
+        hitText.gameObject.SetActive(false);
+        StartCoroutine(ShowText(type));
+    }
+
+    IEnumerator ShowText(int type)
+    {
+        hitText.gameObject.SetActive(true);
+        hitText.text = accuracyUiText[type];
+        hitText.transform.localScale = new Vector3(0f, 0f, 1f);
+        hitText.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        hitText.gameObject.SetActive(false);
     }
 
     public void reset_note_count()
