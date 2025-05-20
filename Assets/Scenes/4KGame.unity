@@ -6285,6 +6285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  perse: 0
   running: 0
 --- !u!1 &609866984
 GameObject:
