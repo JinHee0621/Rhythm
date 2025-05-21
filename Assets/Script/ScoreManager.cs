@@ -69,25 +69,25 @@ public class ScoreManager : MonoBehaviour
 
     public float CheckAccuracy(float data)
     {
-        float absData = Math.Abs(data);
+        float accData = data;
         float inAcc = 0f;
-
+        //Debug.Log(data);
         //Accuracy Range
-        if(absData != 100)
+        if(accData != 100f)
         {
-            if (absData > 0f && absData < 0.3)
+            if (accData > -4.5f && accData < -4.0f)
             {
                 inAcc = 100f;
                 ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
-            else if (absData >= 0.3f && absData < 0.5)
+            else if (accData >= -4.0f && accData < -3.5)
             {
                 inAcc = 90f;
                 ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
-            else if (absData >= 0.5f && absData < 0.7)
+            else if (accData >= -3.5f && accData < -3)
             {
                 inAcc = 70f;
                 ShowAccText(2);

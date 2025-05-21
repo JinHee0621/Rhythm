@@ -84,7 +84,8 @@ public class NoteManager : MonoBehaviour
                     if (collision.tag.Equals("BtnLine"))
                     {
                         //Debug.Log("[NotePos]" + gameObject.transform.position.y +"||"+ "[LinePos]" + collision.gameObject.transform.position.y + " = " + (gameObject.transform.position.y - collision.gameObject.transform.position.y));
-                        CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y - collision.gameObject.transform.position.y));
+                        //CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y - collision.gameObject.transform.position.y));
+                        CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y));
                     }
                 }
                             
