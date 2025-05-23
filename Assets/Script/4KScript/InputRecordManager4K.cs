@@ -130,6 +130,7 @@ public class InputRecordManager4K : MonoBehaviour
         {
             if (btn1Time != 0f)
             {
+                btn1Time = CalNoteLength(btn1Time);
                 newNote1.GetComponentInChildren<NoteManager>().noteLength = btn1Time;
                 newNote1.GetComponentInChildren<NoteManager>().SetNoteState();
                 float currentYPosition = newNote1.transform.localPosition.y;
@@ -175,6 +176,7 @@ public class InputRecordManager4K : MonoBehaviour
         {
             if (btn2Time != 0f)
             {
+                btn2Time = CalNoteLength(btn2Time);
                 newNote2.GetComponentInChildren<NoteManager>().noteLength = btn2Time;
                 newNote2.GetComponentInChildren<NoteManager>().SetNoteState();
                 float currentYPosition = newNote2.transform.localPosition.y;
@@ -225,6 +227,7 @@ public class InputRecordManager4K : MonoBehaviour
         {
             if (btn3Time != 0f)
             {
+                btn3Time = CalNoteLength(btn3Time);
                 newNote3.GetComponentInChildren<NoteManager>().noteLength = btn3Time;
                 newNote3.GetComponentInChildren<NoteManager>().SetNoteState();
                 float currentYPosition = newNote3.transform.localPosition.y;
@@ -275,6 +278,7 @@ public class InputRecordManager4K : MonoBehaviour
         {
             if (btn4Time != 0f)
             {
+                btn4Time = CalNoteLength(btn4Time);
                 newNote4.GetComponentInChildren<NoteManager>().noteLength = btn4Time;
                 newNote4.GetComponentInChildren<NoteManager>().SetNoteState();
                 float currentYPosition = newNote4.transform.localPosition.y;
@@ -315,5 +319,20 @@ public class InputRecordManager4K : MonoBehaviour
         {
             target.color = new Color(target.color.r, target.color.g, target.color.b, 0);
         }
+    }
+
+    private float CalNoteLength(float noteLength)
+    {
+        float result = 0f;
+        if (noteLength >= 150)
+        {
+            result = 0.01f * noteLength;
+        }
+        else
+        {
+            result = 0.25f;
+        }
+
+        return result;
     }
 }

@@ -71,7 +71,7 @@ public class ScoreManager : MonoBehaviour
     {
         float accData = data;
         float inAcc = 0f;
-        //Debug.Log(data);
+        Debug.Log(data);
         //Accuracy Range
         if(accData != 100f)
         {

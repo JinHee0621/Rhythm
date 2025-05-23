@@ -13,8 +13,8 @@ public class NoteMoveManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        speed *= -1;
-        yMove = speed * Time.deltaTime;
+        //speed *= -1;
+        //yMove = speed * Time.deltaTime;
         default_pos = gameObject.transform.position.y;
         //Drop Moving
     }
@@ -40,7 +40,8 @@ public class NoteMoveManager : MonoBehaviour
 
     public void RunningGame()
     {
-        this.transform.Translate(new Vector3(0f, yMove));
+        //this.transform.Translate(new Vector3(0f, yMove, 0f));
+        this.transform.Translate(new Vector3(0f, -1f, 0f) * speed * Time.deltaTime);
     }
 
     public float Print_default_pos()

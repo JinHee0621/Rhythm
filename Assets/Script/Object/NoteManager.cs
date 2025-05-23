@@ -11,7 +11,7 @@ public class NoteManager : MonoBehaviour
     public int noteId;
     public bool isRecordNote;
     public bool isLongNote;
-    public float noteLength = 0f;
+    public float noteLength = 0.25f;
 
     
 
@@ -35,8 +35,10 @@ public class NoteManager : MonoBehaviour
     }
     public void SetNoteState()
     {
-        Vector3 reSizeVec = new Vector3(1.25f, 0.25f, 1f);
-        if (noteLength >= 150) reSizeVec.y = 0.01f * noteLength; 
+        //Vector3 reSizeVec = new Vector3(1.25f, 0.25f, 1f)
+        Vector3 reSizeVec = new Vector3(1.25f, noteLength, 1f);
+
+        //if (noteLength >= 150) reSizeVec.y = 0.01f * noteLength; 
         gameObject.transform.localScale = reSizeVec;
 
         Vector3 reSetPosition = new Vector3(0f, reSizeVec.y / 2, 0f);
@@ -83,9 +85,15 @@ public class NoteManager : MonoBehaviour
                 {
                     if (collision.tag.Equals("BtnLine"))
                     {
-                        //Debug.Log("[NotePos]" + gameObject.transform.position.y +"||"+ "[LinePos]" + collision.gameObject.transform.position.y + " = " + (gameObject.transform.position.y - collision.gameObject.transform.position.y));
-                        //CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y - collision.gameObject.transform.position.y));
-                        CheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y));
+                        //NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y));
+                        if(!isLongNote)
+                        {
+                            NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform), (gameObject.transform.position.y));
+                        } else
+                        {
+                            Transform noteEnd = gameObject.transform.GetChild(1).transform;
+                            NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().LongCheckCurrect(gameObject.transform), (noteEnd.position.y));
+                        }
                     }
                 }
                             
@@ -93,12 +101,12 @@ public class NoteManager : MonoBehaviour
                 {
                     if(!isLongNote)
                     {
-                        CheckCurrect(false, 100f);
+                        NoteCheckCurrect(false, 100f);
                     } else
                     {
                         if (!hitNote)
                         {
-                            CheckCurrect(false, 100f);
+                            NoteCheckCurrect(false, 100f);
                         }
                     }
                 }
@@ -106,7 +114,7 @@ public class NoteManager : MonoBehaviour
         }
     }
    
-    void CheckCurrect(bool isHit, float range)
+    void NoteCheckCurrect(bool isHit, float range)
     {
         float hitAcc = scoreManager.CheckAccuracy(range);
         if (isHit)

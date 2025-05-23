@@ -65,7 +65,41 @@ public class HitPointManager : MonoBehaviour
         }
     }
 
+    public bool CheckCurrect(Transform Note)
+    {
+        checkEffect = false;
 
+        StartCoroutine(OffEffect());
+        Transform NotePosition = Note.GetChild(0).transform;
+        if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool LongCheckCurrect(Transform Note)
+    {
+        checkEffect = false;
+        ParticleEffect.SetActive(false);
+        Transform NoteEndPosition = Note.GetChild(1).transform;
+        longCheck = false;
+        if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    /*
     public bool CheckCurrect(Transform Note, bool isLongNote)
     {
         checkEffect = false;
@@ -97,7 +131,8 @@ public class HitPointManager : MonoBehaviour
             }
         }
     }
-    
+    */
+
     IEnumerator OffEffect()
     {
         yield return new WaitForSeconds(0.5f);

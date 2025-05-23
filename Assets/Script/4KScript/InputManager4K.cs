@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager4K : MonoBehaviour
 {
     [SerializeField]
-    private float noteRes = 0.025f;
+    private float noteRes = 10f;
 
     KeyCode inputBtnKey1 = KeyCode.D;
     KeyCode inputBtnKey2 = KeyCode.F;
@@ -116,7 +116,7 @@ public class InputManager4K : MonoBehaviour
     public void ColliderEnabled(BoxCollider2D coll)
     {
         coll.enabled = true;
-        coll.size = new Vector2(coll.size.x, 0.1f);
+        coll.size = new Vector2(coll.size.x, 1f);
         StartCoroutine(ColliderResize(coll));
     }
 
@@ -130,7 +130,7 @@ public class InputManager4K : MonoBehaviour
     {
         if(coll.size.y >= 3f)
         {
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(0.016f);
             //When Player hit Long Note then collider is enabled
             if(!coll.GetComponent<HitPointManager>().longCheck) coll.enabled = false;
             yield return null;
@@ -138,8 +138,9 @@ public class InputManager4K : MonoBehaviour
         {
             float nextSizeY = coll.size.y;
             nextSizeY += noteRes;
+            Debug.Log(nextSizeY);
             coll.size = new Vector2(coll.size.x, nextSizeY);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.016f);
             StartCoroutine(ColliderResize(coll));
         }
     }

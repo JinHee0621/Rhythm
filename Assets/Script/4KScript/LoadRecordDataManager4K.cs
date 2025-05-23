@@ -6,6 +6,7 @@ using System.IO;
 public class LoadRecordDataManager4K : MonoBehaviour
 {
     public ScoreManager scoreManager;
+    public NoteMoveManager noteMoveManager;
     public string Song_Name;
 
     public GameObject Note;
@@ -20,6 +21,8 @@ public class LoadRecordDataManager4K : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
+
         string[] lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         scoreManager.NoteCountInit((lines.Length - 1));
         foreach (string data in lines)
@@ -36,9 +39,19 @@ public class LoadRecordDataManager4K : MonoBehaviour
 
                 float position_y = 0f;
                 float.TryParse(data_element[1], out position_y);
+                position_y *= noteMoveManager.speed;
 
                 float noteLength = 0f;
                 float.TryParse(data_element[2], out noteLength);
+
+                if (noteLength >= 150)
+                {
+                    noteLength = 0.01f * ( noteLength * noteMoveManager.speed );
+                } else
+                {
+                    noteLength = 0.25f;
+                }
+
 
                 if (parent_line != null)
                 {
