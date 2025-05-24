@@ -5,7 +5,9 @@ using UnityEngine;
 public class InputManager4K : MonoBehaviour
 {
     [SerializeField]
-    private float noteRes = 10f;
+    private float noteRes;
+
+    public NoteMoveManager noteMoveManager;
 
     KeyCode inputBtnKey1 = KeyCode.D;
     KeyCode inputBtnKey2 = KeyCode.F;
@@ -26,6 +28,11 @@ public class InputManager4K : MonoBehaviour
     public Animator Btn2Anim;
     public Animator Btn3Anim;
     public Animator Btn4Anim;
+
+    void Start()
+    {
+        noteRes = noteMoveManager.speed / 2;
+    }
 
     void Update()
     {
@@ -60,7 +67,6 @@ public class InputManager4K : MonoBehaviour
         else
         {
             Btn2Anim.SetBool("ButtonPush", false);
-            //StartCoroutine(ColorDisabled(Effect2));
             ColliderDisabled(BtnCollider2);
         }
     }
@@ -76,7 +82,6 @@ public class InputManager4K : MonoBehaviour
         else
         {
             Btn3Anim.SetBool("ButtonPush", false);
-            //StartCoroutine(ColorDisabled(Effect3));
             ColliderDisabled(BtnCollider3);
         }
     }
@@ -93,7 +98,6 @@ public class InputManager4K : MonoBehaviour
         else
         {
             Btn4Anim.SetBool("ButtonPush", false);
-            //StartCoroutine(ColorDisabled(Effect4));
             ColliderDisabled(BtnCollider4);
         }
     }
@@ -138,7 +142,6 @@ public class InputManager4K : MonoBehaviour
         {
             float nextSizeY = coll.size.y;
             nextSizeY += noteRes;
-            Debug.Log(nextSizeY);
             coll.size = new Vector2(coll.size.x, nextSizeY);
             yield return new WaitForSeconds(0.016f);
             StartCoroutine(ColliderResize(coll));

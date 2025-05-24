@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1035235900}
   ParticleEffect: {fileID: 845745646}
 --- !u!61 &109605015
@@ -373,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1657768922}
   ParticleEffect: {fileID: 2096372694}
 --- !u!61 &447974591
@@ -696,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 864592920}
   ParticleEffect: {fileID: 1030402835}
 --- !u!61 &819472393
@@ -15919,6 +15922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530e795ab9de80b4b81d71523129ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longCheck: 0
   Line: {fileID: 1489687766}
   ParticleEffect: {fileID: 1187319447}
 --- !u!61 &1404419655
@@ -16367,7 +16371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d8c06acbe65bd429f38bcc7eddb642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
+  perse: 0
   running: 1
 --- !u!4 &1959048429
 Transform:
@@ -16436,6 +16441,8 @@ MonoBehaviour:
   comboText: {fileID: 0}
   in_note_count: 0
   accuracyText: {fileID: 0}
+  resultManager: {fileID: 0}
+  hitText: {fileID: 0}
 --- !u!1 &2096372694
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     public int in_note_count = 0;
     public Text accuracyText;
 
+    public NoteMoveManager noteMoveManager;
     public ResultManager resultManager;
 
     //public Text[] hitText = new Text[5];
@@ -71,23 +72,24 @@ public class ScoreManager : MonoBehaviour
     {
         float accData = data;
         float inAcc = 0f;
+        float perfect_rate = (-4.5f + (0.1f * noteMoveManager.speed));
         Debug.Log(data);
         //Accuracy Range
         if(accData != 100f)
         {
-            if (accData > -4.5f && accData < -4.0f)
+            if (accData > perfect_rate && accData < (perfect_rate + 0.5f))
             {
                 inAcc = 100f;
                 ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
-            else if (accData >= -4.0f && accData < -3.5)
+            else if (accData >= (perfect_rate + 0.5f) && accData < (perfect_rate + 1.0f))
             {
                 inAcc = 90f;
                 ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
-            else if (accData >= -3.5f && accData < -3)
+            else if (accData >= (perfect_rate + 1.0f) && accData < (perfect_rate + 1.5f))
             {
                 inAcc = 70f;
                 ShowAccText(2);

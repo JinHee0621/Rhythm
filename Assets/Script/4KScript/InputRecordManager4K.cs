@@ -324,15 +324,14 @@ public class InputRecordManager4K : MonoBehaviour
     private float CalNoteLength(float noteLength)
     {
         float result = 0f;
-        if (noteLength >= 150)
+        if (noteLength >= 10)
         {
-            result = 0.01f * noteLength;
+            result = 0.1f * noteLength;
         }
         else
         {
             result = 0.25f;
         }
-
         return result;
     }
 }

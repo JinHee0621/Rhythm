@@ -36,12 +36,12 @@ public class NoteMoveManager : MonoBehaviour
             StartCoroutine(Wait5Sceond());
         }
     }
-
+    
 
     public void RunningGame()
     {
         //this.transform.Translate(new Vector3(0f, yMove, 0f));
-        this.transform.Translate(new Vector3(0f, -1f, 0f) * speed * Time.deltaTime);
+        this.transform.Translate(new Vector3(0f, -5f * speed, 0f) * Time.deltaTime);
     }
 
     public float Print_default_pos()

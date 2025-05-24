@@ -447,6 +447,7 @@ MonoBehaviour:
   comboText: {fileID: 40293503}
   in_note_count: 0
   accuracyText: {fileID: 609866986}
+  noteMoveManager: {fileID: 578458914}
   resultManager: {fileID: 103811027}
   hitText: {fileID: 2000538339}
 --- !u!1 &214363226
@@ -6284,7 +6285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d8c06acbe65bd429f38bcc7eddb642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   perse: 0
   running: 0
 --- !u!1 &609866984
@@ -11560,7 +11561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192565eeb20604c4cbde1b597bc6dad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRes: 0.025
+  noteRes: 0.1
+  noteMoveManager: {fileID: 578458914}
   Effect1: {fileID: 1136798825}
   Effect2: {fileID: 1125248241}
   Effect3: {fileID: 912581622}
@@ -17999,7 +18001,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1596966, y: 3}
+  m_Size: {x: 1.1596966, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &1585124442
 MonoBehaviour:

@@ -48,7 +48,7 @@ public class NoteManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(!isRecordNote)
+        if(!isRecordNote && !collision.tag.Equals("Note"))
         {
             //When Note Hit MissLine
             if(!noteChecked)
@@ -77,7 +77,7 @@ public class NoteManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!isRecordNote)
+        if (!isRecordNote && !collision.tag.Equals("Note"))
         {
             if (noteChecked)
             {
