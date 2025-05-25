@@ -62,6 +62,16 @@ public class InputRecordManager4K : MonoBehaviour
 
     private float recentPosition = -100f;
 
+    private float btn1BeforeYPosition = 0f;
+    private bool btn1FristInput = false;
+    private float btn2BeforeYPosition = 0f;
+    private bool btn2FristInput = false;
+    private float btn3BeforeYPosition = 0f;
+    private bool btn3FristInput = false;
+    private float btn4BeforeYPosition = 0f;
+    private bool btn4FristInput = false;
+
+
     void Update()
     {
         InputBtn1(Input.GetKey(inputBtnKey1));
@@ -92,7 +102,6 @@ public class InputRecordManager4K : MonoBehaviour
 
     private float NotePosition(float paramPos)
     {
-
         float positionY = paramPos;
 
         if (recentPosition == -100f) recentPosition = positionY;
@@ -124,6 +133,14 @@ public class InputRecordManager4K : MonoBehaviour
                 newNote1 = Instantiate(Note, Line1);
                 newNote1.transform.position = SponePos1.position;
                 Line1NoteSpone = true;
+
+                //Debug.Log(newNote1.transform.localPosition.y);
+                //If LongNote sponed then check before position
+                if(btn1FristInput == false)
+                {
+                    btn1BeforeYPosition = newNote1.transform.localPosition.y;
+                    btn1FristInput = true;
+                }
             }
         }
         else
@@ -143,7 +160,17 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
-                string noteInfo = "Btn1|" + NotePosition(currentYPosition - (btn1Time * 0.01f)) + "|" + btn1Time;
+                //Check LongNote position
+                string noteInfo;
+                if(btn1Time > 0.25f)
+                {
+                    noteInfo = "Btn1|" + btn1BeforeYPosition + "|" + btn1Time;
+                }
+                else
+                {
+                    noteInfo = "Btn1|" + NotePosition(currentYPosition - (btn1Time * 0.016f)) + "|" + btn1Time;
+                }
+
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line1NoteSpone = false;
@@ -152,6 +179,10 @@ public class InputRecordManager4K : MonoBehaviour
             Btn1Anim.SetBool("ButtonPush", false);
             StartCoroutine(ColorDisabled(Effect1));
             btn1Time = 0f;
+
+            //Before Position init
+            btn1BeforeYPosition = 0f;
+            btn1FristInput = false;
         }
     }
 
@@ -170,6 +201,13 @@ public class InputRecordManager4K : MonoBehaviour
                 newNote2 = Instantiate(Note, Line2);
                 newNote2.transform.position = SponePos2.position;
                 Line2NoteSpone = true;
+            }
+
+            //If LongNote sponed then check before position
+            if (btn2FristInput == false)
+            {
+                btn2BeforeYPosition = newNote2.transform.localPosition.y;
+                btn2FristInput = true;
             }
         }
         else
@@ -192,17 +230,31 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
+                //Check LongNote position
+                string noteInfo;
+                if (btn2Time > 0.25f)
+                {
+                    noteInfo = "Btn2|" + btn2BeforeYPosition + "|" + btn2Time;
+                }
+                else
+                {
+                    noteInfo = "Btn2|" + NotePosition(currentYPosition - (btn2Time * 0.016f)) + "|" + btn2Time;
+                }
 
-                string noteInfo = "Btn2|" + NotePosition(currentYPosition - (btn2Time * 0.01f)) + "|" + btn2Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line2NoteSpone = false;
+
             }
 
             BtnCollider2.enabled = false;
             Btn2Anim.SetBool("ButtonPush", false);
             StartCoroutine(ColorDisabled(Effect2));
             btn2Time = 0f;
+
+            //Before Position init
+            btn2BeforeYPosition = 0f;
+            btn2FristInput = false;
         }
     }
 
@@ -221,6 +273,13 @@ public class InputRecordManager4K : MonoBehaviour
                 newNote3 = Instantiate(Note, Line3);
                 newNote3.transform.position = SponePos3.position;
                 Line3NoteSpone = true;
+            }
+
+            //If LongNote sponed then check before position
+            if (btn3FristInput == false)
+            {
+                btn3BeforeYPosition = newNote3.transform.localPosition.y;
+                btn3FristInput = true;
             }
         }
         else
@@ -243,8 +302,17 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
+                //Check LongNote position
+                string noteInfo;
+                if (btn3Time > 0.25f)
+                {
+                    noteInfo = "Btn3|" + btn3BeforeYPosition + "|" + btn3Time;
+                }
+                else
+                {
+                    noteInfo = "Btn3|" + NotePosition(currentYPosition - (btn3Time * 0.016f)) + "|" + btn3Time;
+                }
 
-                string noteInfo = "Btn3|" + NotePosition(currentYPosition - (btn3Time * 0.01f)) + "|" + btn3Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line3NoteSpone = false;
@@ -254,6 +322,10 @@ public class InputRecordManager4K : MonoBehaviour
             Btn3Anim.SetBool("ButtonPush", false);
             StartCoroutine(ColorDisabled(Effect3));
             btn3Time = 0f;
+            
+            //Before Position init
+            btn3BeforeYPosition = 0f;
+            btn3FristInput = false;
         }
     }
 
@@ -272,6 +344,13 @@ public class InputRecordManager4K : MonoBehaviour
                 newNote4 = Instantiate(Note, Line4);
                 newNote4.transform.position = SponePos4.position;
                 Line4NoteSpone = true;
+            }
+
+            //If LongNote sponed then check before position
+            if (btn4FristInput == false)
+            {
+                btn4BeforeYPosition = newNote4.transform.localPosition.y;
+                btn4FristInput = true;
             }
         }
         else
@@ -293,8 +372,17 @@ public class InputRecordManager4K : MonoBehaviour
                     currentYPosition = beforeYPosition;
                 }
 
+                //Check LongNote position
+                string noteInfo;
+                if (btn4Time > 0.25f)
+                {
+                    noteInfo = "Btn4|" + btn4BeforeYPosition + "|" + btn4Time;
+                }
+                else
+                {
+                    noteInfo = "Btn4|" + NotePosition(currentYPosition - (btn4Time * 0.016f)) + "|" + btn4Time;
+                }
 
-                string noteInfo = "Btn4|" + NotePosition(currentYPosition - (btn4Time * 0.01f)) + "|" + btn4Time;
                 noteCnt += 1;
                 noteList.Add(noteInfo);
                 Line4NoteSpone = false;
@@ -304,6 +392,10 @@ public class InputRecordManager4K : MonoBehaviour
             Btn4Anim.SetBool("ButtonPush", false);
             StartCoroutine(ColorDisabled(Effect4));
             btn4Time = 0f;
+
+            //Before Position init
+            btn4BeforeYPosition = 0f;
+            btn4FristInput = false;
         }
     }
 

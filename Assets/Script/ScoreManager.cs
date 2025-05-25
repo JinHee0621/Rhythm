@@ -73,33 +73,38 @@ public class ScoreManager : MonoBehaviour
         float accData = data;
         float inAcc = 0f;
         float perfect_rate = (-4.5f + (0.1f * noteMoveManager.speed));
-        Debug.Log(data);
+//        Debug.Log(data);
         //Accuracy Range
         if(accData != 100f)
         {
-            if (accData > perfect_rate && accData < (perfect_rate + 0.5f))
+            if (accData > (perfect_rate - 0.25f) && accData < (perfect_rate + 0.5f))
             {
                 inAcc = 100f;
                 ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
-            else if (accData >= (perfect_rate + 0.5f) && accData < (perfect_rate + 1.0f))
+            else if (accData >= (perfect_rate + 0.5f) && accData < (perfect_rate + 1.25f))
             {
                 inAcc = 90f;
                 ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
-            else if (accData >= (perfect_rate + 1.0f) && accData < (perfect_rate + 1.5f))
+            else if (accData >= (perfect_rate + 1.25f) && accData < (perfect_rate + 2.25f))
             {
                 inAcc = 70f;
                 ShowAccText(2);
                 resultManager.CheckHitTypeCount(2);
             }
-            else
+            else if (accData >= (perfect_rate + 2.25f))
             {
                 inAcc = 50f;
                 ShowAccText(3);
                 resultManager.CheckHitTypeCount(3);
+            } else
+            {
+                inAcc = 0;
+                ShowAccText(4);
+                resultManager.CheckHitTypeCount(4);
             }
         } else
         {

@@ -31,7 +31,7 @@ public class InputManager4K : MonoBehaviour
 
     void Start()
     {
-        noteRes = noteMoveManager.speed / 2;
+        noteRes = noteMoveManager.speed / 3f;
     }
 
     void Update()

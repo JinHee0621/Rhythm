@@ -43,16 +43,13 @@ public class LoadRecordDataManager4K : MonoBehaviour
 
                 float noteLength = 0f;
                 float.TryParse(data_element[2], out noteLength);
-
-                if (noteLength >= 150)
+                if (noteLength >= 1)
                 {
-                    noteLength = 0.01f * ( noteLength * noteMoveManager.speed );
+                    noteLength = noteLength * noteMoveManager.speed;
                 } else
                 {
                     noteLength = 0.25f;
                 }
-
-
                 if (parent_line != null)
                 {
                     GameObject newNote = Instantiate(Note, parent_line);
