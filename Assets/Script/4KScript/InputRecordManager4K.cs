@@ -416,14 +416,17 @@ public class InputRecordManager4K : MonoBehaviour
     private float CalNoteLength(float noteLength)
     {
         float result = 0f;
-        if (noteLength >= 10)
+        Debug.Log(noteLength);
+
+        if (noteLength >= 80)
         {
-            result = 0.1f * noteLength;
+            result = noteLength / 80;
         }
         else
         {
             result = 0.25f;
         }
+
         return result;
     }
 }

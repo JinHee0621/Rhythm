@@ -23,11 +23,9 @@ public class PlayManager : MonoBehaviour
 
     IEnumerator FadeOutFirst()
     {
-        fadeOut_screen.enabled = true;
-        fadeOut_screen.color = new Color(0f, 0f, 0f, 1f);
-        yield return new WaitForSeconds(3.0f);
-        fadeOut_screen.DOColor(new Color(0f,0f,0f,0f), 1.0f);
-        fadeOut_screen.enabled = false;
+        yield return new WaitForSeconds(1.0f);
+        fadeOut_screen.DOColor(new Color(0f, 0f, 0f, 0f), 3.0f);
+        yield return new WaitForSeconds(3.6f);
         SoundManager.instance.PlayBgm(true);
     }
 }
