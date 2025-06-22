@@ -9,24 +9,31 @@ public class SelectMusicManager : MonoBehaviour
     public string music_Name;
     public string music_Score;
 
-    public static SelectMusicManager Instance { get; set; }
+    public static SelectMusicManager instance { get; set; }
 
     private void Awake()
     {
-        if(Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
-        } else
+        }
+        else
         {
-            Destroy(gameObject);
+            if (instance != this)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
     public void SelectMusic(string select_music_Name, string select_music_score)
     {
-        music_Name = select_music_Name;
-        music_Score = select_music_score;
+        instance.music_Name = select_music_Name;
+        instance.music_Score = select_music_score;
         SceneManager.LoadScene("4KGame");
     }
+
+
+
 }

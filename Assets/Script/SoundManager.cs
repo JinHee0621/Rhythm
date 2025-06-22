@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
+    public bool testRunning;
 
     [Header("SFX")]
     public AudioClip[] sfxClips;
@@ -25,6 +26,10 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
         Init();
+        if(testRunning)
+        {
+            PlayBgm(true);
+        }
     }
 
     void Init()
@@ -59,6 +64,18 @@ public class SoundManager : MonoBehaviour
         } else
         {
             bgmPlayer.Stop();
+        }
+    }
+
+    public void PauseBgm(bool isPause)
+    {
+        if (isPause)
+        {
+            bgmPlayer.Pause();
+        }
+        else
+        {
+            bgmPlayer.UnPause();
         }
     }
 
