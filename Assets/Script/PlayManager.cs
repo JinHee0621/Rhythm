@@ -13,10 +13,17 @@ public class PlayManager : MonoBehaviour
     [Header("Play")]
     public Image fadeOut_screen;
 
+    [Header("Test")]
+    public bool test_play;
+
     private void Start()
     {
-        selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
-        musicName = selectMusicManager.music_Name;
+        if(test_play)
+        {
+            selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
+            musicName = selectMusicManager.music_Name;
+        }
+
         StartCoroutine(FadeOutFirst());
     }
 

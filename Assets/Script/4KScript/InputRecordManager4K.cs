@@ -416,7 +416,6 @@ public class InputRecordManager4K : MonoBehaviour
     private float CalNoteLength(float noteLength)
     {
         float result = 0f;
-        Debug.Log(noteLength);
 
         if (noteLength >= 80)
         {

@@ -10,7 +10,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
-    public bool testRunning;
 
     [Header("SFX")]
     public AudioClip[] sfxClips;
@@ -19,6 +18,9 @@ public class SoundManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex;
 
+    [Header("Test")]
+    public bool test_play;
+
 
     public enum Sfx { }
 
@@ -26,7 +28,7 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
         Init();
-        if(testRunning)
+        if(test_play)
         {
             PlayBgm(true);
         }
