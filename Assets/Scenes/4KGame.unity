@@ -305,7 +305,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -342,7 +342,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &103811025
 GameObject:
@@ -6115,7 +6115,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &546030104
 CanvasRenderer:
@@ -6147,7 +6147,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -11954,7 +11954,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1025766464
 CanvasRenderer:
@@ -11986,7 +11986,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -17805,7 +17805,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1353505416
 CanvasRenderer:
@@ -17837,7 +17837,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -18678,10 +18678,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939733535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ef6c318cddc200418ec9fb4da3beeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
   bgmVolume: 0.3
   sfxClips: []
   sfxVolume: 0.3
@@ -18869,7 +18869,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 140, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2036941067
 CanvasRenderer:
@@ -18901,7 +18901,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -23914,13 +23914,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093149411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa6c8a1acb604a42abb3a2d0451c092, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a5a90dd55116eb488822e53671c28b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectMusicManager: {fileID: 0}
   musicName: 
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 1
+  test_play: 0
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0
