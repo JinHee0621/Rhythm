@@ -18,7 +18,7 @@ public class PlayManager : MonoBehaviour
 
     private void Start()
     {
-        if(test_play)
+        if(!test_play)
         {
             selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
             musicName = selectMusicManager.music_Name;

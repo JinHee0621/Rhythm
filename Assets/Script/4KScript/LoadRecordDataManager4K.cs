@@ -7,6 +7,7 @@ public class LoadRecordDataManager4K : MonoBehaviour
 {
     public ScoreManager scoreManager;
     public NoteMoveManager noteMoveManager;
+    public NotePoolManager notePoolManager;
     public string Song_Name;
 
     public GameObject Note;
@@ -26,6 +27,7 @@ public class LoadRecordDataManager4K : MonoBehaviour
         string[] lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         scoreManager.NoteCountInit((lines.Length - 1));
 
+        /*
         for(int i = 0; i < lines.Length;)
         {
             string data = lines[i];
@@ -68,8 +70,8 @@ public class LoadRecordDataManager4K : MonoBehaviour
             }
             Line_index += 1;
         }
-
-        /*
+        */
+        
         foreach (string data in lines)
         {
             if(Line_index > 0)
@@ -106,7 +108,10 @@ public class LoadRecordDataManager4K : MonoBehaviour
                 }
             }
             Line_index += 1;
-        }*/
+        }
         NoteLine_Base.GetComponent<NoteMoveManager>().running = true;
     }
+
+
+
 }

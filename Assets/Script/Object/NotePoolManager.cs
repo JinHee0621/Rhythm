@@ -11,10 +11,13 @@ public class NotePoolManager : MonoBehaviour
 
     public int ObjectIndex;
 
+
     private void Awake()
     {
         noteObjects = new GameObject[poolLength];
     }
+
+
 }
 
 

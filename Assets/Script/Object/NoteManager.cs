@@ -121,10 +121,11 @@ public class NoteManager : MonoBehaviour
         {
             scoreManager.AddScore(hitAcc);
             scoreManager.AddCombo();
-            gameObject.SetActive(false);
         } else
         {
             scoreManager.ResetCombo();
         }
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
