@@ -18678,14 +18678,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939733535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef6c318cddc200418ec9fb4da3beeef, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
-  bgmVolume: 0.3
+  bgmClip: {fileID: 0}
+  bgmVolume: 0
   sfxClips: []
-  sfxVolume: 0.3
-  channels: 16
+  sfxVolume: 0
+  channels: 0
   test_play: 0
 --- !u!1 &1993912755
 GameObject:
@@ -23914,13 +23914,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093149411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5a90dd55116eb488822e53671c28b5, type: 3}
+  m_Script: {fileID: 11500000, guid: faa6c8a1acb604a42abb3a2d0451c092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectMusicManager: {fileID: 0}
   musicName: 
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 0
+  test_play: 1
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0

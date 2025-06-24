@@ -26,6 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     //public Text[] hitText = new Text[5];
     public Text hitText;
+
     private String[] accuracyUiText = {"Perfect","Greate","Soso","Bad","Miss"};
 
 
@@ -73,7 +74,6 @@ public class ScoreManager : MonoBehaviour
         float accData = data;
         float inAcc = 0f;
         float perfect_rate = (-4.5f + (0.1f * noteMoveManager.speed));
-//        Debug.Log(data);
         //Accuracy Range
         if(accData != 100f)
         {
