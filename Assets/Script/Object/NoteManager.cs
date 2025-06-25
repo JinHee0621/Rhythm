@@ -131,6 +131,8 @@ public class NoteManager : MonoBehaviour
             scoreManager.ResetCombo();
         }
         //gameObject.SetActive(false);
-        //Destroy(gameObject);
+        notePoolManager.Check();
+        isChecked = true;
+        Destroy(gameObject);
     }
 }

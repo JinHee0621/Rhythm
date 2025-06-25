@@ -25,4 +25,14 @@ public class LoadRecordDataManager : MonoBehaviour
         scoreManager.NoteCountInit((lines.Length - 1));
     }
 
+    public string[] ReturnLine()
+    {
+        return lines;
+    }
+
+    public virtual void NextLine(int index)
+    {
+        Debug.Log("parent");   
+    }
+
 }

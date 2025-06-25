@@ -5760,9 +5760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8813d60af554d95b5c7dad8d7b92f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolLength: 50
+  loadRecordDataManager: {fileID: 1346557959}
+  poolLength: 20
   noteObjects: []
-  ObjectIndex: 0
+  note: {fileID: 3693880570851372189, guid: fd10a51d165daae41a531021b2af392a, type: 3}
+  init_position: {fileID: 1589752033}
 --- !u!1 &498183447
 GameObject:
   m_ObjectHideFlags: 0
@@ -17775,7 +17777,7 @@ MonoBehaviour:
   scoreManager: {fileID: 181292999}
   Song_Name: NoteData2
   noteMoveManager: {fileID: 578458914}
-  notePoolManager: {fileID: 0}
+  notePoolManager: {fileID: 437826099}
   Note: {fileID: 3693880570851372189, guid: fd10a51d165daae41a531021b2af392a, type: 3}
   NoteLine_Base: {fileID: 578458912}
   Line1: {fileID: 831377089}
@@ -18067,6 +18069,37 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1521700662}
   ParticleEffect: {fileID: 324445845}
+--- !u!1 &1589752032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589752033}
+  m_Layer: 0
+  m_Name: InitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589752033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589752032}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22, y: -2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1659762088
 GameObject:
   m_ObjectHideFlags: 0
@@ -24068,3 +24101,4 @@ SceneRoots:
   - {fileID: 865759109}
   - {fileID: 1222840409}
   - {fileID: 2043899701}
+  - {fileID: 1589752033}
