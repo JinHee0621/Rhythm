@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+
+public class LoadRecordDataManager : MonoBehaviour
+{
+    public ScoreManager scoreManager;
+    public string Song_Name;
+
+    public NoteMoveManager noteMoveManager;
+    public NotePoolManager notePoolManager;
+
+    protected string[] lines;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        LoadData();
+    }
+
+    public void LoadData()
+    {
+        lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        scoreManager.NoteCountInit((lines.Length - 1));
+    }
+
+}

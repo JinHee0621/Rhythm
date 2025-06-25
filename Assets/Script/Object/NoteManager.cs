@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
+    public NotePoolManager notePoolManager;
     public ScoreManager scoreManager;
 
     //[SerializeField]
@@ -13,6 +14,8 @@ public class NoteManager : MonoBehaviour
     public bool isLongNote;
     public float noteLength = 0.25f;
 
+    public int lineNum = 0;
+    public bool isChecked = false;
     
 
     [SerializeField]
@@ -23,7 +26,9 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
+        notePoolManager = GameObject.Find("NotePoolManager").GetComponent<NotePoolManager>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+
         SetNoteState();
         if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
         {
@@ -126,6 +131,6 @@ public class NoteManager : MonoBehaviour
             scoreManager.ResetCombo();
         }
         //gameObject.SetActive(false);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
