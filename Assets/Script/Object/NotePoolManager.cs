@@ -15,15 +15,18 @@ public class NotePoolManager : MonoBehaviour
 
     private int current_index = 0;
 
+    public bool isRecord;
 
     private void Awake()
     {
-        noteObjects = new GameObject[poolLength];
-        for (int i = 0; i < poolLength; i++)
+        if(!isRecord)
         {
-            noteObjects[i] = Instantiate(note, init_position);
+            noteObjects = new GameObject[poolLength];
+            for (int i = 0; i < poolLength; i++)
+            {
+                noteObjects[i] = Instantiate(note, init_position);
+            }
         }
-
     }
 
     public void InitLine()
@@ -33,7 +36,7 @@ public class NotePoolManager : MonoBehaviour
 
     public void InitNote(Transform line, float pos, float noteLength)
     {
-        for(int i = current_index; i < poolLength; i++)
+        for(int i = 0; i < poolLength; i++)
         {
             if(noteObjects[i].GetComponentInChildren<NoteManager>().isChecked == false)
             {
@@ -41,14 +44,17 @@ public class NotePoolManager : MonoBehaviour
                 noteObjects[i].transform.localPosition = new Vector3(0f, pos, -3);
                 noteObjects[i].GetComponentInChildren<NoteManager>().noteLength = noteLength;
                 noteObjects[i].GetComponentInChildren<NoteManager>().SetNoteState();
+                noteObjects[i].GetComponentInChildren<NoteManager>().isChecked = true;
                 current_index += 1;
                 break;
             }
         }
     }
 
-    public void Check()
+    public void Check(GameObject note)
     {
+        note.transform.parent = init_position;
+        note.transform.localPosition = new Vector3(0f, 0f, 0f);
         loadRecordDataManager.NextLine(current_index);
     }
 

@@ -28,16 +28,9 @@ public class NoteManager : MonoBehaviour
     {
         notePoolManager = GameObject.Find("NotePoolManager").GetComponent<NotePoolManager>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-
         SetNoteState();
-        if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
-        {
-            isLongNote = false;
-        } else
-        {
-            isLongNote = true;
-        }
     }
+
     public void SetNoteState()
     {
         //Vector3 reSizeVec = new Vector3(1.25f, 0.25f, 1f)
@@ -49,6 +42,14 @@ public class NoteManager : MonoBehaviour
         Vector3 reSetPosition = new Vector3(0f, reSizeVec.y / 2, 0f);
         //Debug.Log(reSetPosition);
         gameObject.transform.localPosition = reSetPosition;
+        if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
+        {
+            isLongNote = false;
+        }
+        else
+        {
+            isLongNote = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -131,8 +132,17 @@ public class NoteManager : MonoBehaviour
             scoreManager.ResetCombo();
         }
         //gameObject.SetActive(false);
-        notePoolManager.Check();
-        isChecked = true;
-        Destroy(gameObject);
+        notePoolManager.Check(transform.parent.gameObject);
+        ReInitNote();
+        //Destroy(gameObject);
     }
+
+    void ReInitNote()
+    {
+        isChecked = false;
+        noteChecked = false;
+        isLongNote = false;
+        hitNote = false;
+    }
+
 }
