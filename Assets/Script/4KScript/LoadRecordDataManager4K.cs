@@ -13,13 +13,11 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
     public Transform Line3;
     public Transform Line4;
 
-//    private int Line_index = 0;
 
     void Start()
     {
         notePoolManager.InitLine();
         LoadDataLine();
-        Debug.Log(lines.Length);
     }
 
     public void LoadDataLine()

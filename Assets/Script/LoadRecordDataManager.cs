@@ -22,6 +22,7 @@ public class LoadRecordDataManager : MonoBehaviour
     public void LoadData()
     {
         lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        NoteFixBySpeed();
         scoreManager.NoteCountInit((lines.Length - 1));
     }
 
@@ -29,6 +30,16 @@ public class LoadRecordDataManager : MonoBehaviour
     {
         return lines;
     }
+
+
+    public void NoteFixBySpeed()
+    {
+        for(int i = 0; i <lines.Length; i++)
+        {
+            Debug.Log(lines[i]);
+        }
+    }
+
 
     public virtual void NextLine(int index)
     {
