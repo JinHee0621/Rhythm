@@ -6,6 +6,9 @@ using DG.Tweening;
 
 public class PlayManager : MonoBehaviour
 {
+    [Header("Move")]
+    public NoteMoveManager noteMoveManager;
+
     [Header("Music")]
     public SelectMusicManager selectMusicManager;
     public string musicName;
@@ -32,7 +35,7 @@ public class PlayManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         fadeOut_screen.DOColor(new Color(0f, 0f, 0f, 0f), 3.0f);
-        yield return new WaitForSeconds(3.6f);
+        yield return new WaitForSeconds(3.8f / noteMoveManager.speed);
         SoundManager.instance.PlayBgm(true);
     }
 }

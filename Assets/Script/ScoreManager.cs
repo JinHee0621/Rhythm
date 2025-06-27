@@ -78,7 +78,7 @@ public class ScoreManager : MonoBehaviour
         //Accuracy Range
         if(accData != 100f)
         {
-            Debug.Log(accData);
+            //Debug.Log(accData);
             if (accData > (perfect_rate - 0.25f) && accData < (perfect_rate + 0.5f))
             {
                 inAcc = 100f;
