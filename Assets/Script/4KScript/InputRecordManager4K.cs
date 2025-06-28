@@ -71,32 +71,45 @@ public class InputRecordManager4K : MonoBehaviour
     private float btn4BeforeYPosition = 0f;
     private bool btn4FristInput = false;
 
-
     void Update()
     {
-        InputBtn1(Input.GetKey(inputBtnKey1));
-        InputBtn2(Input.GetKey(inputBtnKey2));
-        InputBtn3(Input.GetKey(inputBtnKey3));
-        InputBtn4(Input.GetKey(inputBtnKey4));
-
-        if (Input.GetKey(KeyCode.E))
+        if (LineBase.GetComponent<NoteMoveManager>().running)
         {
-            if(!recordEnd)
-            {
-                Debug.Log("Record End" + LineBase.transform.position.y);
-                Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
-                using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData2.txt"))//@".\Assets\RecordData\NoteData1.txt"))
-                {
-                    outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
-                    for (int i = 0; i < noteList.Count; i++)
-                    {
-                        outputFile.WriteLine(noteList[i]);
-                    }
-                }
-                recordEnd = true;
-                recentPosition = -100f;
-            }
+            InputBtn1(Input.GetKey(inputBtnKey1));
+            InputBtn2(Input.GetKey(inputBtnKey2));
+            InputBtn3(Input.GetKey(inputBtnKey3));
+            InputBtn4(Input.GetKey(inputBtnKey4));
 
+            if (Input.GetKey(KeyCode.E))
+            {
+                bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
+                if (!recordEnd && running_check)
+                {
+                    Debug.Log("Record End" + LineBase.transform.position.y);
+                    Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
+                    using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData3.txt"))//@".\Assets\RecordData\NoteData1.txt"))
+                    {
+                        outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
+                        for (int i = 0; i < noteList.Count; i++)
+                        {
+                            outputFile.WriteLine(noteList[i]);
+                        }
+                    }
+                    recordEnd = true;
+                    recentPosition = -100f;
+                    LineBase.GetComponent<NoteMoveManager>().running = false;
+                }
+            }
+        }
+      
+        if (Input.GetKey(KeyCode.R))
+        {
+            bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
+            if (!running_check)
+            {
+                LineBase.GetComponent<NoteMoveManager>().running = true;
+                Debug.Log("Record Start");
+            }
         }
     }
 

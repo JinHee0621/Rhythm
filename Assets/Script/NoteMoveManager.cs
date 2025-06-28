@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class NoteMoveManager : MonoBehaviour
     public float speed; 
     private float yMove;
     private float default_pos;
+    private float time = 0f;
 
     public bool perse = false;
     public bool running;
@@ -36,7 +38,6 @@ public class NoteMoveManager : MonoBehaviour
             StartCoroutine(Wait5Sceond());
         }
     }
-    
 
     public void RunningGame()
     {
