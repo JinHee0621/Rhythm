@@ -7,6 +7,7 @@ using System;
 public class InputRecordManager4K : MonoBehaviour
 {
     public GameObject Note;
+    public SoundManager soundManager;
 
     KeyCode inputBtnKey1 = KeyCode.D;
     KeyCode inputBtnKey2 = KeyCode.F;
@@ -82,6 +83,7 @@ public class InputRecordManager4K : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
+                soundManager.PlayBgm(false);
                 bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
                 if (!recordEnd && running_check)
                 {
@@ -105,6 +107,7 @@ public class InputRecordManager4K : MonoBehaviour
         if (Input.GetKey(KeyCode.R))
         {
             bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
+            soundManager.PlayBgm(true);
             if (!running_check)
             {
                 LineBase.GetComponent<NoteMoveManager>().running = true;

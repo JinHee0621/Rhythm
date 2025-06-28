@@ -20,6 +20,13 @@ public class NoteMoveManager : MonoBehaviour
         default_pos = gameObject.transform.position.y;
         //Drop Moving
     }
+
+    public void FirstPosWithSpeed()
+    {
+        default_pos = default_pos + (16 * (speed - 1)); // (16 * (speed-1)) 3 : 32 , 2 : 16, 1.5 : 8 or 4
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
+    }
+
     // Update is called once per frame
     void Update()
     {

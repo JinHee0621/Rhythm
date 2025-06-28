@@ -35,7 +35,9 @@ public class PlayManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         fadeOut_screen.DOColor(new Color(0f, 0f, 0f, 0f), 3.0f);
-        yield return new WaitForSeconds(3.8f / noteMoveManager.speed);
+        yield return new WaitForSeconds(5f);
+        noteMoveManager.FirstPosWithSpeed();
+        noteMoveManager.running = true;
         SoundManager.instance.PlayBgm(true);
     }
 }

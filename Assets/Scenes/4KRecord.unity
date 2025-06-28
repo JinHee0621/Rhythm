@@ -339,8 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 0}
-  bgmVolume: 0
+  bgmClip: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
+  bgmVolume: 0.3
   sfxClips: []
   sfxVolume: 0
   channels: 0
@@ -779,6 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Note: {fileID: 3693880570851372189, guid: d60d895a65680114883084d163c33078, type: 3}
+  soundManager: {fileID: 205885847}
   Effect1: {fileID: 1315043347}
   Effect2: {fileID: 1441078827}
   Effect3: {fileID: 1601850138}

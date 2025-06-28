@@ -27,7 +27,7 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
         {
             AddNote(lines[i]);
         }
-        NoteLine_Base.GetComponent<NoteMoveManager>().running = true;
+        //NoteLine_Base.GetComponent<NoteMoveManager>().running = true;
     }
 
 
