@@ -131,13 +131,10 @@ public class NoteManager : MonoBehaviour
         {
             scoreManager.ResetCombo();
         }
-        //gameObject.SetActive(false);
         notePoolManager.Check(transform.parent.gameObject);
-        ReInitNote();
-        //Destroy(gameObject);
     }
 
-    void ReInitNote()
+    public void ReInitNote()
     {
         isChecked = false;
         noteChecked = false;

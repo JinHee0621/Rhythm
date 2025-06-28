@@ -55,6 +55,7 @@ public class NotePoolManager : MonoBehaviour
     {
         note.transform.parent = init_position;
         note.transform.localPosition = new Vector3(0f, 0f, 0f);
+        note.GetComponentInChildren<NoteManager>().ReInitNote();
         loadRecordDataManager.NextLine(current_index);
     }
 
