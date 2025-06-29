@@ -123,7 +123,7 @@ public class NoteManager : MonoBehaviour
     void NoteCheckCurrect(bool isHit, float range)
     {
         float hitAcc = scoreManager.CheckAccuracy(range);
-        if (isHit)
+        if (hitAcc != 0)
         {
             scoreManager.AddScore(hitAcc);
             scoreManager.AddCombo();

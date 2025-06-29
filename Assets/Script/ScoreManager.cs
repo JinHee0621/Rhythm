@@ -73,7 +73,7 @@ public class ScoreManager : MonoBehaviour
     {
         float accData = data;
         float inAcc = 0f;
-        float perfect_rate = (-4.5f + (0.15f * noteMoveManager.speed));
+        float perfect_rate = (4.5f + (0.15f * noteMoveManager.speed)) * -1;
 
         //Accuracy Range
         if(accData != 100f)

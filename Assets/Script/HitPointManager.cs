@@ -97,45 +97,16 @@ public class HitPointManager : MonoBehaviour
         }
     }
 
-
-
-    /*
-    public bool CheckCurrect(Transform Note, bool isLongNote)
-    {
-        checkEffect = false;
-
-        if(!isLongNote)
-        {
-            StartCoroutine(OffEffect());
-            Transform NotePosition = Note.GetChild(0).transform;
-            if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        } else
-        {
-            ParticleEffect.SetActive(false);
-            Transform NoteEndPosition = Note.GetChild(1).transform;
-            longCheck = false;
-            if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-    */
-
     IEnumerator OffEffect()
     {
         yield return new WaitForSeconds(0.5f);
         ParticleEffect.SetActive(false);
     }
+
+    /*
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject);
+    }
+    */
 }

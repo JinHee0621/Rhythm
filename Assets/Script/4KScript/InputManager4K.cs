@@ -31,7 +31,8 @@ public class InputManager4K : MonoBehaviour
 
     void Start()
     {
-        noteRes = noteMoveManager.speed / 3f;
+        noteRes = noteMoveManager.speed / 10f;
+        Debug.Log(noteRes);
     }
 
     void Update()
@@ -106,7 +107,7 @@ public class InputManager4K : MonoBehaviour
 
     IEnumerator ColorDisabled(SpriteRenderer target)
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.16f);
         if(target.color.a > 0)
         {
             target.color = new Color(target.color.r,target.color.g, target.color.b, target.color.a - 0.05f );
@@ -146,6 +147,8 @@ public class InputManager4K : MonoBehaviour
             yield return new WaitForSeconds(0.016f);
             StartCoroutine(ColliderResize(coll));
         }
+
+        Debug.Log(coll.attachedRigidbody);
     }
 }
 
