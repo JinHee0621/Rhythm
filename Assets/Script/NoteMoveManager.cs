@@ -8,7 +8,7 @@ public class NoteMoveManager : MonoBehaviour
     public float speed; 
     private float yMove;
     private float default_pos;
-    private float time = 0f;
+    //private float time = 0f;
 
     public bool perse = false;
     public bool running;

@@ -32,7 +32,6 @@ public class InputManager4K : MonoBehaviour
     void Start()
     {
         noteRes = noteMoveManager.speed / 10f;
-        Debug.Log(noteRes);
     }
 
     void Update()
@@ -147,8 +146,6 @@ public class InputManager4K : MonoBehaviour
             yield return new WaitForSeconds(0.016f);
             StartCoroutine(ColliderResize(coll));
         }
-
-        Debug.Log(coll.attachedRigidbody);
     }
 }
 

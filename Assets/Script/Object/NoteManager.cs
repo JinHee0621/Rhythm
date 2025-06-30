@@ -81,6 +81,7 @@ public class NoteManager : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!isRecordNote && !collision.tag.Equals("Note"))
@@ -94,6 +95,7 @@ public class NoteManager : MonoBehaviour
                         //NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y));
                         if(!isLongNote)
                         {
+                            //collision.enabled = false;
                             NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform), (gameObject.transform.position.y));
                         } else
                         {
