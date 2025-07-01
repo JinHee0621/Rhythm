@@ -21,7 +21,7 @@ public class TimerManager : MonoBehaviour
 
     public void StartTimeCheck()
     {
-        currTime += Time.deltaTime;
+        currTime += Time.fixedDeltaTime;
         PrintTime(currTime);
     }
     public void PrintTime(double data)
