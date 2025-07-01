@@ -53,6 +53,7 @@ public class NoteMoveManager : MonoBehaviour
     {
         //this.transform.Translate(new Vector3(0f, yMove, 0f));
         this.transform.Translate(new Vector3(0f, -5f * speed, 0f) * Time.fixedDeltaTime);
+        //fixedDeltaTime : 0.02f
     }
 
     public float Print_default_pos()
