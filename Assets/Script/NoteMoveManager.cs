@@ -14,7 +14,7 @@ public class NoteMoveManager : MonoBehaviour
     public bool running;
     // Start is called before the first frame update
 
-    private float time = 0f;
+    //private float time = 0f;
 
     void Awake()
     {
