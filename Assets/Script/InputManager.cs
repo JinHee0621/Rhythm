@@ -8,9 +8,12 @@ public class InputManager : MonoBehaviour
     private float noteRes;
     public NoteMoveManager noteMoveManager;
 
+    private float default_coll_size = 3f;
+
     void Start()
     {
-        noteRes = noteMoveManager.speed / 10f;
+        noteRes = noteMoveManager.speed;
+        default_coll_size += noteMoveManager.speed;
     }
 
     IEnumerator ColorDisabled(SpriteRenderer target)
@@ -30,7 +33,7 @@ public class InputManager : MonoBehaviour
     public void ColliderEnabled(BoxCollider2D coll)
     {
         coll.enabled = true;
-        coll.size = new Vector2(coll.size.x, 1f);
+        if (!coll.GetComponent<HitPointManager>().longCheck) coll.size = new Vector2(coll.size.x, 1f);
         StartCoroutine(ColliderResize(coll));
     }
 
@@ -42,7 +45,7 @@ public class InputManager : MonoBehaviour
 
     IEnumerator ColliderResize(BoxCollider2D coll)
     {
-        if (coll.size.y >= 3f)
+        if (coll.size.y >= default_coll_size)
         {
             yield return new WaitForSeconds(0.016f);
             //When Player hit Long Note then collider is enabled

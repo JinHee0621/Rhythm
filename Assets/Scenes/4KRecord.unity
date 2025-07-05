@@ -250,6 +250,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1035235900}
   ParticleEffect: {fileID: 845745646}
+  noteMoveManager: {fileID: 1959048428}
 --- !u!61 &109605015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -427,6 +428,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1657768922}
   ParticleEffect: {fileID: 2096372694}
+  noteMoveManager: {fileID: 1959048428}
 --- !u!61 &447974591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -852,6 +854,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 864592920}
   ParticleEffect: {fileID: 1030402835}
+  noteMoveManager: {fileID: 1959048428}
 --- !u!61 &819472393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16196,6 +16199,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1489687766}
   ParticleEffect: {fileID: 1187319447}
+  noteMoveManager: {fileID: 1959048428}
 --- !u!61 &1404419655
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16748,7 +16752,7 @@ MonoBehaviour:
   comboText: {fileID: 0}
   in_note_count: 0
   accuracyText: {fileID: 0}
-  noteMoveManager: {fileID: 0}
+  noteMoveManager: {fileID: 1959048428}
   resultManager: {fileID: 0}
   hitText: {fileID: 0}
 --- !u!1 &2096372694

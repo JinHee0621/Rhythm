@@ -69,50 +69,53 @@ public class ScoreManager : MonoBehaviour
         comboText.text = current_combo.ToString();
     }
 
+    private void Start()
+    {
+        float perfect_rate = -5f;//(4.5f + (0.15f * noteMoveManager.speed)) * -1;
+        float speed_by_rate = (noteMoveManager.speed - 1) * 0.25f;
+        Debug.Log(" pp :" + (perfect_rate - speed_by_rate) + "~" + ((perfect_rate) + 1.5f + speed_by_rate));
+        Debug.Log(" gt :" + (perfect_rate + 1.5f + speed_by_rate) + "~" + ((perfect_rate + 2.5f + speed_by_rate)));
+        Debug.Log(" so :" + (perfect_rate + 2.5f + speed_by_rate) + "~" + (perfect_rate + 3f + speed_by_rate));
+    }
+
     public float CheckAccuracy(float data)
     {
         float accData = data;
         float inAcc = 0f;
         float perfect_rate = -5f;//(4.5f + (0.15f * noteMoveManager.speed)) * -1;
-        float speed_by_rate = ((noteMoveManager.speed-1f) * 0.25f);
-        //-4.25~-3.45 -2.85 -2.35 -2
-        
+        float speed_by_rate = (noteMoveManager.speed-1) * 0.25f;
         //Accuracy Range
         if (accData != 100f)
         {
             //Debug.Log(accData);
-            if (accData > (perfect_rate - speed_by_rate) && accData < ((perfect_rate - speed_by_rate) + 0.9f + speed_by_rate))
+            // pp : (perfect_rate - speed_by_rate) ~ ((perfect_rate - speed_by_rate) + 1f + speed_by_rate))
+            if (accData > (perfect_rate - speed_by_rate) && accData < ((perfect_rate + 1.5f + speed_by_rate)))
             {
                 inAcc = 100f;
                 ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
-            else if (accData >= (perfect_rate + 0.9f + speed_by_rate) && accData < (perfect_rate + 1.9f + speed_by_rate))
+            else if (accData >= (perfect_rate + 1.5f + speed_by_rate) && accData < (perfect_rate + 2.5f + speed_by_rate))
             {
                 inAcc = 90f;
                 ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
-            else if (accData >= (perfect_rate + 1.9f + speed_by_rate) && accData < (perfect_rate + 2.25f + speed_by_rate))
+            else if (accData >= (perfect_rate + 2.5f + speed_by_rate) && accData < (perfect_rate + 3f + speed_by_rate))
             {
                 inAcc = 70f;
                 ShowAccText(2);
                 resultManager.CheckHitTypeCount(2);
             }
-            else if (accData >= (perfect_rate + 2.25f + speed_by_rate))
+            else
             {
+                Debug.Log(accData);
                 inAcc = 50f;
                 ShowAccText(3);
                 resultManager.CheckHitTypeCount(3);
-            } else
-            {
-                inAcc = 0;
-                ShowAccText(4);
-                resultManager.CheckHitTypeCount(4);
             }
         } else
         {
-            Debug.Log("Miss: " + accData);
             inAcc = 0;
             ShowAccText(4);
             resultManager.CheckHitTypeCount(4);

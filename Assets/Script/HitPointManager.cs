@@ -7,8 +7,17 @@ public class HitPointManager : MonoBehaviour
     public bool longCheck = false;
     public Transform Line;
     public GameObject ParticleEffect;
+    public NoteMoveManager noteMoveManager;
 
+
+    private float hitRange = 0f;
     private bool checkEffect = false;
+
+    private void Start()
+    {
+        hitRange = (noteMoveManager.speed + 0f);
+    }
+
 
     public bool HitEffect(Transform Note)
     {
@@ -16,14 +25,14 @@ public class HitPointManager : MonoBehaviour
         {
             Transform NotePosition = Note.GetChild(0).transform;
             // Before Check Note
-            if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
+            if (NotePosition.position.y - Line.position.y < hitRange && NotePosition.position.y - Line.position.y > (hitRange * -1f))
             {
                 ParticleEffect.SetActive(true);
                 //checkEffect Value is unnecessary
                 //checkEffect = true;
                 return true;
             } else
-            {
+            { 
                 // Miss Note
                 return false;
             }
@@ -41,7 +50,7 @@ public class HitPointManager : MonoBehaviour
             // Before Check Note
             if(!LongHit)
             {
-                if (NoteStartPosition.position.y - Line.position.y < 1.5f && NoteStartPosition.position.y - Line.position.y > -1.5f)
+                if (NoteStartPosition.position.y - Line.position.y < hitRange && NoteStartPosition.position.y - Line.position.y > (hitRange * -1f))
                 {
                     ParticleEffect.SetActive(true);
                     //checkEffect = true;
@@ -71,7 +80,7 @@ public class HitPointManager : MonoBehaviour
 
         StartCoroutine(OffEffect());
         Transform NotePosition = Note.GetChild(0).transform;
-        if (NotePosition.position.y - Line.position.y < 1.5f && NotePosition.position.y - Line.position.y > -1.5f)
+        if (NotePosition.position.y - Line.position.y < hitRange && NotePosition.position.y - Line.position.y > (hitRange * -1f))
         {
             return true;
         }
@@ -87,7 +96,7 @@ public class HitPointManager : MonoBehaviour
         ParticleEffect.SetActive(false);
         Transform NoteEndPosition = Note.GetChild(1).transform;
         longCheck = false;
-        if (NoteEndPosition.position.y - Line.position.y < 1.5f && NoteEndPosition.position.y - Line.position.y > -1.5f)
+        if (NoteEndPosition.position.y - Line.position.y < hitRange && NoteEndPosition.position.y - Line.position.y > (hitRange * -1f))
         {
             return true;
         }

@@ -625,6 +625,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1923629363}
   ParticleEffect: {fileID: 2062206174}
+  noteMoveManager: {fileID: 578458914}
 --- !u!1 &276585404
 GameObject:
   m_ObjectHideFlags: 0
@@ -6335,7 +6336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d8c06acbe65bd429f38bcc7eddb642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   perse: 0
   running: 0
 --- !u!1 &609866984
@@ -11888,6 +11889,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1664906186}
   ParticleEffect: {fileID: 816349791}
+  noteMoveManager: {fileID: 578458914}
 --- !u!61 &1010571380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18070,6 +18072,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1521700662}
   ParticleEffect: {fileID: 324445845}
+  noteMoveManager: {fileID: 578458914}
 --- !u!1 &1589752032
 GameObject:
   m_ObjectHideFlags: 0
@@ -18295,6 +18298,7 @@ MonoBehaviour:
   longCheck: 0
   Line: {fileID: 1213222720}
   ParticleEffect: {fileID: 1223876563}
+  noteMoveManager: {fileID: 578458914}
 --- !u!61 &1783077601
 BoxCollider2D:
   m_ObjectHideFlags: 0

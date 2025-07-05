@@ -26,12 +26,12 @@ public class NoteMoveManager : MonoBehaviour
 
     public void FirstPosWithSpeed()
     {
-        default_pos = (default_pos + (9f * (speed - 1)) + (5f * (speed - 1))); // 9 : (First Load Gap) , 5 : ( Time By Move Gap ) 
+        default_pos = (default_pos + (15f * (speed - 1)));
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(running)
         {

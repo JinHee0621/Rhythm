@@ -72,7 +72,9 @@ public class InputRecordManager4K : MonoBehaviour
     private float btn4BeforeYPosition = 0f;
     private bool btn4FristInput = false;
 
-    void Update()
+    private bool recordRunning = false;
+
+    void FixedUpdate()
     {
         if (LineBase.GetComponent<NoteMoveManager>().running)
         {
@@ -106,12 +108,16 @@ public class InputRecordManager4K : MonoBehaviour
       
         if (Input.GetKey(KeyCode.R))
         {
-            bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
-            soundManager.PlayBgm(true);
-            if (!running_check)
+            if(!recordRunning)
             {
-                LineBase.GetComponent<NoteMoveManager>().running = true;
-                Debug.Log("Record Start");
+                bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
+                soundManager.PlayBgm(true);
+                if (!running_check)
+                {
+                    LineBase.GetComponent<NoteMoveManager>().running = true;
+                    Debug.Log("Record Start");
+                }
+                recordRunning = true;
             }
         }
     }
@@ -204,10 +210,8 @@ public class InputRecordManager4K : MonoBehaviour
 
     public void InputBtn2(bool input)
     {
-        Vector3 inputTimePos = SponePos2.position;
         if (input)
         {
-            noteCnt += 1;
             BtnCollider2.enabled = true;
             Btn2Anim.SetBool("ButtonPush", true);
             Effect2.color = new Color(Effect2.color.r, Effect2.color.g, Effect2.color.b, 1);
@@ -276,10 +280,8 @@ public class InputRecordManager4K : MonoBehaviour
 
     public void InputBtn3(bool input)
     {
-        Vector3 inputTimePos = SponePos3.position;
         if (input)
         {
-            noteCnt += 1;
             BtnCollider3.enabled = true;
             Btn3Anim.SetBool("ButtonPush", true);
             Effect3.color = new Color(Effect3.color.r, Effect3.color.g, Effect3.color.b, 1);
@@ -347,10 +349,8 @@ public class InputRecordManager4K : MonoBehaviour
 
     public void InputBtn4(bool input)
     {
-        Vector3 inputTimePos = SponePos4.position;
         if (input)
         {
-            noteCnt += 1;
             BtnCollider4.enabled = true;
             Btn4Anim.SetBool("ButtonPush", true);
             Effect4.color = new Color(Effect4.color.r, Effect4.color.g, Effect4.color.b, 1);
@@ -432,10 +432,10 @@ public class InputRecordManager4K : MonoBehaviour
     private float CalNoteLength(float noteLength)
     {
         float result = 0f;
-
-        if (noteLength >= 80)
+        //Debug.Log(noteLength);
+        if (noteLength >= 10)
         {
-            result = noteLength / 80;
+            result = noteLength / 10;
         }
         else
         {
