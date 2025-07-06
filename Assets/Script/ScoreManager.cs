@@ -109,7 +109,6 @@ public class ScoreManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(accData);
                 inAcc = 50f;
                 ShowAccText(3);
                 resultManager.CheckHitTypeCount(3);

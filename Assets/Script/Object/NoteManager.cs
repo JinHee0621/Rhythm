@@ -142,6 +142,7 @@ public class NoteManager : MonoBehaviour
         noteChecked = false;
         isLongNote = false;
         hitNote = false;
+        longhitNote = false;
     }
 
 }

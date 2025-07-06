@@ -94,6 +94,7 @@ public class HitPointManager : MonoBehaviour
     {
         checkEffect = false;
         ParticleEffect.SetActive(false);
+
         Transform NoteEndPosition = Note.GetChild(1).transform;
         longCheck = false;
         if (NoteEndPosition.position.y - Line.position.y < hitRange && NoteEndPosition.position.y - Line.position.y > (hitRange * -1f))
