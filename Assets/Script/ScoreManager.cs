@@ -135,18 +135,17 @@ public class ScoreManager : MonoBehaviour
 
     public void ShowAccText(int type)
     {
-        hitText.gameObject.SetActive(false);
+        hitText.transform.localScale = new Vector3(0f, 0f, 1f);
+        StopCoroutine(ShowText(type));
         StartCoroutine(ShowText(type));
     }
 
     IEnumerator ShowText(int type)
     {
-        hitText.gameObject.SetActive(true);
         hitText.text = accuracyUiText[type];
-        hitText.transform.localScale = new Vector3(0f, 0f, 1f);
         hitText.transform.DOScale(new Vector3(1f, 1f, 1f), 0.25f);
         yield return new WaitForSeconds(0.25f);
-        hitText.gameObject.SetActive(false);
+        hitText.transform.localScale = new Vector3(0f, 0f, 1f);
     }
 
     public void reset_note_count()
