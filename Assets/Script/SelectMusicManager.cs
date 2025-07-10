@@ -34,6 +34,4 @@ public class SelectMusicManager : MonoBehaviour
         SceneManager.LoadScene("4KGame");
     }
 
-
-
 }
