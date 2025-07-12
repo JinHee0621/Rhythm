@@ -4,11 +4,8 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class InputRecordManager4K : MonoBehaviour
+public class InputRecordManager4K : InputRecordManager
 {
-    public GameObject Note;
-    public SoundManager soundManager;
-
     KeyCode inputBtnKey1 = KeyCode.D;
     KeyCode inputBtnKey2 = KeyCode.F;
     KeyCode inputBtnKey3 = KeyCode.J;
@@ -29,7 +26,6 @@ public class InputRecordManager4K : MonoBehaviour
     public Animator Btn3Anim;
     public Animator Btn4Anim;
 
-    public GameObject LineBase;
     public Transform Line1;
     public Transform Line2;
     public Transform Line3;
@@ -45,23 +41,16 @@ public class InputRecordManager4K : MonoBehaviour
     float btn3Time = 0f;
     float btn4Time = 0f;
 
-    float beforeYPosition = 0f;
-
     bool Line1NoteSpone = false;
     bool Line2NoteSpone = false;
     bool Line3NoteSpone = false;
     bool Line4NoteSpone = false;
-    bool recordEnd = false;
 
-    ArrayList noteList = new ArrayList();
-    int noteCnt = 0;
 
     GameObject newNote1 = null;
     GameObject newNote2 = null;
     GameObject newNote3 = null;
     GameObject newNote4 = null;
-
-    private float recentPosition = -100f;
 
     private float btn1BeforeYPosition = 0f;
     private bool btn1FristInput = false;
@@ -72,72 +61,17 @@ public class InputRecordManager4K : MonoBehaviour
     private float btn4BeforeYPosition = 0f;
     private bool btn4FristInput = false;
 
-    private bool recordRunning = false;
-
     void FixedUpdate()
     {
+        Record();
+
         if (LineBase.GetComponent<NoteMoveManager>().running)
         {
             InputBtn1(Input.GetKey(inputBtnKey1));
             InputBtn2(Input.GetKey(inputBtnKey2));
             InputBtn3(Input.GetKey(inputBtnKey3));
             InputBtn4(Input.GetKey(inputBtnKey4));
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                soundManager.PlayBgm(false);
-                bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
-                if (!recordEnd && running_check)
-                {
-                    Debug.Log("Record End" + LineBase.transform.position.y);
-                    Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
-                    using (StreamWriter outputFile = new StreamWriter("./Assets/RecordData/NoteData3.txt"))//@".\Assets\RecordData\NoteData1.txt"))
-                    {
-                        outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
-                        for (int i = 0; i < noteList.Count; i++)
-                        {
-                            outputFile.WriteLine(noteList[i]);
-                        }
-                    }
-                    recordEnd = true;
-                    recentPosition = -100f;
-                    LineBase.GetComponent<NoteMoveManager>().running = false;
-                }
-            }
         }
-      
-        if (Input.GetKey(KeyCode.R))
-        {
-            if(!recordRunning)
-            {
-                bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
-                soundManager.PlayBgm(true);
-                if (!running_check)
-                {
-                    LineBase.GetComponent<NoteMoveManager>().running = true;
-                    Debug.Log("Record Start");
-                }
-                recordRunning = true;
-            }
-        }
-    }
-
-    private float NotePosition(float paramPos)
-    {
-        float positionY = paramPos;
-
-        if (recentPosition == -100f) recentPosition = positionY;
-        else
-        { 
-            if (Math.Abs(recentPosition - positionY) < 0.1f)
-            {
-                positionY = recentPosition;
-            } else
-            {
-                recentPosition = positionY;
-            }
-        }
-        return positionY;
     }
 
 
@@ -415,33 +349,4 @@ public class InputRecordManager4K : MonoBehaviour
         }
     }
 
-    IEnumerator ColorDisabled(SpriteRenderer target)
-    {
-        yield return new WaitForSeconds(0.25f);
-        if (target.color.a > 0)
-        {
-            target.color = new Color(target.color.r, target.color.g, target.color.b, target.color.a - 0.05f);
-            StartCoroutine(ColorDisabled(target));
-        }
-        else
-        {
-            target.color = new Color(target.color.r, target.color.g, target.color.b, 0);
-        }
-    }
-
-    private float CalNoteLength(float noteLength)
-    {
-        float result = 0f;
-        //Debug.Log(noteLength);
-        if (noteLength >= 10)
-        {
-            result = noteLength / 10;
-        }
-        else
-        {
-            result = 0.25f;
-        }
-
-        return result;
-    }
 }

@@ -9,6 +9,7 @@ using DG.Tweening;
 public class MusicListManager : MonoBehaviour
 {
     public SelectMusicManager selectMusicManager;
+    //public SoundManager soundManager;
     //private Dictionary<int, string> musicDic = new Dictionary<int, string>();
     public Text select_Music_Name;
     public Text select_Music_Score;
@@ -89,6 +90,11 @@ public class MusicListManager : MonoBehaviour
         select_Music_Acc.text = curr.accuracy.ToString() + "%";
         select_Music_Score.text = curr.music_score.ToString();
         curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z),1.5f);
+
+        SoundManager.instance.PlayBgm(false);
+        SoundManager.instance.SetBgm(curr.music);
+        SoundManager.instance.FadePlayBgm(true);
+        
         MoveOtherMusicPos();
     }
 

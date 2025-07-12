@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        noteRes = noteMoveManager.speed;
+        noteRes = noteMoveManager.speed / (2f);
         default_coll_size += noteMoveManager.speed;
     }
 

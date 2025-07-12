@@ -58,6 +58,11 @@ public class SoundManager : MonoBehaviour
         }
     }
     
+    public void SetBgm(AudioClip target)
+    {
+        bgmPlayer.clip = target;
+    }
+
     public void PlayBgm(bool isPlay)
     {
         if(isPlay)
@@ -68,6 +73,51 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.Stop();
         }
     }
+
+    public void FadePlayBgm(bool isPlay)
+    {
+        if(isPlay)
+        {
+            bgmPlayer.volume = 0f;
+            bgmPlayer.Play();
+            StopCoroutine(FadeOutBgm());
+            StartCoroutine(FadeInBgm());
+        } else
+        {
+            StopCoroutine(FadeInBgm());
+            StartCoroutine(FadeOutBgm());
+        }
+    }
+
+    IEnumerator FadeInBgm()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (bgmPlayer.volume < bgmVolume)
+        {
+            bgmPlayer.volume += 0.05f;
+            StartCoroutine(FadeInBgm());
+        } else
+        {
+            bgmPlayer.volume = bgmVolume;
+        }
+    }
+
+    IEnumerator FadeOutBgm()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (bgmPlayer.volume > 0f)
+        {
+            bgmPlayer.volume -= 0.05f;
+            StartCoroutine(FadeOutBgm());
+        }
+        else
+        {
+            bgmPlayer.volume = 0f;
+            bgmPlayer.Stop();
+        }
+    }
+
+
 
     public void PauseBgm(bool isPause)
     {

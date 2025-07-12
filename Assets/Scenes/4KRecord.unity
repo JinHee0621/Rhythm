@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
+  bgmClip: {fileID: 8300000, guid: 15e9b5879663b554e9abd3b1db28f348, type: 3}
   bgmVolume: 0.3
   sfxClips: []
   sfxVolume: 0
@@ -780,8 +780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11b85e90b9ac184aae4e57d3eee9289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Note: {fileID: 3693880570851372189, guid: d60d895a65680114883084d163c33078, type: 3}
+  fileName: NoteData5.txt
   soundManager: {fileID: 205885847}
+  Note: {fileID: 3693880570851372189, guid: d60d895a65680114883084d163c33078, type: 3}
+  LineBase: {fileID: 1959048427}
   Effect1: {fileID: 1315043347}
   Effect2: {fileID: 1441078827}
   Effect3: {fileID: 1601850138}
@@ -794,7 +796,6 @@ MonoBehaviour:
   Btn2Anim: {fileID: 1441078826}
   Btn3Anim: {fileID: 1601850137}
   Btn4Anim: {fileID: 1341017285}
-  LineBase: {fileID: 1959048427}
   Line1: {fileID: 406668986}
   Line2: {fileID: 1722860152}
   Line3: {fileID: 1164376528}

@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class NoteMoveManager : MonoBehaviour
 {
-    public float speed; 
+    //Setting Option
+    public float speed;
+    public float sync;
+
     private float yMove;
     private float default_pos;
     //private float time = 0f;
@@ -26,7 +29,7 @@ public class NoteMoveManager : MonoBehaviour
 
     public void FirstPosWithSpeed()
     {
-        default_pos = (default_pos + (15f * (speed - 1)));
+        default_pos = (default_pos + (15f * (speed - 1)) + (sync));
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
     }
 
