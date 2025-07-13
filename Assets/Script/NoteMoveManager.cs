@@ -29,7 +29,7 @@ public class NoteMoveManager : MonoBehaviour
 
     public void FirstPosWithSpeed()
     {
-        default_pos = (default_pos + (38f * (speed - 1)) + (sync));
+        default_pos = (default_pos + (38f * (speed - 1)) + (sync)); 
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
     }
 
