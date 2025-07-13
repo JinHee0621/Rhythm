@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 8300000, guid: 15e9b5879663b554e9abd3b1db28f348, type: 3}
+  bgmClip: {fileID: 8300000, guid: 4772d08128ea746b983ad51f08e45d1c, type: 3}
   bgmVolume: 0.3
   sfxClips: []
   sfxVolume: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11b85e90b9ac184aae4e57d3eee9289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: NoteData5.txt
+  fileName: NoteData4
   soundManager: {fileID: 205885847}
   Note: {fileID: 3693880570851372189, guid: d60d895a65680114883084d163c33078, type: 3}
   LineBase: {fileID: 1959048427}
@@ -16684,6 +16684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  sync: 0
   perse: 0
   running: 0
 --- !u!4 &1959048429

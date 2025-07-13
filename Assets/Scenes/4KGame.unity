@@ -6336,8 +6336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d8c06acbe65bd429f38bcc7eddb642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  sync: 0.5
+  speed: 1
+  sync: -1
   perse: 0
   running: 0
 --- !u!1 &609866984
@@ -17779,7 +17779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 181292999}
-  Song_Name: NoteData3
+  Song_Name: NoteData4
   noteMoveManager: {fileID: 578458914}
   notePoolManager: {fileID: 437826099}
   Note: {fileID: 3693880570851372189, guid: fd10a51d165daae41a531021b2af392a, type: 3}
@@ -23971,9 +23971,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteMoveManager: {fileID: 578458914}
   selectMusicManager: {fileID: 0}
-  currentTrack: {fileID: 0}
+  currentMusic: {fileID: 0}
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 1
+  test_play: 0
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0

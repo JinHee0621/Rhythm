@@ -21,7 +21,7 @@ public class InputRecordManager : MonoBehaviour
     bool recordEnd = false;
     private void Awake()
     {
-        fileName = "./Assets/RecordData/" + fileName;//@".\Assets\RecordData\NoteData1.txt"))
+        fileName = "./Assets/RecordData/" + fileName + ".txt";//@".\Assets\RecordData\NoteData1.txt"))
     }
     public void Record()
     {
@@ -55,17 +55,23 @@ public class InputRecordManager : MonoBehaviour
             if (!recordRunning)
             {
                 bool running_check = LineBase.GetComponent<NoteMoveManager>().running;
-                soundManager.PlayBgm(true);
+               
                 if (!running_check)
                 {
                     LineBase.GetComponent<NoteMoveManager>().running = true;
                     Debug.Log("Record Start");
                 }
                 recordRunning = true;
+                StartCoroutine(Delay5SecondPlay());
             }
         }
     }
 
+    protected IEnumerator Delay5SecondPlay()
+    {
+        yield return new WaitForSeconds(5.0f);
+        soundManager.PlayBgm(true);
+    }
 
 
     protected float NotePosition(float paramPos)

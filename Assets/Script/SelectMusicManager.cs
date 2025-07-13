@@ -10,6 +10,8 @@ public class SelectMusicManager : MonoBehaviour
     //public string music_Score;
     public MusicElement select_track;
     public string select_name;
+    public AudioClip select_audio;
+
 
     public static SelectMusicManager instance { get; set; }
 
@@ -31,8 +33,9 @@ public class SelectMusicManager : MonoBehaviour
 
     public void SetMusic(MusicElement target)
     {
-        instance.select_track = target;
+        //instance.select_track = target;
         instance.select_name = target.music_name;
+        instance.select_audio = target.music;
     }
 
 

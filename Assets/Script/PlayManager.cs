@@ -11,7 +11,8 @@ public class PlayManager : MonoBehaviour
 
     [Header("Music")]
     public SelectMusicManager selectMusicManager;
-    public MusicElement currentTrack;
+    //public MusicElement currentTrack;
+    public AudioClip currentMusic;
 
     [Header("Play")]
     public Image fadeOut_screen;
@@ -24,7 +25,7 @@ public class PlayManager : MonoBehaviour
         if(!test_play)
         {
             //selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
-            currentTrack = SelectMusicManager.instance.select_track;
+            currentMusic = SelectMusicManager.instance.select_audio;
         }
 
         StartCoroutine(FadeOutFirst());
@@ -38,7 +39,13 @@ public class PlayManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         noteMoveManager.FirstPosWithSpeed();
         noteMoveManager.running = true;
-        SoundManager.instance.SetBgm(currentTrack.music);
+        SoundManager.instance.SetBgm(currentMusic);
+        StartCoroutine(Delay5SecondPlay());
+    }
+
+    IEnumerator Delay5SecondPlay()
+    {
+        yield return new WaitForSeconds(5.0f);
         SoundManager.instance.PlayBgm(true);
     }
 }

@@ -10,7 +10,7 @@ public class TimerManager : MonoBehaviour
     public Text timeText;
     private double currTime;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(noteMoveManager.running)
         {

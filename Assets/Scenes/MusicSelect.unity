@@ -318,8 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0562236309c14b6abdee1333bc1d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music_Name: 
-  music_Score: 
+  select_track: {fileID: 0}
+  select_name: 
+  select_audio: {fileID: 0}
 --- !u!1 &337115493
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ff5a160bb32488cbf6a6f44ef751f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectMusicManager: {fileID: 193839899}
   select_Music_Name: {fileID: 1073418334}
   select_Music_Score: {fileID: 1237895805}
   select_Music_Diff: {fileID: 1253180734}
@@ -1143,6 +1143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music1
       objectReference: {fileID: 0}
+    - target: {fileID: 6289546931736370623, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e573b8958e9f40538c5b2d094dd988d, type: 3}
     - target: {fileID: 8511763264335758401, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1320,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music2
       objectReference: {fileID: 0}
+    - target: {fileID: 7024983823937903234, guid: cced2655d95c93b40ae3b13de64e9842, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 4772d08128ea746b983ad51f08e45d1c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1348,6 +1356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music3
       objectReference: {fileID: 0}
+    - target: {fileID: 4450890047109114560, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 9144ec389ee1c4effab2ace92dda3efe, type: 3}
     - target: {fileID: 4718619422862512600, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

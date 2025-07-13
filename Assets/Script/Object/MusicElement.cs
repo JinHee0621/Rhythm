@@ -16,7 +16,7 @@ public class MusicElement : MonoBehaviour
     private void Start()
     {
         music_cover.sprite = coverImage;
-        Debug.Log(gameObject.transform.GetChild(0).transform.GetChild(0).name);
+//        Debug.Log(gameObject.transform.GetChild(0).transform.GetChild(0).name);
     }
 
     public void MusicInit(string name, int diff, float acc, int score, string image_name)
