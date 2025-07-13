@@ -8,7 +8,6 @@ using DG.Tweening;
 
 public class MusicListManager : MonoBehaviour
 {
-    public SelectMusicManager selectMusicManager;
     //public SoundManager soundManager;
     //private Dictionary<int, string> musicDic = new Dictionary<int, string>();
     public Text select_Music_Name;
@@ -130,6 +129,7 @@ public class MusicListManager : MonoBehaviour
     public void SelectMusic()
     {
         GameObject selected = musicList[current_music].gameObject;
+        SelectMusicManager.instance.SetMusic(selected.GetComponent<MusicElement>());
         StartCoroutine(SelectAnim(selected));
     }
 
@@ -140,7 +140,7 @@ public class MusicListManager : MonoBehaviour
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
         yield return new WaitForSeconds(0.75f);
         //Need Fade Out------
-        SelectMusicManager.instance.SelectMusic(select_Music_Name.text, select_Music_Score.text);
+        SelectMusicManager.instance.SelectMusic();
     }
 
 }

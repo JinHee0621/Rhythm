@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class SelectMusicManager : MonoBehaviour
 {
-    public string music_Name;
-    public string music_Score;
+    //public string music_Name;
+    //public string music_Score;
+    public MusicElement select_track;
+    public string select_name;
 
     public static SelectMusicManager instance { get; set; }
 
@@ -27,10 +29,17 @@ public class SelectMusicManager : MonoBehaviour
         }
     }
 
-    public void SelectMusic(string select_music_Name, string select_music_score)
+    public void SetMusic(MusicElement target)
     {
-        instance.music_Name = select_music_Name;
-        instance.music_Score = select_music_score;
+        instance.select_track = target;
+        instance.select_name = target.music_name;
+    }
+
+
+    public void SelectMusic()
+    {
+        //instance.music_Name = select_music_Name;
+        //instance.music_Score = select_music_score;
         SceneManager.LoadScene("4KGame");
     }
 

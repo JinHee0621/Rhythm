@@ -23971,7 +23971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteMoveManager: {fileID: 578458914}
   selectMusicManager: {fileID: 0}
-  musicName: 
+  currentTrack: {fileID: 0}
   fadeOut_screen: {fileID: 1886861901}
   test_play: 1
 --- !u!1 &2117007445
