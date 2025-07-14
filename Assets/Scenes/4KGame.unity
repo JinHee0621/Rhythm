@@ -6337,7 +6337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  sync: -1
+  speed_by_sync: 0
+  user_sync: 0
   perse: 0
   running: 0
 --- !u!1 &609866984

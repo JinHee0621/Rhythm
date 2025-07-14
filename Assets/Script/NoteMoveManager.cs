@@ -7,7 +7,8 @@ public class NoteMoveManager : MonoBehaviour
 {
     //Setting Option
     public float speed;
-    public float sync;
+    public float speed_by_sync;
+    public float user_sync;
 
     private float yMove;
     private float default_pos;
@@ -29,7 +30,7 @@ public class NoteMoveManager : MonoBehaviour
 
     public void FirstPosWithSpeed()
     {
-        default_pos = (default_pos + (38f * (speed - 1)) + (sync)); 
+        default_pos = (default_pos + (speed_by_sync * (speed - 1)) + (user_sync)); 
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
     }
 

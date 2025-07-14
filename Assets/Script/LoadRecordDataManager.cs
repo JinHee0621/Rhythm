@@ -38,21 +38,27 @@ public class LoadRecordDataManager : MonoBehaviour
         for(int i = 0; i <lines.Length; i++)
         {
             string line_data = lines[i];
-            if(line_data != "" && line_data != null && line_data.Contains("|"))
+            if (i == 0)
             {
-                string[] line_ele = line_data.Trim().Split("|");
-                if (line_ele.Length != 3) continue;
-
-                nextList.Add(new NoteEntry
-                {
-                    button = line_ele[0],
-                    originY = float.Parse(line_ele[1]),
-                    length = float.Parse(line_ele[2]),
-                });
-
+                noteMoveManager.speed_by_sync = float.Parse(line_data.Split(",")[1]);
             } else
             {
-                continue;
+                if (line_data != "" && line_data != null && line_data.Contains("|"))
+                {
+                    string[] line_ele = line_data.Trim().Split("|");
+                    if (line_ele.Length != 3) continue;
+
+                    nextList.Add(new NoteEntry
+                    {
+                        button = line_ele[0],
+                        originY = float.Parse(line_ele[1]),
+                        length = float.Parse(line_ele[2]),
+                    });
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
 
