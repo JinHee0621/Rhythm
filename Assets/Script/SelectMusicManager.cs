@@ -33,7 +33,6 @@ public class SelectMusicManager : MonoBehaviour
 
     public void SetMusic(MusicElement target)
     {
-        //instance.select_track = target;
         instance.select_name = target.music_name;
         instance.select_audio = target.music;
     }
@@ -41,8 +40,6 @@ public class SelectMusicManager : MonoBehaviour
 
     public void SelectMusic()
     {
-        //instance.music_Name = select_music_Name;
-        //instance.music_Score = select_music_score;
         SceneManager.LoadScene("4KGame");
     }
 

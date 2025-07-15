@@ -19,7 +19,8 @@ public class LoadRecordDataManager : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = OptionManager.instance.frameRate;
+        OptionManager.instance.ChageInGame(true);
         LoadData();
     }
 
@@ -103,6 +104,10 @@ public class LoadRecordDataManager : MonoBehaviour
         }
     }
 
+    public void ResetNoteBySpeed(float nextSpeed)
+    {
+        NoteFixBySpeed(noteMoveManager.speed);
+    }
 
     public virtual void NextLine(int index)
     {

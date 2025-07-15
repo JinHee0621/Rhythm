@@ -6,11 +6,20 @@ public class OptionManager : MonoBehaviour
 {
     public static OptionManager instance;
 
-    public float frameRate = 60f;
+    public int frameRate = 60;
     public float musicVolume;
     public float sfxVolume;
     public float noteSpeed = 1f;
     public float userSync;
+
+    public bool currentInGame = false;
+
+    [SerializeField]
+    private LoadRecordDataManager loadRecordDataManager;
+
+    [SerializeField]
+    private NoteMoveManager noteMoveManager;
+
 
     private void Awake()
     {
@@ -30,29 +39,56 @@ public class OptionManager : MonoBehaviour
 
     private void Update()
     {
-        //InputBtn1(Input.GetKey(inputBtnKey1));
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
-            if (noteSpeed > 1f)
-            {
-                noteSpeed -= 0.1f;
-            } else
-            {
-                noteSpeed = 1f;
-            }
-
+            ChangeSpeed(false);
         }
 
         if(Input.GetKeyDown(KeyCode.RightBracket))
         {
-            if(noteSpeed < 3f)
+            ChangeSpeed(true);
+        }
+    }
+
+    public void ChangeSpeed(bool upSpeed)
+    {
+
+        if (upSpeed)
+        {
+            if (noteSpeed < 3f)
             {
                 noteSpeed += 0.1f;
-            } else
+            }
+            else
             {
                 noteSpeed = 3f;
             }
+        } else
+        {
+            if (noteSpeed > 1f)
+            {
+                noteSpeed -= 0.1f;
+            }
+            else
+            {
+                noteSpeed = 1f;
+            }
         }
 
+        if(currentInGame)
+        {
+            noteMoveManager.speed = noteSpeed;
+            loadRecordDataManager.ResetNoteBySpeed(noteSpeed);
+        }
+    }
+
+    public void ChageInGame(bool inGame)
+    {
+        currentInGame = inGame;
+        if(currentInGame)
+        {
+            loadRecordDataManager = GameObject.Find("LoadManager").GetComponentInChildren<LoadRecordDataManager>();
+            noteMoveManager = GameObject.Find("NoteLine_Base").GetComponent<NoteMoveManager>();
+        }
     }
 }
