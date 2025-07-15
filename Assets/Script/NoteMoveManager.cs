@@ -20,12 +20,10 @@ public class NoteMoveManager : MonoBehaviour
 
     //private float time = 0f;
 
-    void Awake()
+    void Start()
     {
-        //speed *= -1;
-        //yMove = speed * Time.deltaTime;
+        speed = OptionManager.instance.noteSpeed;
         default_pos = gameObject.transform.position.y;
-        //Drop Moving
     }
 
     public void FirstPosWithSpeed()

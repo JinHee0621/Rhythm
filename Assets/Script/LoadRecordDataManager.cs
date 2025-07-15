@@ -12,6 +12,9 @@ public class LoadRecordDataManager : MonoBehaviour
     public NoteMoveManager noteMoveManager;
     public NotePoolManager notePoolManager;
 
+    [SerializeField]
+    protected string[] origin_lines;
+    [SerializeField]
     protected string[] lines;
 
     private void Awake()
@@ -22,22 +25,34 @@ public class LoadRecordDataManager : MonoBehaviour
 
     public void LoadData()
     {
-        lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
-        NoteFixBySpeed();
+        origin_lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        CopyLines();
+        NoteFixBySpeed(noteMoveManager.speed);
         scoreManager.NoteCountInit((lines.Length - 1));
     }
+
+    //Deep Copy
+    private void CopyLines()
+    {
+        lines = new string[origin_lines.Length];
+        for(int i = 0; i < origin_lines.Length; i++)
+        {
+            lines[i] = origin_lines[i];
+        }
+    }
+
 
     public string[] ReturnLine()
     {
         return lines;
     }
 
-    public void NoteFixBySpeed()
+    public void NoteFixBySpeed(float speed)
     {
         List<NoteEntry> nextList = new List<NoteEntry>();
         for(int i = 0; i <lines.Length; i++)
         {
-            string line_data = lines[i];
+            string line_data = origin_lines[i]; //lines[i];
             if (i == 0)
             {
                 noteMoveManager.speed_by_sync = float.Parse(line_data.Split(",")[1]);
@@ -69,13 +84,13 @@ public class LoadRecordDataManager : MonoBehaviour
         {
             float prevY = nextList[i - 1].nextY;
             float originGap = nextList[i].originY - nextList[i - 1].originY;
-            float nextGap = originGap * noteMoveManager.speed;
+            float nextGap = originGap * speed;
 
             nextList[i].nextY = prevY + nextGap;
 
             if(nextList[i].length > 0.25)
             {
-                float nextLength = nextList[i].length * noteMoveManager.speed;
+                float nextLength = nextList[i].length * speed;
                 nextList[i].length = nextLength;
             }
         }
@@ -87,6 +102,7 @@ public class LoadRecordDataManager : MonoBehaviour
             lines[i] = ele;
         }
     }
+
 
     public virtual void NextLine(int index)
     {
