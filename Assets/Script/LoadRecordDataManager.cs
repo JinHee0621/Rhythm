@@ -107,6 +107,12 @@ public class LoadRecordDataManager : MonoBehaviour
     public void ResetNoteBySpeed(float nextSpeed)
     {
         NoteFixBySpeed(noteMoveManager.speed);
+
+        GameObject[] currentNotes = GameObject.FindGameObjectsWithTag("Note");
+        for(int i = 0; i < currentNotes.Length; i++)
+        {
+            Debug.Log(currentNotes[i].transform.position);
+        }
     }
 
     public virtual void NextLine(int index)

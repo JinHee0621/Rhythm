@@ -63,6 +63,10 @@ public class NotePoolManager : MonoBehaviour
     {
         current_index += 1;
     }
-    
+
+    public int IndexPrint()
+    {
+        return current_index;
+    }
 }
 
