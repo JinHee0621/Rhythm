@@ -104,16 +104,22 @@ public class LoadRecordDataManager : MonoBehaviour
         }
     }
 
-    public void ResetNoteBySpeed(float nextSpeed)
+    public void ResetNoteBySpeed()
     {
         NoteFixBySpeed(noteMoveManager.speed);
         //GameObject[] currentNotes = GameObject.FindGameObjectsWithTag("Note");
         //in_note_count ~ poolLength
         for (int i = scoreManager.in_note_count; i < notePoolManager.poolLength; i++)
         {
-            NextLine(i + 1);
+            ReLine(i + 1);
         }
     }
+
+    public virtual void ReLine(int index)
+    {
+        Debug.Log("Re parent");
+    }
+
 
     public virtual void NextLine(int index)
     {

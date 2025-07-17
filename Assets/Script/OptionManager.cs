@@ -79,7 +79,7 @@ public class OptionManager : MonoBehaviour
         if(currentInGame)
         {
             noteMoveManager.speed = noteSpeed;
-            loadRecordDataManager.ResetNoteBySpeed(noteSpeed);
+            loadRecordDataManager.ResetNoteBySpeed();
         }
     }
 

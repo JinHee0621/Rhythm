@@ -30,6 +30,37 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
         //NoteLine_Base.GetComponent<NoteMoveManager>().running = true;
     }
 
+    public override void ReLine(int index)
+    {
+        if (index < lines.Length)
+        {
+            ReNote(lines[index], index-1);
+        }
+    }
+
+    private void ReNote(string data, int index)
+    {
+        string[] data_element = data.Split("|");
+
+        Transform parent_line = null;
+        if (data_element[0].Equals("Btn1")) parent_line = Line1;
+        else if (data_element[0].Equals("Btn2")) parent_line = Line2;
+        else if (data_element[0].Equals("Btn3")) parent_line = Line3;
+        else if (data_element[0].Equals("Btn4")) parent_line = Line4;
+
+        float position_y = 0f;
+        float.TryParse(data_element[1], out position_y);
+        //position_y *= noteMoveManager.speed;
+
+        float noteLength = 0f;
+        float.TryParse(data_element[2], out noteLength);
+
+        if (parent_line != null)
+        {
+            notePoolManager.ReInitNote((index % notePoolManager.poolLength),parent_line, position_y, noteLength);
+        }
+    }
+
 
     public override void NextLine(int index)
     {

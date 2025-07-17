@@ -51,16 +51,13 @@ public class NotePoolManager : MonoBehaviour
         }
     }
 
-    public void ReInitNote(Transform line, float pos, float noteLength)
+    public void ReInitNote(int index, Transform line, float pos, float noteLength)
     {
-        for (int i = 0; i < poolLength; i++)
-        {
-            noteObjects[i].transform.parent = line;
-            noteObjects[i].transform.localPosition = new Vector3(0f, pos, -3);
-            noteObjects[i].GetComponentInChildren<NoteManager>().noteLength = noteLength;
-            noteObjects[i].GetComponentInChildren<NoteManager>().SetNoteState();
-            noteObjects[i].GetComponentInChildren<NoteManager>().isChecked = true;
-        }
+        noteObjects[index].transform.parent = line;
+        noteObjects[index].transform.localPosition = new Vector3(0f, pos, -3);
+        noteObjects[index].GetComponentInChildren<NoteManager>().noteLength = noteLength;
+        noteObjects[index].GetComponentInChildren<NoteManager>().SetNoteState();
+        noteObjects[index].GetComponentInChildren<NoteManager>().isChecked = true;
     }
 
 
