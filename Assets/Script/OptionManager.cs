@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,7 @@ public class OptionManager : MonoBehaviour
 
     public bool currentInGame = false;
 
+    public string gameType = "4K";
     [SerializeField]
     private LoadRecordDataManager loadRecordDataManager;
 

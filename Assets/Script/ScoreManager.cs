@@ -71,11 +71,11 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        float perfect_rate = -5f;//(4.5f + (0.15f * noteMoveManager.speed)) * -1;
-        float speed_by_rate = (noteMoveManager.speed - 1) * 0.25f;
-        Debug.Log(" pp :" + (perfect_rate - speed_by_rate) + "~" + ((perfect_rate) + 1.0f + speed_by_rate));
-        Debug.Log(" gt :" + (perfect_rate + 1.0f + speed_by_rate) + "~" + ((perfect_rate + 2.0f + speed_by_rate)));
-        Debug.Log(" so :" + (perfect_rate + 2.0f + speed_by_rate) + "~" + (perfect_rate + 3f + speed_by_rate));
+ //       float perfect_rate = -5f;//(4.5f + (0.15f * noteMoveManager.speed)) * -1;
+ //       float speed_by_rate = (noteMoveManager.speed - 1) * 0.25f;
+ //       Debug.Log(" pp :" + (perfect_rate - speed_by_rate) + "~" + ((perfect_rate) + 1.0f + speed_by_rate));
+ //       Debug.Log(" gt :" + (perfect_rate + 1.0f + speed_by_rate) + "~" + ((perfect_rate + 2.0f + speed_by_rate)));
+ //       Debug.Log(" so :" + (perfect_rate + 2.0f + speed_by_rate) + "~" + (perfect_rate + 3f + speed_by_rate));
     }
 
     public float CheckAccuracy(float data)

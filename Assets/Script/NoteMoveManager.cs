@@ -13,6 +13,7 @@ public class NoteMoveManager : MonoBehaviour
     private float yMove;
     private float default_pos;
     //private float time = 0f;
+    public float move_pos = 0f;
 
     public bool perse = false;
     public bool running;
@@ -55,6 +56,7 @@ public class NoteMoveManager : MonoBehaviour
     {
         //this.transform.Translate(new Vector3(0f, yMove, 0f));
         this.transform.Translate(new Vector3(0f, -5f * speed, 0f) * Time.fixedDeltaTime);
+        move_pos = default_pos - transform.position.y;
         //fixedDeltaTime : 0.02f
     }
 
