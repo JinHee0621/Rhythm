@@ -579,6 +579,7 @@ MonoBehaviour:
   noteSpeed: 1
   userSync: 0
   currentInGame: 0
+  gameType: 4K
   loadRecordDataManager: {fileID: 0}
   noteMoveManager: {fileID: 0}
 --- !u!1 &275125672
@@ -5814,7 +5815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadRecordDataManager: {fileID: 1346557959}
-  poolLength: 20
+  poolLength: 25
   noteObjects: []
   note: {fileID: 3693880570851372189, guid: fd10a51d165daae41a531021b2af392a, type: 3}
   init_position: {fileID: 1589752033}
@@ -6388,9 +6389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d8c06acbe65bd429f38bcc7eddb642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 1
   speed_by_sync: 0
   user_sync: 0
+  move_pos: 0
   perse: 0
   running: 0
 --- !u!1 &609866984
@@ -17832,7 +17834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 181292999}
-  Song_Name: NoteData4
+  Song_Name: 
   noteMoveManager: {fileID: 578458914}
   notePoolManager: {fileID: 437826099}
   origin_lines: []
@@ -24058,10 +24060,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteMoveManager: {fileID: 578458914}
+  loadRecordManager: {fileID: 1346557959}
   selectMusicManager: {fileID: 0}
   currentMusic: {fileID: 0}
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 1
+  test_play: 0
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0

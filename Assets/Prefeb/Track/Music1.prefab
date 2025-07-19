@@ -55,7 +55,7 @@ MonoBehaviour:
   music_score: 0
   music_cover: {fileID: 4457596889327008850}
   coverImage: {fileID: 21300000, guid: 5ffe384a9a1b56641b8cfd43b279e6e0, type: 3}
-  music: {fileID: 8300000, guid: 6e573b8958e9f40538c5b2d094dd988d, type: 3}
+  music: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
 --- !u!1 &6953821993212436959
 GameObject:
   m_ObjectHideFlags: 0

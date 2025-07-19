@@ -1128,6 +1128,10 @@ MonoBehaviour:
   sfxVolume: 0
   noteSpeed: 1
   userSync: 0
+  currentInGame: 0
+  gameType: 4K
+  loadRecordDataManager: {fileID: 0}
+  noteMoveManager: {fileID: 0}
 --- !u!4 &1361522329
 Transform:
   m_ObjectHideFlags: 0
@@ -1195,7 +1199,7 @@ PrefabInstance:
     - target: {fileID: 6289546931736370623, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
       propertyPath: music
       value: 
-      objectReference: {fileID: 8300000, guid: 6e573b8958e9f40538c5b2d094dd988d, type: 3}
+      objectReference: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
     - target: {fileID: 8511763264335758401, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1376,7 +1380,7 @@ PrefabInstance:
     - target: {fileID: 7024983823937903234, guid: cced2655d95c93b40ae3b13de64e9842, type: 3}
       propertyPath: music
       value: 
-      objectReference: {fileID: 8300000, guid: 4772d08128ea746b983ad51f08e45d1c, type: 3}
+      objectReference: {fileID: 8300000, guid: 15e9b5879663b554e9abd3b1db28f348, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1408,7 +1412,7 @@ PrefabInstance:
     - target: {fileID: 4450890047109114560, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
       propertyPath: music
       value: 
-      objectReference: {fileID: 8300000, guid: 9144ec389ee1c4effab2ace92dda3efe, type: 3}
+      objectReference: {fileID: 8300000, guid: b6ae643c5afe1854994721a5098b7cbf, type: 3}
     - target: {fileID: 4718619422862512600, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

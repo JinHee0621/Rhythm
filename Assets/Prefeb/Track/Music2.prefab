@@ -130,7 +130,7 @@ MonoBehaviour:
   music_score: 15000
   music_cover: {fileID: 4264033769188573852}
   coverImage: {fileID: 21300000, guid: cf4279c73659d044190398f54b8aebee, type: 3}
-  music: {fileID: 8300000, guid: 4772d08128ea746b983ad51f08e45d1c, type: 3}
+  music: {fileID: 8300000, guid: 15e9b5879663b554e9abd3b1db28f348, type: 3}
 --- !u!1 &7278195333250136300
 GameObject:
   m_ObjectHideFlags: 0

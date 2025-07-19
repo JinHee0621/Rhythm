@@ -21,12 +21,12 @@ public class LoadRecordDataManager : MonoBehaviour
     {
         Application.targetFrameRate = OptionManager.instance.frameRate;
         OptionManager.instance.ChageInGame(true);
-        LoadData();
+        //LoadData(Song_Name);
     }
 
-    public void LoadData()
+    public void LoadData(string musicName)
     {
-        origin_lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         CopyLines();
         NoteFixBySpeed(noteMoveManager.speed);
         scoreManager.NoteCountInit((lines.Length - 1));

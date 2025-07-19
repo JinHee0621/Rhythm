@@ -10,6 +10,7 @@ public class PlayManager : MonoBehaviour
     public NoteMoveManager noteMoveManager;
 
     [Header("Music")]
+    public LoadRecordDataManager loadRecordManager;
     public SelectMusicManager selectMusicManager;
     //public MusicElement currentTrack;
     public AudioClip currentMusic;
@@ -20,12 +21,14 @@ public class PlayManager : MonoBehaviour
     [Header("Test")]
     public bool test_play;
 
-    private void Start()
+    //When Load Game Scene : PlayManager is first call
+    private void Awake()
     {
         if(!test_play)
         {
             //selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
             currentMusic = SelectMusicManager.instance.select_audio;
+            loadRecordManager.LoadData(SelectMusicManager.instance.select_name);
         }
 
         StartCoroutine(FadeOutFirst());
