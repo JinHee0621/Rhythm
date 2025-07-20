@@ -16,6 +16,7 @@ public class MusicListManager : MonoBehaviour
     public Text select_Music_Acc;
        
     public int current_music = 0;
+
     public GameObject musicListCont;
     public List<MusicElement> musicList = new List<MusicElement>();
     private bool moveList = false;
@@ -23,7 +24,17 @@ public class MusicListManager : MonoBehaviour
      void Start()
     {
         InitMusicList();
+        current_music = SelectMusicManager.instance.music_index;
         SetMusicInfo(musicList[0]);
+        StartCoroutine(MoveListFirst());
+    }
+
+    IEnumerator MoveListFirst()
+    {
+        float moveY = musicListCont.transform.localPosition.y + ((current_music) * 180f);
+        musicListCont.transform.DOLocalMoveY(moveY, 0.5f);
+        SetMusicInfo(musicList[current_music]);
+        yield return new WaitForSeconds(0.1f);
     }
 
     void Update()
@@ -129,7 +140,7 @@ public class MusicListManager : MonoBehaviour
     public void SelectMusic()
     {
         GameObject selected = musicList[current_music].gameObject;
-        SelectMusicManager.instance.SetMusic(selected.GetComponent<MusicElement>());
+        SelectMusicManager.instance.SetMusic(selected.GetComponent<MusicElement>(), current_music);
         StartCoroutine(SelectAnim(selected));
     }
 

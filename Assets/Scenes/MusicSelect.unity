@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0562236309c14b6abdee1333bc1d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music_index: 1
   select_track: {fileID: 0}
   select_name: 
   select_audio: {fileID: 0}

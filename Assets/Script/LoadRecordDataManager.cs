@@ -28,7 +28,7 @@ public class LoadRecordDataManager : MonoBehaviour
     {
         origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         CopyLines();
-        NoteFixBySpeed(noteMoveManager.speed);
+        NoteFixBySpeed(OptionManager.instance.noteSpeed);
         scoreManager.NoteCountInit((lines.Length - 1));
     }
 

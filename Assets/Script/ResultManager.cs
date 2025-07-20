@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
@@ -47,7 +48,14 @@ public class ResultManager : MonoBehaviour
         }
 
         fadeOutScreen.DOColor(new Color(0f, 0f, 0f, 0f), 1f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(MoveMusicSelect());
+    }
+    IEnumerator MoveMusicSelect()
+    {
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("MusicSelect");
     }
 
 

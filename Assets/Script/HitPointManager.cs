@@ -109,7 +109,7 @@ public class HitPointManager : MonoBehaviour
 
     IEnumerator OffEffect()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         ParticleEffect.SetActive(false);
     }
 
