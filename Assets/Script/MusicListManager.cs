@@ -8,21 +8,24 @@ using DG.Tweening;
 
 public class MusicListManager : MonoBehaviour
 {
+    [Header("UI")]
+    public Image fadeOutScreen;
     //public SoundManager soundManager;
     //private Dictionary<int, string> musicDic = new Dictionary<int, string>();
     public Text select_Music_Name;
     public Text select_Music_Score;
     public Text select_Music_Diff;
     public Text select_Music_Acc;
-       
-    public int current_music = 0;
 
+    [Header("List")]
+    public int current_music = 0;
     public GameObject musicListCont;
     public List<MusicElement> musicList = new List<MusicElement>();
     private bool moveList = false;
 
-     void Start()
+    void Start()
     {
+        StartCoroutine(FadeIn());
         InitMusicList();
         current_music = SelectMusicManager.instance.music_index;
         SetMusicInfo(musicList[0]);
@@ -43,10 +46,12 @@ public class MusicListManager : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) == true)
         {
             SelectBeforeMusic();
-        } else if(Input.GetKey(KeyCode.DownArrow) == true)
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) == true)
         {
             SelectNextMusic();
-        } else if(Input.GetKeyDown(KeyCode.Return))
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             SelectMusic();
         }
@@ -65,7 +70,7 @@ public class MusicListManager : MonoBehaviour
 
     public void SelectBeforeMusic()
     {
-        if(!moveList)
+        if (!moveList)
         {
             if (current_music > 0)
             {
@@ -80,7 +85,7 @@ public class MusicListManager : MonoBehaviour
 
     public void SelectNextMusic()
     {
-        if(!moveList)
+        if (!moveList)
         {
             if (current_music < (musicList.Count - 1))
             {
@@ -99,12 +104,12 @@ public class MusicListManager : MonoBehaviour
         select_Music_Diff.text = curr.difficulty.ToString();
         select_Music_Acc.text = curr.accuracy.ToString() + "%";
         select_Music_Score.text = curr.music_score.ToString();
-        curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z),1.5f);
+        curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z), 1.5f);
 
         SoundManager.instance.PlayBgm(false);
         SoundManager.instance.SetBgm(curr.music);
         SoundManager.instance.FadePlayBgm(true);
-        
+
         MoveOtherMusicPos();
     }
 
@@ -112,18 +117,20 @@ public class MusicListManager : MonoBehaviour
     {
         for (int i = 0; i < musicList.Count; i++)
         {
-            if(i != current_music)
+            if (i != current_music)
             {
-                if(Math.Abs(i - current_music) == 2)
+                if (Math.Abs(i - current_music) == 2)
                 {
                     musicList[i].transform.DOLocalMove(new Vector3(75f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
-                } else if(Math.Abs(i - current_music) == 1)
+                }
+                else if (Math.Abs(i - current_music) == 1)
                 {
                     musicList[i].transform.DOLocalMove(new Vector3(45f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
-                } else
+                }
+                else
                 {
                     musicList[i].transform.DOLocalMove(new Vector3(105f, musicList[i].transform.localPosition.y, musicList[i].transform.localPosition.z), 1.5f);
-                } 
+                }
             }
         }
     }
@@ -151,7 +158,21 @@ public class MusicListManager : MonoBehaviour
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
         yield return new WaitForSeconds(0.75f);
         //Need Fade Out------
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(1f);
         SelectMusicManager.instance.SelectMusic();
     }
 
+    IEnumerator FadeOut()
+    {
+        fadeOutScreen.DOColor(new Color(0f, 0f, 0f, 1f), 1f);
+        yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator FadeIn()
+    {
+        fadeOutScreen.color = new Color(0f,0f,0f,1f);
+        fadeOutScreen.DOColor(new Color(0f, 0f, 0f, 0f), 1f);
+        yield return new WaitForSeconds(1f);
+    }
 }

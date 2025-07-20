@@ -51,10 +51,12 @@ public class ResultManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
         StartCoroutine(MoveMusicSelect());
     }
+
     IEnumerator MoveMusicSelect()
     {
-        StartCoroutine(FadeOut());
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
+        fadeOutScreen.DOColor(new Color(0f, 0f, 0f, 1f), 1f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MusicSelect");
     }
 
