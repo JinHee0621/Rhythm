@@ -27,11 +27,11 @@ public class NoteMoveManager : MonoBehaviour
         default_pos = gameObject.transform.position.y;
     }
 
-    //빨라질수록 늦는 감이 있음
+    //?????????? ???? ???? ????
     //speed ++ => 
     public void FirstPosWithSpeed()
     {
-        default_pos = (default_pos + ((speed_by_sync * (speed - 1)) - (speed - 1)) + (user_sync));
+        default_pos = (default_pos + ((speed_by_sync    * (speed - 1)) - (speed - 1)) + (user_sync));
         Debug.Log("Fix Sync : " + ((speed_by_sync * (speed - 1)) - (speed - 1)));
 
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, default_pos, gameObject.transform.position.z);
