@@ -52,6 +52,7 @@ public class NoteManager : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(!isRecordNote && !collision.tag.Equals("Note"))
@@ -111,6 +112,31 @@ public class NoteManager : MonoBehaviour
                     {
                         NoteCheckCurrect(false, 100f);
                     } else
+                    {
+                        if (!hitNote)
+                        {
+                            NoteCheckCurrect(false, 100f);
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isRecordNote && !collision.tag.Equals("Note"))
+        {
+            if (noteChecked)
+            {
+                if (collision.tag.Equals("MissLine"))
+                {
+                    if (!isLongNote)
+                    {
+                        NoteCheckCurrect(false, 100f);
+                    }
+                    else
                     {
                         if (!hitNote)
                         {
