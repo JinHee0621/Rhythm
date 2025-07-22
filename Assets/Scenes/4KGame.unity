@@ -17825,7 +17825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 181292999}
-  Song_Name: 
+  Song_Name: NoteData4
   noteMoveManager: {fileID: 578458914}
   notePoolManager: {fileID: 437826099}
   origin_lines: []
@@ -24050,9 +24050,9 @@ MonoBehaviour:
   noteMoveManager: {fileID: 578458914}
   loadRecordManager: {fileID: 1346557959}
   selectMusicManager: {fileID: 0}
-  currentMusic: {fileID: 0}
+  currentMusic: {fileID: 8300000, guid: 6e573b8958e9f40538c5b2d094dd988d, type: 3}
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 0
+  test_play: 1
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,14 @@ public class LoadRecordDataManager : MonoBehaviour
 
     public void LoadData(string musicName)
     {
-        origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        if(musicName.Equals("Test"))
+        {
+            origin_lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");
+        } else
+        {
+            origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+        }
+
         CopyLines();
         NoteFixBySpeed(OptionManager.instance.noteSpeed);
         scoreManager.NoteCountInit((lines.Length - 1));

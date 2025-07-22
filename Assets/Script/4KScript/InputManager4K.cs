@@ -41,6 +41,7 @@ public class InputManager4K : InputManager
             Btn1Anim.SetBool("ButtonPush", true);
             Effect1.color = new Color(Effect1.color.r, Effect1.color.g, Effect1.color.b, 1);
             ColliderEnabled(BtnCollider1);
+            RayEnabled(BtnCollider1);
         } else
         {
             Btn1Anim.SetBool("ButtonPush", false);

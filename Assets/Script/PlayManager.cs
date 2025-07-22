@@ -29,6 +29,9 @@ public class PlayManager : MonoBehaviour
             //selectMusicManager = GameObject.Find("SelectMusicManager").GetComponent<SelectMusicManager>();
             currentMusic = SelectMusicManager.instance.select_audio;
             loadRecordManager.LoadData(SelectMusicManager.instance.select_name);
+        } else
+        {
+            loadRecordManager.LoadData("Test");
         }
 
         StartCoroutine(FadeOutFirst());
