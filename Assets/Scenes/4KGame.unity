@@ -24050,7 +24050,7 @@ MonoBehaviour:
   noteMoveManager: {fileID: 578458914}
   loadRecordManager: {fileID: 1346557959}
   selectMusicManager: {fileID: 0}
-  currentMusic: {fileID: 8300000, guid: 6e573b8958e9f40538c5b2d094dd988d, type: 3}
+  currentMusic: {fileID: 0}
   fadeOut_screen: {fileID: 1886861901}
   test_play: 1
 --- !u!1 &2117007445
