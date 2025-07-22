@@ -121,6 +121,19 @@ public class NoteManager : MonoBehaviour
             }
         }
     }
+
+    public void RayHit(bool isHit, float distance)
+    {
+        if (!isLongNote)
+        {
+            NoteCheckCurrect(isHit, distance);
+        }
+        else
+        {
+            Transform noteEnd = gameObject.transform.GetChild(1).transform;
+            NoteCheckCurrect(isHit, distance);
+        }
+    }
    
     void NoteCheckCurrect(bool isHit, float range)
     {

@@ -67,17 +67,17 @@ public class InputManager : MonoBehaviour
     {
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 5f, LayerMask.GetMask("Note"));
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
         Debug.Log(hit.collider);
         if (hit.collider != null)
         {
-            Debug.DrawRay(startPos, Vector2.up * 5f, Color.red);
+            Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
             float distance = hit.distance;
-            Debug.Log($"위 방향 충돌 거리: {distance}");
+            hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
         }
         else
         {
-            Debug.DrawRay(startPos, Vector2.up * 5f, Color.green);
+            Debug.DrawRay(startPos, Vector2.up * 2f, Color.green);
         }
     }
 }
