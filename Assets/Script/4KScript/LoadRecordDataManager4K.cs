@@ -48,6 +48,9 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
         else if (data_element[0].Equals("Btn3")) parent_line = Line3;
         else if (data_element[0].Equals("Btn4")) parent_line = Line4;
 
+        int lineNum = 0;
+        int.TryParse(data_element[0].Substring(data_element[0].Length - 1, 1), out lineNum);
+
         float position_y = 0f;
         float.TryParse(data_element[1], out position_y);
         //position_y *= noteMoveManager.speed;
@@ -57,7 +60,7 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
 
         if (parent_line != null)
         {
-            notePoolManager.ReInitNote((index % notePoolManager.poolLength),parent_line, position_y, noteLength);
+            notePoolManager.ReInitNote((index % notePoolManager.poolLength), lineNum, parent_line, position_y, noteLength);
         }
     }
 
@@ -80,6 +83,9 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
         else if (data_element[0].Equals("Btn3")) parent_line = Line3;
         else if (data_element[0].Equals("Btn4")) parent_line = Line4;
 
+        int lineNum = 0;
+        int.TryParse(data_element[0].Substring(data_element[0].Length - 1, 1), out lineNum);
+
         float position_y = 0f;
         float.TryParse(data_element[1], out position_y);
         //position_y *= noteMoveManager.speed;
@@ -89,7 +95,7 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
 
         if (parent_line != null)
         {
-            notePoolManager.InitNote(parent_line, position_y, noteLength);
+            notePoolManager.InitNote(parent_line, lineNum, position_y, noteLength);
         }
     }
 

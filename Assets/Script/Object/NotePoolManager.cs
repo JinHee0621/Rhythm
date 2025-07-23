@@ -34,7 +34,7 @@ public class NotePoolManager : MonoBehaviour
         noteData = loadRecordDataManager.ReturnLine();
     }
 
-    public void InitNote(Transform line, float pos, float noteLength)
+    public void InitNote(Transform line, int lineNum, float pos, float noteLength)
     {
         for(int i = 0; i < poolLength; i++)
         {
@@ -42,6 +42,7 @@ public class NotePoolManager : MonoBehaviour
             {
                 noteObjects[i].transform.parent = line;
                 noteObjects[i].transform.localPosition = new Vector3(0f, pos, -3);
+                noteObjects[i].GetComponentInChildren<NoteManager>().lineNum = lineNum;
                 noteObjects[i].GetComponentInChildren<NoteManager>().noteLength = noteLength;
                 noteObjects[i].GetComponentInChildren<NoteManager>().SetNoteState();
                 noteObjects[i].GetComponentInChildren<NoteManager>().isChecked = true;
@@ -51,10 +52,11 @@ public class NotePoolManager : MonoBehaviour
         }
     }
 
-    public void ReInitNote(int index, Transform line, float pos, float noteLength)
+    public void ReInitNote(int index, int lineNum, Transform line, float pos, float noteLength)
     {
         noteObjects[index].transform.parent = line;
         noteObjects[index].transform.localPosition = new Vector3(0f, pos, -3);
+        noteObjects[index].GetComponentInChildren<NoteManager>().lineNum = lineNum;
         noteObjects[index].GetComponentInChildren<NoteManager>().noteLength = noteLength;
         noteObjects[index].GetComponentInChildren<NoteManager>().SetNoteState();
         noteObjects[index].GetComponentInChildren<NoteManager>().isChecked = true;

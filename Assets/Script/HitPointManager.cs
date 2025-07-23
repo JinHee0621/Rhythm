@@ -42,6 +42,12 @@ public class HitPointManager : MonoBehaviour
         }
     }
 
+    public void HitEffectRay()
+    {
+        ParticleEffect.SetActive(true);
+        StartCoroutine(OffEffect());
+    }
+
     public bool LongHitEffect(Transform Note, bool LongHit)
     {
         if (!checkEffect)

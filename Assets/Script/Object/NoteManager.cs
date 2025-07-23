@@ -33,10 +33,8 @@ public class NoteManager : MonoBehaviour
 
     public void SetNoteState()
     {
-        //Vector3 reSizeVec = new Vector3(1.25f, 0.25f, 1f)
         Vector3 reSizeVec = new Vector3(1.25f, noteLength, 1f);
 
-        //if (noteLength >= 150) reSizeVec.y = 0.01f * noteLength; 
         gameObject.transform.localScale = reSizeVec;
 
         Vector3 reSetPosition = new Vector3(0f, reSizeVec.y / 2, 0f);
@@ -150,15 +148,13 @@ public class NoteManager : MonoBehaviour
 
     public void RayHit(bool isHit, float distance)
     {
-        if (!isLongNote)
-        {
-            NoteCheckCurrect(isHit, distance);
-        }
-        else
-        {
-            Transform noteEnd = gameObject.transform.GetChild(1).transform;
-            NoteCheckCurrect(isHit, distance);
-        }
+        NoteCheckCurrect(isHit, distance);
+    }
+
+    public void RayLongHit(bool isHit, float distance)
+    {
+        Transform noteEnd = gameObject.transform.GetChild(1).transform;
+        NoteCheckCurrect(isHit, distance);
     }
    
     void NoteCheckCurrect(bool isHit, float range)
@@ -177,6 +173,7 @@ public class NoteManager : MonoBehaviour
 
     public void ReInitNote()
     {
+        lineNum = 0;
         isChecked = false;
         noteChecked = false;
         isLongNote = false;

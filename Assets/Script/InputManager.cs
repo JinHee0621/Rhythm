@@ -67,18 +67,30 @@ public class InputManager : MonoBehaviour
     {
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
+        // 2f -> speed by range
         RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
         if (hit.collider != null)
         {
-            Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
+            //Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
             float distance = hit.distance;
-            hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
+            HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
+            if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
+            {
+                LongRayHit(hit.transform.GetComponentInChildren<NoteManager>());
+            } else
+            {
+                hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
+            }
         }
-        /*
-        else
-        {
-            Debug.DrawRay(startPos, Vector2.up * 2f, Color.green);
-        }
-        */
+    }
+
+    virtual public void HitEffect(int BtnNum)
+    {
+        Debug.Log("HitEffect");
+    }
+
+    virtual public void LongRayHit(NoteManager note)
+    {
+        Debug.Log("LongHit");
     }
 }
