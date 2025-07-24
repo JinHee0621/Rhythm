@@ -44,6 +44,7 @@ public class HitPointManager : MonoBehaviour
 
     public void HitEffectRay()
     {
+        ParticleEffect.SetActive(false);
         ParticleEffect.SetActive(true);
         StartCoroutine(OffEffect());
     }

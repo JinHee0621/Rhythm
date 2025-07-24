@@ -49,10 +49,17 @@ public class InputManager4K : InputManager
             {
                 RayEnabled(BtnCollider1);
                 Btn1Hold = true;
+            } else
+            {
+                //LongRayEnabled(BtnCollider1);
             }
         } else
         {
             Btn1Anim.SetBool("ButtonPush", false);
+            if(Btn1Hold)
+            {
+                LongRayDisabled(BtnCollider1);
+            }
             Btn1Hold = false;
         }
     }
@@ -133,11 +140,6 @@ public class InputManager4K : InputManager
         {
             BtnCollider4.gameObject.GetComponent<HitPointManager>().HitEffectRay();
         }
-    }
-
-    public override void LongRayHit(NoteManager note)
-    {
-        //When Button released then check note.child(1) and button range.
     }
 }
 

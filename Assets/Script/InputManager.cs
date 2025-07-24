@@ -68,18 +68,49 @@ public class InputManager : MonoBehaviour
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
         // 2f -> speed by range
-        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
         if (hit.collider != null)
         {
-            //Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
+            Debug.Log(hit.transform.GetComponentInChildren<NoteManager>().isLongNote);
+            Debug.DrawRay(startPos, Vector2.up * 3f, Color.red);
             float distance = hit.distance;
             HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
-            if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
-            {
-                LongRayHit(hit.transform.GetComponentInChildren<NoteManager>());
-            } else
+            if (!hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
                 hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
+            } else
+            {
+                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, distance);
+            }
+        }
+    }
+
+
+    /*
+    public void LongRayEnabled(BoxCollider2D coll)
+    {
+        GameObject collObj = coll.gameObject;
+        Vector2 startPos = collObj.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
+        if (hit.collider != null)
+        {
+            HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
+        }
+    }*/
+     
+    public void LongRayDisabled(BoxCollider2D coll)
+    {
+        GameObject collObj = coll.gameObject;
+        Vector2 startPos = collObj.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
+        Debug.DrawRay(startPos, Vector2.up * 3f, Color.cyan);
+        if (hit.collider != null)
+        {
+            if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
+            {
+                float distance = hit.distance;
+                HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
+                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, distance);
             }
         }
     }
@@ -89,8 +120,4 @@ public class InputManager : MonoBehaviour
         Debug.Log("HitEffect");
     }
 
-    virtual public void LongRayHit(NoteManager note)
-    {
-        Debug.Log("LongHit");
-    }
 }

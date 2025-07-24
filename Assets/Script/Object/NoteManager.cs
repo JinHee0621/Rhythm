@@ -153,8 +153,16 @@ public class NoteManager : MonoBehaviour
 
     public void RayLongHit(bool isHit, float distance)
     {
-        Transform noteEnd = gameObject.transform.GetChild(1).transform;
-        NoteCheckCurrect(isHit, distance);
+        if(longhitNote == false)
+        {
+            Debug.Log("Init long note");
+            longhitNote = true;
+        } else
+        {
+            Debug.Log("Check Long note");
+            Transform noteEnd = gameObject.transform.GetChild(1).transform;
+            NoteCheckCurrect(isHit, distance);
+        }
     }
    
     void NoteCheckCurrect(bool isHit, float range)
