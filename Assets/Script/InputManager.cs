@@ -68,23 +68,23 @@ public class InputManager : MonoBehaviour
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
         // 2f -> speed by range
-        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
         if (hit.collider != null)
         {
-            Debug.Log(hit.transform.GetComponentInChildren<NoteManager>().isLongNote);
-            Debug.DrawRay(startPos, Vector2.up * 3f, Color.red);
+            Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
             float distance = hit.distance;
             HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
             if (!hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
+                Debug.Log("Short : " + hit.collider);
                 hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
             } else
             {
-                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, distance);
+                Debug.Log("Long : " + hit.collider);
+                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, true, distance);
             }
         }
     }
-
 
     /*
     public void LongRayEnabled(BoxCollider2D coll)
@@ -102,15 +102,15 @@ public class InputManager : MonoBehaviour
     {
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
-        Debug.DrawRay(startPos, Vector2.up * 3f, Color.cyan);
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
+        Debug.DrawRay(startPos, Vector2.up * 2f, Color.cyan);
         if (hit.collider != null)
         {
             if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
                 float distance = hit.distance;
                 HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum);
-                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, distance);
+                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, false, distance);
             }
         }
     }

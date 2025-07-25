@@ -47,11 +47,8 @@ public class InputManager4K : InputManager
             Effect1.color = new Color(Effect1.color.r, Effect1.color.g, Effect1.color.b, 1);
             if (!Btn1Hold)
             {
-                RayEnabled(BtnCollider1);
                 Btn1Hold = true;
-            } else
-            {
-                //LongRayEnabled(BtnCollider1);
+                RayEnabled(BtnCollider1);
             }
         } else
         {

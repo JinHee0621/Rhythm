@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2528783629739693243}
   - component: {fileID: 5283411604121724644}
-  - component: {fileID: 1908365175412485948}
+  - component: {fileID: 8875329708000947896}
   - component: {fileID: 4913913965399263699}
   - component: {fileID: 2975471537642906499}
   m_Layer: 6
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1908365175412485948
+--- !u!50 &8875329708000947896
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   lineNum: 0
   isChecked: 0
   noteChecked: 0
+  longhitNote: 0
 --- !u!1 &1664859025464649019
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +255,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7671994210610888647}
   - component: {fileID: 278277046714319709}
-  - component: {fileID: 5759190557287903729}
   m_Layer: 6
   m_Name: NotePoint
   m_TagString: Note
@@ -330,30 +330,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5759190557287903729
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3693880570851372189}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7

@@ -20,8 +20,9 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField]
     private bool noteChecked = false;
-
+    [SerializeField]
     private bool longhitNote = false;
+
     private bool hitNote = false;
 
     private void Start()
@@ -151,13 +152,13 @@ public class NoteManager : MonoBehaviour
         NoteCheckCurrect(isHit, distance);
     }
 
-    public void RayLongHit(bool isHit, float distance)
+    public void RayLongHit(bool isHit, bool isInput, float distance)
     {
-        if(longhitNote == false)
+        if(isInput && !longhitNote)
         {
             Debug.Log("Init long note");
             longhitNote = true;
-        } else
+        } else if(!isInput && longhitNote)
         {
             Debug.Log("Check Long note");
             Transform noteEnd = gameObject.transform.GetChild(1).transform;
