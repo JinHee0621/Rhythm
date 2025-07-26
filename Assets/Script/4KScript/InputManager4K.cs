@@ -49,6 +49,9 @@ public class InputManager4K : InputManager
             {
                 Btn1Hold = true;
                 RayEnabled(BtnCollider1);
+            } else
+            {
+                LongRayEnabled(BtnCollider1);
             }
         } else
         {
@@ -69,13 +72,21 @@ public class InputManager4K : InputManager
             Effect2.color = new Color(Effect2.color.r, Effect2.color.g, Effect2.color.b, 1);
             if(!Btn2Hold)
             {
-                RayEnabled(BtnCollider2);
                 Btn2Hold = true;
+                RayEnabled(BtnCollider2);
+            }
+            else
+            {
+                LongRayEnabled(BtnCollider2);
             }
         }
         else
         {
             Btn2Anim.SetBool("ButtonPush", false);
+            if (Btn2Hold)
+            {
+                LongRayDisabled(BtnCollider2);
+            }
             Btn2Hold = false;
         }
     }
@@ -88,13 +99,21 @@ public class InputManager4K : InputManager
             Effect3.color = new Color(Effect3.color.r, Effect3.color.g, Effect3.color.b, 1);
             if (!Btn3Hold)
             {
-                RayEnabled(BtnCollider3);
                 Btn3Hold = true;
+                RayEnabled(BtnCollider3);
+            }
+            else
+            {
+                LongRayEnabled(BtnCollider3);
             }
         }
         else
         {
             Btn3Anim.SetBool("ButtonPush", false);
+            if (Btn3Hold)
+            {
+                LongRayDisabled(BtnCollider3);
+            }
             Btn3Hold = false;
         }
     }
@@ -108,34 +127,42 @@ public class InputManager4K : InputManager
             Effect4.color = new Color(Effect4.color.r, Effect4.color.g, Effect4.color.b, 1);
             if (!Btn4Hold)
             {
-                RayEnabled(BtnCollider4);
                 Btn4Hold = true;
+                RayEnabled(BtnCollider4);
+            }
+            else
+            {
+                LongRayEnabled(BtnCollider4);
             }
         }
         else
         {
             Btn4Anim.SetBool("ButtonPush", false);
+            if (Btn4Hold)
+            {
+                LongRayDisabled(BtnCollider4);
+            }
             Btn4Hold = false;
         }
     }
 
-    public override void HitEffect(int BtnNum)
+    public override void HitEffect(int BtnNum, bool isLong)
     {
         if(BtnNum == 1)
         {
-            BtnCollider1.gameObject.GetComponent<HitPointManager>().HitEffectRay();
+            BtnCollider1.gameObject.GetComponent<HitPointManager>().HitEffectRay(isLong);
         }
         else if(BtnNum == 2)
         {
-            BtnCollider2.gameObject.GetComponent<HitPointManager>().HitEffectRay();
+            BtnCollider2.gameObject.GetComponent<HitPointManager>().HitEffectRay(isLong);
         }
         else if (BtnNum == 3)
         {
-            BtnCollider3.gameObject.GetComponent<HitPointManager>().HitEffectRay();
+            BtnCollider3.gameObject.GetComponent<HitPointManager>().HitEffectRay(isLong);
         }
         else if (BtnNum == 4)
         {
-            BtnCollider4.gameObject.GetComponent<HitPointManager>().HitEffectRay();
+            BtnCollider4.gameObject.GetComponent<HitPointManager>().HitEffectRay(isLong);
         }
     }
 }

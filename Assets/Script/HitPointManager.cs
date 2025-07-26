@@ -6,12 +6,15 @@ public class HitPointManager : MonoBehaviour
 {
     public bool longCheck = false;
     public Transform Line;
+    public Transform ParticleTransform;
     public GameObject ParticleEffect;
     public NoteMoveManager noteMoveManager;
 
-
     private float hitRange = 0f;
     private bool checkEffect = false;
+
+    [SerializeField]
+    private int effectCount = 0;
 
     private void Start()
     {
@@ -42,11 +45,28 @@ public class HitPointManager : MonoBehaviour
         }
     }
 
-    public void HitEffectRay()
+    public void HitEffectRay(bool isLong)
     {
-        ParticleEffect.SetActive(false);
-        ParticleEffect.SetActive(true);
-        StartCoroutine(OffEffect());
+        //ParticleEffect.SetActive(false);
+        //ParticleEffect.SetActive(true);
+
+        GameObject particle = null;
+        if(isLong)
+        {
+            if (effectCount < 5)
+            {
+                particle = Instantiate(ParticleEffect, ParticleTransform);
+                effectCount += 1;
+            }
+        } else
+        {
+            if (effectCount < 1)
+            {
+                particle = Instantiate(ParticleEffect, ParticleTransform);
+                effectCount += 1;
+            }
+        }
+        StartCoroutine(OffEffect(particle));
     }
 
     public bool LongHitEffect(Transform Note, bool LongHit)
@@ -85,7 +105,7 @@ public class HitPointManager : MonoBehaviour
     {
         checkEffect = false;
 
-        StartCoroutine(OffEffect());
+        //StartCoroutine(OffEffect());
         Transform NotePosition = Note.GetChild(0).transform;
         if (NotePosition.position.y - Line.position.y < hitRange && NotePosition.position.y - Line.position.y > (hitRange * -1f))
         {
@@ -114,10 +134,12 @@ public class HitPointManager : MonoBehaviour
         }
     }
 
-    IEnumerator OffEffect()
+    IEnumerator OffEffect(GameObject effect)
     {
-        yield return new WaitForSeconds(0.2f);
-        ParticleEffect.SetActive(false);
+        yield return new WaitForSeconds(0.25f);
+        //ParticleEffect.SetActive(false);
+        if(effect != null) Destroy(effect);
+        if(effectCount > 0) effectCount -= 1;
     }
 
     /*

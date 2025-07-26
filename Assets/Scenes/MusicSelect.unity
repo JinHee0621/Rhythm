@@ -930,6 +930,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073418332}
   m_CullTransparentMesh: 1
+--- !u!114 &1094468351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7024983823937903234, guid: cced2655d95c93b40ae3b13de64e9842, type: 3}
+  m_PrefabInstance: {fileID: 4063204093980221812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ec8f094e244ffa8986acd9c11fd40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173242096
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +994,8 @@ MonoBehaviour:
   musicListCont: {fileID: 833070521}
   musicList:
   - {fileID: 1275600096}
+  - {fileID: 1094468351}
+  - {fileID: 290940766857242718}
 --- !u!1 &1237895803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1374,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4718619422862512600, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
   m_PrefabInstance: {fileID: 6037949009901807589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &290940766857242718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4450890047109114560, guid: 7069e32bdc9ce084a8c58e5c2ce76d1c, type: 3}
+  m_PrefabInstance: {fileID: 6037949009901807589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ec8f094e244ffa8986acd9c11fd40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1882607653612924280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1380,7 +1404,7 @@ PrefabInstance:
     - target: {fileID: 6289546931736370623, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
       propertyPath: coverImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 5ffe384a9a1b56641b8cfd43b279e6e0, type: 3}
     - target: {fileID: 8511763264335758401, guid: 1e7d4fa29f3302e4c94fa3f195a3956f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

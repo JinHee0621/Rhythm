@@ -18,12 +18,11 @@ public class NoteManager : MonoBehaviour
     public bool isChecked = false;
     
 
-    [SerializeField]
-    private bool noteChecked = false;
+    //private bool noteChecked = false;
     [SerializeField]
     private bool longhitNote = false;
 
-    private bool hitNote = false;
+    //private bool hitNote = false;
 
     private void Start()
     {
@@ -122,71 +121,72 @@ public class NoteManager : MonoBehaviour
         }
     }*/
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!isRecordNote && !collision.tag.Equals("Note"))
         {
-            if (noteChecked)
+            if (collision.tag.Equals("MissLine"))
             {
-                if (collision.tag.Equals("MissLine"))
+                if (!isLongNote)
                 {
-                    if (!isLongNote)
+                    NoteCheckCurrect(false, 100f);
+                }
+                else
+                {
+                    if (!longhitNote)
                     {
                         NoteCheckCurrect(false, 100f);
-                    }
-                    else
-                    {
-                        if (!hitNote)
-                        {
-                            NoteCheckCurrect(false, 100f);
-                        }
                     }
                 }
             }
         }
     }
 
-    public void RayHit(bool isHit, float distance)
+    public bool RayHit(bool isHit, float distance)
     {
-        NoteCheckCurrect(isHit, distance);
+        bool hitResult = false;
+        hitResult = NoteCheckCurrect(isHit, distance);
+        return hitResult;
     }
 
-    public void RayLongHit(bool isHit, bool isInput, float distance)
+    public bool RayLongHit(bool isHit, bool isInput, float distance)
     {
+        bool hitReuslt = true;
         if(isInput && !longhitNote)
         {
-            Debug.Log("Init long note");
             longhitNote = true;
         } else if(!isInput && longhitNote)
         {
-            Debug.Log("Check Long note");
             Transform noteEnd = gameObject.transform.GetChild(1).transform;
-            NoteCheckCurrect(isHit, distance);
+            hitReuslt = NoteCheckCurrect(isHit, distance);
         }
+        return hitReuslt;
     }
    
-    void NoteCheckCurrect(bool isHit, float range)
+    public bool NoteCheckCurrect(bool isHit, float range)
     {
+        bool hitResult = false;
         float hitAcc = scoreManager.CheckAccuracy(range);
         if (hitAcc != 0)
         {
             scoreManager.AddScore(hitAcc);
             scoreManager.AddCombo();
+            hitResult = true;
         } else
         {
             scoreManager.ResetCombo();
         }
         notePoolManager.Check(transform.parent.gameObject);
+        return hitResult;
     }
 
     public void ReInitNote()
     {
         lineNum = 0;
         isChecked = false;
-        noteChecked = false;
+        //noteChecked = false;
         isLongNote = false;
-        hitNote = false;
+        //hitNote = false;
         longhitNote = false;
     }
 
