@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(float acc)
     {
-        current_score += (int)( note_score * (acc / 100) );
+        current_score += (int)( note_score * (acc / 100f) );
         ShowScore();
     }
 
@@ -88,20 +88,20 @@ public class ScoreManager : MonoBehaviour
         if (accData != 100f)
         {
             //Debug.Log(accData);
-            // pp : (perfect_rate - speed_by_rate) ~ ((perfect_rate - speed_by_rate) + 1f + speed_by_rate))
-            if (accData > (perfect_rate - speed_by_rate) && accData < ((perfect_rate + 1.0f + speed_by_rate)))
+            //pp : (perfect_rate - speed_by_rate) ~ ((perfect_rate - speed_by_rate) + 1f + speed_by_rate))
+            if (accData > (perfect_rate - speed_by_rate) && accData < ((perfect_rate + 0.5f + speed_by_rate)))
             {
                 inAcc = 100f;
                 ShowAccText(0);
                 resultManager.CheckHitTypeCount(0);
             }
-            else if (accData >= (perfect_rate + 1.0f + speed_by_rate) && accData < (perfect_rate + 2.0f + speed_by_rate))
+            else if (accData >= (perfect_rate + 0.5f + speed_by_rate) && accData < (perfect_rate + 1.0f + speed_by_rate))
             {
                 inAcc = 90f;
                 ShowAccText(1);
                 resultManager.CheckHitTypeCount(1);
             }
-            else if (accData >= (perfect_rate + 2.0f + speed_by_rate) && accData < (perfect_rate + 3f + speed_by_rate))
+            else if (accData >= (perfect_rate + 1.0f + speed_by_rate) && accData < (perfect_rate + 2.0f + speed_by_rate))
             {
                 inAcc = 70f;
                 ShowAccText(2);

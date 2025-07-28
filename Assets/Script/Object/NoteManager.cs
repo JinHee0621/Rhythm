@@ -184,9 +184,7 @@ public class NoteManager : MonoBehaviour
     {
         lineNum = 0;
         isChecked = false;
-        //noteChecked = false;
         isLongNote = false;
-        //hitNote = false;
         longhitNote = false;
     }
 

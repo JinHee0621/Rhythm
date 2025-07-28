@@ -71,7 +71,7 @@ public class InputManager : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
         if (hit.collider != null)
         {
-            Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
+            //Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
             float distance = hit.distance;
             if (!hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
@@ -93,8 +93,7 @@ public class InputManager : MonoBehaviour
             if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
                 int hitLine = hit.transform.GetComponentInChildren<NoteManager>().lineNum;
-                bool hitResult = hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, true, distance);
-                if (hitResult) HitEffect(hitLine, true);
+                HitEffect(hitLine, true);
             }
         }
     }
@@ -104,7 +103,7 @@ public class InputManager : MonoBehaviour
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
-        Debug.DrawRay(startPos, Vector2.up * 2f, Color.cyan);
+        //Debug.DrawRay(startPos, Vector2.up * 2f, Color.cyan);
         if (hit.collider != null)
         {
             if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)

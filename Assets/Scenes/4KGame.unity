@@ -4632,7 +4632,7 @@ MonoBehaviour:
   selectMusicManager: {fileID: 0}
   currentMusic: {fileID: 0}
   fadeOut_screen: {fileID: 1886861901}
-  test_play: 0
+  test_play: 1
 --- !u!1 &2117007445
 GameObject:
   m_ObjectHideFlags: 0
