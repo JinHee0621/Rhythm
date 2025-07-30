@@ -16,13 +16,8 @@ public class NoteManager : MonoBehaviour
 
     public int lineNum = 0;
     public bool isChecked = false;
-    
+    public bool longhitNote = false;
 
-    //private bool noteChecked = false;
-    [SerializeField]
-    private bool longhitNote = false;
-
-    //private bool hitNote = false;
 
     private void Start()
     {
@@ -38,7 +33,6 @@ public class NoteManager : MonoBehaviour
         gameObject.transform.localScale = reSizeVec;
 
         Vector3 reSetPosition = new Vector3(0f, reSizeVec.y / 2, 0f);
-        //Debug.Log(reSetPosition);
         gameObject.transform.localPosition = reSetPosition;
         if (gameObject.transform.GetChild(1).transform.position.y - gameObject.transform.GetChild(0).transform.position.y == 0.25f)
         {
@@ -50,77 +44,8 @@ public class NoteManager : MonoBehaviour
         }
     }
 
+
     /*
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(!isRecordNote && !collision.tag.Equals("Note"))
-        {
-            //When Note Hit MissLine
-            if(!noteChecked)
-            {
-                if (collision.tag.Equals("MissLine"))
-                {
-                    hitNote = false;
-                    noteChecked = true;
-                }
-                else
-                {
-                    if(!isLongNote)
-                    {
-                        hitNote = collision.gameObject.GetComponent<HitPointManager>().HitEffect(gameObject.transform);
-                        noteChecked = true;
-                    } else
-                    {
-                        hitNote = collision.gameObject.GetComponent<HitPointManager>().LongHitEffect(gameObject.transform, longhitNote);
-                        longhitNote = true;
-                        noteChecked = true;
-                    }
-                }
-            }
-        }
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!isRecordNote && !collision.tag.Equals("Note"))
-        {
-            if (noteChecked)
-            {
-                if(hitNote)
-                {
-                    if (collision.tag.Equals("BtnLine"))
-                    {
-                        //NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform, isLongNote), (gameObject.transform.position.y));
-                        if(!isLongNote)
-                        {
-                            //collision.enabled = false;
-                            NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().CheckCurrect(gameObject.transform), (gameObject.transform.position.y));
-                        } else
-                        {
-                            Transform noteEnd = gameObject.transform.GetChild(1).transform;
-                            NoteCheckCurrect(collision.gameObject.GetComponent<HitPointManager>().LongCheckCurrect(gameObject.transform), (noteEnd.position.y));
-                        }
-                    }
-                }
-                            
-                if (collision.tag.Equals("MissLine"))
-                {
-                    if(!isLongNote)
-                    {
-                        NoteCheckCurrect(false, 100f);
-                    } else
-                    {
-                        if (!hitNote)
-                        {
-                            NoteCheckCurrect(false, 100f);
-                        }
-                    }
-                }
-            }
-        }
-    }*/
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!isRecordNote && !collision.tag.Equals("Note"))
@@ -140,7 +65,7 @@ public class NoteManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     public bool RayHit(bool isHit, float distance)
     {
@@ -157,7 +82,6 @@ public class NoteManager : MonoBehaviour
             longhitNote = true;
         } else if(!isInput && longhitNote)
         {
-            Transform noteEnd = gameObject.transform.GetChild(1).transform;
             hitReuslt = NoteCheckCurrect(isHit, distance);
         }
         return hitReuslt;

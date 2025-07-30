@@ -60,7 +60,7 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
 
         if (parent_line != null)
         {
-            notePoolManager.ReInitNote((index % notePoolManager.poolLength), lineNum, parent_line, position_y, noteLength);
+            //notePoolManager.ReInitNote((index % notePoolManager.poolLength), lineNum, parent_line, position_y, noteLength);
         }
     }
 

@@ -73,12 +73,16 @@ public class InputManager : MonoBehaviour
         {
             //Debug.DrawRay(startPos, Vector2.up * 2f, Color.red);
             float distance = hit.distance;
+            int hitLine = hit.transform.GetComponentInChildren<NoteManager>().lineNum;
+            bool hitResult = false;
             if (!hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
-                int hitLine = hit.transform.GetComponentInChildren<NoteManager>().lineNum;
-                bool hitResult = hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
-                if(hitResult) HitEffect(hitLine, false);
+                hitResult = hit.transform.GetComponentInChildren<NoteManager>().RayHit(true, distance);
+            } else
+            {
+                hitResult = hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, true, distance);
             }
+            if (hitResult) HitEffect(hitLine, false);
         }
     }
 
@@ -86,14 +90,16 @@ public class InputManager : MonoBehaviour
     {
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 3f, LayerMask.GetMask("Note"));
+        RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
         if (hit.collider != null)
         {
-            float distance = hit.distance;
             if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
                 int hitLine = hit.transform.GetComponentInChildren<NoteManager>().lineNum;
-                HitEffect(hitLine, true);
+                if(hit.transform.GetComponentInChildren<NoteManager>().longhitNote)
+                {
+                    HitEffect(hitLine, true);
+                }
             }
         }
     }
@@ -102,18 +108,35 @@ public class InputManager : MonoBehaviour
     {
         GameObject collObj = coll.gameObject;
         Vector2 startPos = collObj.transform.position;
+        RaycastHit2D hitTop = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("NoteTop"));
         RaycastHit2D hit = Physics2D.Raycast(startPos, Vector2.up, 2f, LayerMask.GetMask("Note"));
-        //Debug.DrawRay(startPos, Vector2.up * 2f, Color.cyan);
-        if (hit.collider != null)
+        if (hitTop.collider != null && hit.collider != null)
+        {
+            if (hitTop.transform.GetComponentInParent<NoteManager>().isLongNote)
+            {
+                if (hitTop.transform.GetComponentInParent<NoteManager>().longhitNote)
+                {
+                    float distance = hitTop.distance;
+                    HitEffect(hitTop.transform.GetComponentInParent<NoteManager>().lineNum, true);
+                    hitTop.transform.GetComponentInParent<NoteManager>().RayLongHit(true, false, distance);
+                }
+            }
+        }
+        else if (hitTop.collider == null && hit.collider != null)
         {
             if (hit.transform.GetComponentInChildren<NoteManager>().isLongNote)
             {
-                float distance = hit.distance;
-                HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum, true);
-                hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, false, distance);
+                if (hit.transform.GetComponentInChildren<NoteManager>().longhitNote)
+                {
+                    float distance = 100f;
+                    HitEffect(hit.transform.GetComponentInChildren<NoteManager>().lineNum, true);
+                    hit.transform.GetComponentInChildren<NoteManager>().RayLongHit(true, false, distance);
+                }
             }
         }
+
     }
+
 
     virtual public void HitEffect(int BtnNum, bool isLong)
     {

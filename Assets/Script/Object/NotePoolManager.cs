@@ -52,6 +52,7 @@ public class NotePoolManager : MonoBehaviour
         }
     }
 
+    /*
     public void ReInitNote(int index, int lineNum, Transform line, float pos, float noteLength)
     {
         noteObjects[index].transform.parent = line;
@@ -61,6 +62,7 @@ public class NotePoolManager : MonoBehaviour
         noteObjects[index].GetComponentInChildren<NoteManager>().SetNoteState();
         noteObjects[index].GetComponentInChildren<NoteManager>().isChecked = true;
     }
+    */
 
 
     public void Check(GameObject note)
