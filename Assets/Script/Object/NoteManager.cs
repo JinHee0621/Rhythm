@@ -91,9 +91,9 @@ public class NoteManager : MonoBehaviour
     {
         bool hitResult = false;
         float hitAcc = scoreManager.CheckAccuracy(range);
+        scoreManager.AddScore(hitAcc);
         if (hitAcc != 0)
         {
-            scoreManager.AddScore(hitAcc);
             scoreManager.AddCombo();
             hitResult = true;
         } else

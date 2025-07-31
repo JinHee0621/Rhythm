@@ -67,9 +67,10 @@ public class LoadRecordDataManager4K : LoadRecordDataManager
 
     public override void NextLine(int index)
     {
-        if(index < lines.Length)
+        int nextIndex = index + 1;
+        if(nextIndex < lines.Length)
         {
-            AddNote(lines[index]);
+            AddNote(lines[nextIndex]);
         }
     }
 

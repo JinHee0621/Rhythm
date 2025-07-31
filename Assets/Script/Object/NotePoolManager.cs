@@ -13,6 +13,7 @@ public class NotePoolManager : MonoBehaviour
 
     private string[] noteData;
 
+    [SerializeField]
     private int current_index = 0;
 
     public bool isRecord;

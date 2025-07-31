@@ -69,15 +69,6 @@ public class ScoreManager : MonoBehaviour
         comboText.text = current_combo.ToString();
     }
 
-    private void Start()
-    {
- //       float perfect_rate = -5f;//(4.5f + (0.15f * noteMoveManager.speed)) * -1;
- //       float speed_by_rate = (noteMoveManager.speed - 1) * 0.25f;
- //       Debug.Log(" pp :" + (perfect_rate - speed_by_rate) + "~" + ((perfect_rate) + 1.0f + speed_by_rate));
- //       Debug.Log(" gt :" + (perfect_rate + 1.0f + speed_by_rate) + "~" + ((perfect_rate + 2.0f + speed_by_rate)));
- //       Debug.Log(" so :" + (perfect_rate + 2.0f + speed_by_rate) + "~" + (perfect_rate + 3f + speed_by_rate));
-    }
-
     public float CheckAccuracy(float data)
     {
         float accData = data;
@@ -115,13 +106,14 @@ public class ScoreManager : MonoBehaviour
             }
         } else
         {
-            inAcc = 0;
+            inAcc = 0f;
             ShowAccText(4);
             resultManager.CheckHitTypeCount(4);
         }
 
         in_note_count += 1;
         current_accuracy += inAcc;
+
         accuracy_rate = (current_accuracy / in_note_count);
         string rate_text = accuracy_rate.ToString("0.00") + "%";
         accuracyText.text = rate_text;
