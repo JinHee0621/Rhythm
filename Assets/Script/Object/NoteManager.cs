@@ -7,8 +7,6 @@ public class NoteManager : MonoBehaviour
     public NotePoolManager notePoolManager;
     public ScoreManager scoreManager;
 
-    //[SerializeField]
-    //private float hitTime = 0f;
     public int noteId;
     public bool isRecordNote;
     public bool isLongNote;
@@ -44,29 +42,6 @@ public class NoteManager : MonoBehaviour
         }
     }
 
-
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!isRecordNote && !collision.tag.Equals("Note"))
-        {
-            if (collision.tag.Equals("MissLine"))
-            {
-                if (!isLongNote)
-                {
-                    NoteCheckCurrect(false, 100f);
-                }
-                else
-                {
-                    if (!longhitNote)
-                    {
-                        NoteCheckCurrect(false, 100f);
-                    }
-                }
-            }
-        }
-    }*/
-
     public bool RayHit(bool isHit, float distance)
     {
         bool hitResult = false;
@@ -86,7 +61,17 @@ public class NoteManager : MonoBehaviour
         }
         return hitReuslt;
     }
-   
+
+    public void NoteAddCombo()
+    {
+        scoreManager.AddCombo();
+    }
+
+    public void LongNoteCombo()
+    {
+        scoreManager.AddComboDelay();
+    }
+
     public bool NoteCheckCurrect(bool isHit, float range)
     {
         bool hitResult = false;
@@ -94,7 +79,7 @@ public class NoteManager : MonoBehaviour
         scoreManager.AddScore(hitAcc);
         if (hitAcc != 0)
         {
-            scoreManager.AddCombo();
+            NoteAddCombo();
             hitResult = true;
         } else
         {

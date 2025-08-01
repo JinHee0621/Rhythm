@@ -157,7 +157,6 @@ public class MusicListManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
         yield return new WaitForSeconds(0.75f);
-        //Need Fade Out------
         StartCoroutine(FadeOut());
         yield return new WaitForSeconds(1f);
         SelectMusicManager.instance.SelectMusic();

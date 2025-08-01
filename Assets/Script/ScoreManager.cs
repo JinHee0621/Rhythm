@@ -29,6 +29,7 @@ public class ScoreManager : MonoBehaviour
 
     private String[] accuracyUiText = {"Perfect","Greate","Soso","Bad","Miss"};
 
+    private bool delayComboEnd = false;
 
     public void CheckFind()
     {
@@ -57,6 +58,24 @@ public class ScoreManager : MonoBehaviour
         current_combo += 1;
         ShowCombo();
     }
+
+    public void AddComboDelay()
+    {
+        if(!delayComboEnd)
+        {
+            delayComboEnd = true;
+            StartCoroutine(ComboDelay());
+        }
+    }
+
+    IEnumerator ComboDelay()
+    {
+        current_combo += 1;
+        ShowCombo();
+        yield return new WaitForSeconds(0.1f);
+        delayComboEnd = false;   
+    }
+
 
     public void ResetCombo()
     {

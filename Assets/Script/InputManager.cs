@@ -98,6 +98,7 @@ public class InputManager : MonoBehaviour
                 int hitLine = hit.transform.GetComponentInChildren<NoteManager>().lineNum;
                 if(hit.transform.GetComponentInChildren<NoteManager>().longhitNote)
                 {
+                    hit.transform.GetComponentInChildren<NoteManager>().LongNoteCombo();
                     HitEffect(hitLine, true);
                 }
             }

@@ -65,7 +65,6 @@ public class NotePoolManager : MonoBehaviour
     }
     */
 
-
     public void Check(GameObject note)
     {
         note.transform.parent = init_position;
