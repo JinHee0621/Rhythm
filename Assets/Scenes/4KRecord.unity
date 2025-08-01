@@ -249,8 +249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   longCheck: 0
   Line: {fileID: 1035235900}
+  ParticleTransform: {fileID: 0}
   ParticleEffect: {fileID: 845745646}
   noteMoveManager: {fileID: 1959048428}
+  effectCount: 0
 --- !u!61 &109605015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4528d4c62a840518c0cc93dd59f477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 8300000, guid: 15e9b5879663b554e9abd3b1db28f348, type: 3}
+  bgmClip: {fileID: 8300000, guid: 4772d08128ea746b983ad51f08e45d1c, type: 3}
   bgmVolume: 0.3
   sfxClips: []
   sfxVolume: 0
@@ -427,8 +429,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   longCheck: 0
   Line: {fileID: 1657768922}
+  ParticleTransform: {fileID: 0}
   ParticleEffect: {fileID: 2096372694}
   noteMoveManager: {fileID: 1959048428}
+  effectCount: 0
 --- !u!61 &447974591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -907,8 +911,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   longCheck: 0
   Line: {fileID: 864592920}
+  ParticleTransform: {fileID: 0}
   ParticleEffect: {fileID: 1030402835}
   noteMoveManager: {fileID: 1959048428}
+  effectCount: 0
 --- !u!61 &819472393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16045,6 +16051,7 @@ MonoBehaviour:
   noteObjects: []
   note: {fileID: 0}
   init_position: {fileID: 0}
+  current_index: 0
   isRecord: 1
 --- !u!4 &1321855434
 Transform:
@@ -16253,8 +16260,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   longCheck: 0
   Line: {fileID: 1489687766}
+  ParticleTransform: {fileID: 0}
   ParticleEffect: {fileID: 1187319447}
   noteMoveManager: {fileID: 1959048428}
+  effectCount: 0
 --- !u!61 &1404419655
 BoxCollider2D:
   m_ObjectHideFlags: 0
