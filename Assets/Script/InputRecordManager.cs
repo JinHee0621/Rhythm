@@ -21,7 +21,7 @@ public class InputRecordManager : MonoBehaviour
     bool recordEnd = false;
     private void Awake()
     {
-        fileName = "./Assets/RecordData/" + fileName + ".txt";//@".\Assets\RecordData\NoteData1.txt"))
+        fileName = "./Assets/RecordData/" + fileName + ".rhy";//@".\Assets\RecordData\NoteData1.rhy"))
     }
     public void Record()
     {

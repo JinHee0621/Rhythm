@@ -28,10 +28,10 @@ public class LoadRecordDataManager : MonoBehaviour
     {
         if(musicName.Equals("Test"))
         {
-            origin_lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".txt");
+            origin_lines = File.ReadAllLines("./Assets/RecordData/" + Song_Name + ".rhy");
         } else
         {
-            origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".txt");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
+            origin_lines = File.ReadAllLines("./Assets/RecordData/" + musicName + ".rhy");//(@".\Assets\RecordData\"+ Song_Name + ".txt");
         }
 
         CopyLines();
