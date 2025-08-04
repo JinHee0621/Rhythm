@@ -56,23 +56,23 @@ public class OptionManager : MonoBehaviour
 
         if (upSpeed)
         {
-            if (noteSpeed < 3f)
+            if (noteSpeed < 2.5f)
             {
                 noteSpeed += 0.1f;
             }
             else
             {
-                noteSpeed = 3f;
+                noteSpeed = 2.5f;
             }
         } else
         {
-            if (noteSpeed > 1f)
+            if (noteSpeed > 0.5f)
             {
                 noteSpeed -= 0.1f;
             }
             else
             {
-                noteSpeed = 1f;
+                noteSpeed = 0.5f;
             }
         }
 

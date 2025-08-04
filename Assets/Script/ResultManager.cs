@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
+    public ScoreManager scoreManager;
     public GameObject resultSet;
     public GameObject gameSet;
     public GameObject gameGearSet;

@@ -1,0 +1,28 @@
+{
+    "Items": [
+        {
+            "musicId": "0",
+            "musicName": "lemonmeloncookie",
+            "musicDiffType": "0",
+            "musicDiff": "3",
+            "accuracy": "0.00%",
+            "score": "0"
+        },
+        {
+            "musicId": "1",
+            "musicName": "duipalam_head_lether",
+            "musicDiffType": "0",
+            "musicDiff": "5",
+            "accuracy": "0.00%",
+            "score": "0"
+        },
+        {
+            "musicId": "2",
+            "musicName": "gamegemothe",
+            "musicDiffType": "0",
+            "musicDiff": "1",
+            "accuracy": "0.00%",
+            "score": "0"
+        }
+    ]
+}

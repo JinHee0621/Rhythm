@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
     //public Text[] hitText = new Text[5];
     public Text hitText;
 
-    private String[] accuracyUiText = {"Perfect","Greate","Soso","Bad","Miss"};
+    private string[] accuracyUiText = {"Perfect","Greate","Soso","Bad","Miss"};
 
     private bool delayComboEnd = false;
 
@@ -51,6 +51,16 @@ public class ScoreManager : MonoBehaviour
     public void ShowScore()
     {
         scoreText.text = current_score.ToString();
+    }
+
+    public string PrintScore()
+    {
+        return current_score.ToString();
+    }
+
+    public string PrintAccuracy()
+    {
+        return accuracyText.text;
     }
 
     public void AddCombo()

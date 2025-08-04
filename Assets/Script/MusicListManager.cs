@@ -8,6 +8,9 @@ using DG.Tweening;
 
 public class MusicListManager : MonoBehaviour
 {
+    [Header("MusicObject")]
+    public GameObject musicElement;
+
     [Header("UI")]
     public Image fadeOutScreen;
     //public SoundManager soundManager;
@@ -26,10 +29,21 @@ public class MusicListManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn());
+    }
+
+    public void ListStart()
+    {
         InitMusicList();
         current_music = SelectMusicManager.instance.music_index;
         SetMusicInfo(musicList[0]);
         StartCoroutine(MoveListFirst());
+    }
+
+    public void MusicListAdd(MusicElement data)
+    {
+        GameObject addData = Instantiate(musicElement, musicListCont.transform);
+        addData.GetComponentInChildren<MusicElement>().MusicInit(data.music_id, data.music_name, data.difficultyIdx, data.difficulty, data.accuracy, data.music_score);
+        musicList.Add(addData.GetComponentInChildren<MusicElement>());
     }
 
     IEnumerator MoveListFirst()
@@ -62,7 +76,6 @@ public class MusicListManager : MonoBehaviour
         float nextYPos = 0f;
         for (int i = 0; i < musicList.Count; i++)
         {
-            //music position first init 50f,0f,0f -> I don't know why..
             musicList[i].gameObject.transform.localPosition = new Vector3(50f, nextYPos, 0f);
             nextYPos -= 90f;
         }
@@ -153,6 +166,7 @@ public class MusicListManager : MonoBehaviour
 
     IEnumerator SelectAnim(GameObject selected)
     {
+        selected.transform.DOKill();
         selected.transform.DOLocalMove(new Vector3(-60f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.25f);
         yield return new WaitForSeconds(0.25f);
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);

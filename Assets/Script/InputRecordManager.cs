@@ -17,12 +17,13 @@ public class InputRecordManager : MonoBehaviour
     protected ArrayList noteList = new ArrayList();
     protected int noteCnt = 0;
 
-
     bool recordEnd = false;
+
     private void Awake()
     {
         fileName = "./Assets/RecordData/" + fileName + ".rhy";//@".\Assets\RecordData\NoteData1.rhy"))
     }
+
     public void Record()
     {
         if (LineBase.GetComponent<NoteMoveManager>().running)
@@ -37,7 +38,7 @@ public class InputRecordManager : MonoBehaviour
                     Debug.Log("Default Length: " + LineBase.GetComponent<NoteMoveManager>().Print_default_pos());
                     using (StreamWriter outputFile = new StreamWriter(fileName))
                     {
-                        outputFile.WriteLine(LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y);
+                        outputFile.WriteLine((LineBase.GetComponent<NoteMoveManager>().Print_default_pos() - LineBase.transform.position.y) + ",37");
                         for (int i = 0; i < noteList.Count; i++)
                         {
                             outputFile.WriteLine(noteList[i]);
@@ -73,7 +74,6 @@ public class InputRecordManager : MonoBehaviour
         soundManager.PlayBgm(true);
     }
 
-
     protected float NotePosition(float paramPos)
     {
         float positionY = paramPos;
@@ -93,7 +93,6 @@ public class InputRecordManager : MonoBehaviour
         return positionY;
     }
 
-
     protected IEnumerator ColorDisabled(SpriteRenderer target)
     {
         yield return new WaitForSeconds(0.25f);
@@ -107,6 +106,7 @@ public class InputRecordManager : MonoBehaviour
             target.color = new Color(target.color.r, target.color.g, target.color.b, 0);
         }
     }
+
     protected float CalNoteLength(float noteLength)
     {
         float result = 0f;
