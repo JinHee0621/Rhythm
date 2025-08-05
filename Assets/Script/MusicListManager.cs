@@ -12,9 +12,9 @@ public class MusicListManager : MonoBehaviour
     public GameObject musicElement;
 
     [Header("UI")]
+    public GameObject musicTrackObj;
+    public Image musicTrackImage;
     public Image fadeOutScreen;
-    //public SoundManager soundManager;
-    //private Dictionary<int, string> musicDic = new Dictionary<int, string>();
     public Text select_Music_Name;
     public Text select_Music_Score;
     public Text select_Music_Diff;
@@ -29,6 +29,27 @@ public class MusicListManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn());
+        TrackRotate();
+    }
+
+    public void TrackObjAnim(MusicElement curr)
+    {
+        StopCoroutine(FixTrackPos());
+        musicTrackObj.transform.localPosition = new Vector3(-250f, 0, 0f);
+        musicTrackImage.sprite = curr.coverImage;
+        musicTrackObj.transform.DOLocalMove(new Vector3(50f, 0f, 0f), 1.5f);
+        StartCoroutine(FixTrackPos());
+    }
+
+    IEnumerator FixTrackPos()
+    {
+        yield return new WaitForSeconds(1.5f);
+        musicTrackObj.transform.localPosition = new Vector3(50f, 0f, 0f);
+    }
+
+    public void TrackRotate()
+    {
+        musicTrackObj.transform.DORotate(new Vector3(0, 0, -360), 10f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
     }
 
     public void ListStart()
@@ -39,10 +60,23 @@ public class MusicListManager : MonoBehaviour
         StartCoroutine(MoveListFirst());
     }
 
-    public void MusicListAdd(MusicElement data)
+    public void MusicListAdd(MusicData data)
     {
         GameObject addData = Instantiate(musicElement, musicListCont.transform);
-        addData.GetComponentInChildren<MusicElement>().MusicInit(data.music_id, data.music_name, data.difficultyIdx, data.difficulty, data.accuracy, data.music_score);
+
+        int id;
+        int.TryParse(data.musicId, out id);
+
+        int diffIdx;
+        int.TryParse(data.musicDiffType, out diffIdx);
+
+        int diff;
+        int.TryParse(data.musicDiff, out diff);
+
+        int score;
+        int.TryParse(data.score, out score);
+
+        addData.GetComponentInChildren<MusicElement>().MusicInit(id, data.musicName, diffIdx, diff, data.accuracy, score);
         musicList.Add(addData.GetComponentInChildren<MusicElement>());
     }
 
@@ -113,9 +147,10 @@ public class MusicListManager : MonoBehaviour
 
     public void SetMusicInfo(MusicElement curr)
     {
+        TrackObjAnim(curr);
         select_Music_Name.text = curr.music_name;
         select_Music_Diff.text = curr.difficulty.ToString();
-        select_Music_Acc.text = curr.accuracy.ToString() + "%";
+        select_Music_Acc.text = curr.accuracy.ToString();
         select_Music_Score.text = curr.music_score.ToString();
         curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z), 1.5f);
 

@@ -114,15 +114,7 @@ public class DataManager : MonoBehaviour
                 List<MusicData> loadData = JsonHelper.ReadFromJson<MusicData>(content);
                 for(int i = 0; i < loadData.Count; i++)
                 {
-                    //loadData[i].print();
-                    MusicElement eleData = new MusicElement();
-                    int.TryParse(loadData[i].musicId, out eleData.music_id);
-                    eleData.music_name = loadData[i].musicName;
-                    int.TryParse(loadData[i].musicDiffType, out eleData.difficultyIdx);
-                    int.TryParse(loadData[i].musicDiff, out eleData.difficulty);
-                    eleData.accuracy = loadData[i].accuracy;
-                    int.TryParse(loadData[i].score, out eleData.music_score);
-                    musicListManager.MusicListAdd(eleData);
+                    musicListManager.MusicListAdd(loadData[i]);
                 }
             }
         }
