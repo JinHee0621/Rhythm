@@ -27,7 +27,6 @@ public class NoteMoveManager : MonoBehaviour
         default_pos = gameObject.transform.position.y;
     }
 
-    //?????????? ???? ???? ????
     //speed ++ => 
     public void FirstPosWithSpeed()
     {

@@ -1,6 +1,7 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OptionManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class OptionManager : MonoBehaviour
     public int frameRate = 60;
     public float musicVolume;
     public float sfxVolume;
-    public float noteSpeed = 1f;
+    public float noteSpeed = 1.5f;
     public float userSync;
 
     public bool currentInGame = false;
@@ -20,6 +21,12 @@ public class OptionManager : MonoBehaviour
 
     [SerializeField]
     private NoteMoveManager noteMoveManager;
+
+    [Header("Key Setting")]
+    public KeyCode inputBtnKey1 = KeyCode.D;
+    public KeyCode inputBtnKey2 = KeyCode.F;
+    public KeyCode inputBtnKey3 = KeyCode.J;
+    public KeyCode inputBtnKey4 = KeyCode.K;
 
 
     private void Awake()
@@ -49,6 +56,16 @@ public class OptionManager : MonoBehaviour
         {
             ChangeSpeed(true);
         }
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            ReloadGame();
+        }
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ChangeSpeed(bool upSpeed)
@@ -91,5 +108,10 @@ public class OptionManager : MonoBehaviour
             loadRecordDataManager = GameObject.Find("LoadManager").GetComponentInChildren<LoadRecordDataManager>();
             noteMoveManager = GameObject.Find("NoteLine_Base").GetComponent<NoteMoveManager>();
         }
+    }
+
+    public void KeySetting(int index)
+    {
+        
     }
 }

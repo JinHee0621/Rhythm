@@ -15,6 +15,8 @@ public class MusicListManager : MonoBehaviour
     public GameObject musicTrackObj;
     public Image musicTrackImage;
     public Image fadeOutScreen;
+
+    public GameObject misicInfoObj;
     public Text select_Music_Name;
     public Text select_Music_Score;
     public Text select_Music_Diff;
@@ -34,8 +36,8 @@ public class MusicListManager : MonoBehaviour
 
     public void TrackObjAnim(MusicElement curr)
     {
-        StopCoroutine(FixTrackPos());
         musicTrackObj.transform.localPosition = new Vector3(-250f, 0, 0f);
+        StopCoroutine(FixTrackPos());
         musicTrackImage.sprite = curr.coverImage;
         musicTrackObj.transform.DOLocalMove(new Vector3(50f, 0f, 0f), 1.5f);
         StartCoroutine(FixTrackPos());
@@ -203,8 +205,10 @@ public class MusicListManager : MonoBehaviour
     {
         selected.transform.DOKill();
         selected.transform.DOLocalMove(new Vector3(-60f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.25f);
+        musicTrackObj.transform.DOLocalMove(new Vector3(60f, 0f, 0f), 0.25f);
         yield return new WaitForSeconds(0.25f);
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
+        musicTrackObj.transform.DOLocalMove(new Vector3(-350f, 0f, 0f), 0.75f);
         yield return new WaitForSeconds(0.75f);
         StartCoroutine(FadeOut());
         yield return new WaitForSeconds(1f);
