@@ -40,9 +40,10 @@ public class PlayManager : MonoBehaviour
 
     IEnumerator FadeOutFirst()
     {
-        yield return new WaitForSeconds(1.0f);
-        fadeOut_screen.DOColor(new Color(0f, 0f, 0f, 0f), 3.0f);
-        yield return new WaitForSeconds(4f);
+        fadeOut_screen.DOColor(new Color(0f, 0f, 0f, 0f), 3f);
+        yield return new WaitForSeconds(3f);
+        // Show Counter
+
         noteMoveManager.FirstPosWithSpeed();
         noteMoveManager.running = true;
         SoundManager.instance.SetBgm(currentMusic);

@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     int channelIndex;
 
     [Header("Test")]
-    public bool test_play;
+    public bool test_bgm;
 
 
     public enum Sfx { }
@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
     {
         instance = this;
         Init();
-        if(test_play)
+        if(test_bgm)
         {
             PlayBgm(true);
         }
@@ -116,8 +116,6 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.Stop();
         }
     }
-
-
 
     public void PauseBgm(bool isPause)
     {

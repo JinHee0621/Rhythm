@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
+    public InGameUIManager inGameUIManager;
+
     private const int MAX_SCORE = 1000000;
     private int current_score = 0;
     private int total_note_count = 0;
@@ -66,6 +68,7 @@ public class ScoreManager : MonoBehaviour
     public void AddCombo()
     {
         current_combo += 1;
+        inGameUIManager.ComboAnim();
         ShowCombo();
     }
 
@@ -81,11 +84,11 @@ public class ScoreManager : MonoBehaviour
     IEnumerator ComboDelay()
     {
         current_combo += 1;
+        inGameUIManager.ComboAnim();
         ShowCombo();
         yield return new WaitForSeconds(0.1f);
         delayComboEnd = false;   
     }
-
 
     public void ResetCombo()
     {

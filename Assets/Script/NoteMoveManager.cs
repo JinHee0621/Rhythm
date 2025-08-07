@@ -48,6 +48,7 @@ public class NoteMoveManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T) && running == true)
         {
             running = false;
+            SoundManager.instance.PauseBgm(true);
         }
         else if(Input.GetKeyDown(KeyCode.T) && running == false)
         {
@@ -76,6 +77,7 @@ public class NoteMoveManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
         }
         running = true;
+        SoundManager.instance.PauseBgm(false);
     }
 
 }

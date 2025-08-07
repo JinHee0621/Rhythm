@@ -31,6 +31,14 @@ public class InputManager4K : InputManager
     private bool Btn3Hold = false;
     private bool Btn4Hold = false;
 
+    void Start()
+    {
+        inputBtnKey1 = OptionManager.instance.input4KBtnKey_1;
+        inputBtnKey2 = OptionManager.instance.input4KBtnKey_2;
+        inputBtnKey3 = OptionManager.instance.input4KBtnKey_3;
+        inputBtnKey4 = OptionManager.instance.input4KBtnKey_4;
+    }
+
     void Update()
     {
         InputBtn1(Input.GetKey(inputBtnKey1));

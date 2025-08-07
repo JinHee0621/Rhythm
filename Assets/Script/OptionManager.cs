@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,10 +24,10 @@ public class OptionManager : MonoBehaviour
     private NoteMoveManager noteMoveManager;
 
     [Header("Key Setting")]
-    public KeyCode inputBtnKey1 = KeyCode.D;
-    public KeyCode inputBtnKey2 = KeyCode.F;
-    public KeyCode inputBtnKey3 = KeyCode.J;
-    public KeyCode inputBtnKey4 = KeyCode.K;
+    public KeyCode input4KBtnKey_1 = KeyCode.A;
+    public KeyCode input4KBtnKey_2 = KeyCode.S;
+    public KeyCode input4KBtnKey_3 = KeyCode.Semicolon;
+    public KeyCode input4KBtnKey_4 = KeyCode.Quote;
 
 
     private void Awake()
@@ -47,6 +48,13 @@ public class OptionManager : MonoBehaviour
 
     private void Update()
     {
+        /*
+        KeyCode keyCode = DetectPressedKeyCode();
+        if (keyCode != KeyCode.None)
+        {
+            Debug.Log(keyCode);
+        }*/
+
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
             ChangeSpeed(false);
@@ -110,8 +118,24 @@ public class OptionManager : MonoBehaviour
         }
     }
 
-    public void KeySetting(int index)
+    public void KeySetting()
     {
-        
+            KeyCode keyCode = DetectPressedKeyCode();
+    if (keyCode != KeyCode.None)
+    {
+    	Debug.Log(keyCode);	// 감지된 키코드를 로그로 남긴다.
+    }
+    }
+
+    private KeyCode DetectPressedKeyCode()
+    {
+        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyDown(kcode))
+            {
+                return kcode;
+            }
+        }
+        return KeyCode.None;
     }
 }
