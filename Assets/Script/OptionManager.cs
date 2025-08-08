@@ -3,18 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
     public static OptionManager instance;
 
+    public GameObject optionSet;
+    public GameObject optionCursor;
+    public int cursorPointer;
+
+    private float[] cursor1MovePoint = { 85f, -40f, -165f};
+    private float[] cursor2MovePoint = { };
+    private float[] cursor3MovePoint = { };
+
+
     public int frameRate = 60;
     public float musicVolume;
     public float sfxVolume;
-    public float noteSpeed = 1.5f;
+    public float noteSpeed;
     public float userSync;
 
-    public bool currentInGame = false;
+    public bool currentOption;
+    public bool currentInGame;
 
     public string gameType = "4K";
     [SerializeField]
@@ -24,14 +35,18 @@ public class OptionManager : MonoBehaviour
     private NoteMoveManager noteMoveManager;
 
     [Header("Key Setting")]
-    public KeyCode input4KBtnKey_1 = KeyCode.A;
-    public KeyCode input4KBtnKey_2 = KeyCode.S;
-    public KeyCode input4KBtnKey_3 = KeyCode.Semicolon;
-    public KeyCode input4KBtnKey_4 = KeyCode.Quote;
+    public KeyCode input4KBtnKey_1 = KeyCode.D;
+    public KeyCode input4KBtnKey_2 = KeyCode.F;
+    public KeyCode input4KBtnKey_3 = KeyCode.J;
+    public KeyCode input4KBtnKey_4 = KeyCode.K;
 
 
     private void Awake()
     {
+        currentOption = false;
+        currentInGame = false;
+        cursorPointer = 0;
+
         if (instance == null)
         {
             instance = this;
@@ -44,6 +59,7 @@ public class OptionManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        noteSpeed = 1.5f;
     }
 
     private void Update()
@@ -54,22 +70,59 @@ public class OptionManager : MonoBehaviour
         {
             Debug.Log(keyCode);
         }*/
-
-        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        if(currentOption)
         {
-            ChangeSpeed(false);
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                currentOption = false;
+            }
 
-        if(Input.GetKeyDown(KeyCode.RightBracket))
-        {
-            ChangeSpeed(true);
-        }
+            if (Input.GetKey(KeyCode.UpArrow) == true)
+            {
 
-        if(Input.GetKeyDown(KeyCode.Tab))
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) == true)
+            {
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+            }
+
+
+
+            if (Input.GetKeyDown(KeyCode.LeftBracket))
+            {
+                ChangeSpeed(false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightBracket))
+            {
+                ChangeSpeed(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                ReloadGame();
+            }
+        } else
         {
-            ReloadGame();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                currentOption = true;
+            }
         }
     }
+
+    public void MoveOptionCursor(int type)
+    {
+        //type : 0 = up, 1 = down, 2 = return
+        if(type == 0)
+        {
+
+        }
+    }
+
 
     public void ReloadGame()
     {

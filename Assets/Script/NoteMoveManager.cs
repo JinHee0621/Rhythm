@@ -24,6 +24,7 @@ public class NoteMoveManager : MonoBehaviour
     void Start()
     {
         speed = OptionManager.instance.noteSpeed;
+        Debug.Log("Note Speed : " + speed);
         default_pos = gameObject.transform.position.y;
     }
 

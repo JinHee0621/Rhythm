@@ -34,6 +34,26 @@ public class MusicListManager : MonoBehaviour
         TrackRotate();
     }
 
+    void Update()
+    {
+        //Select Music when push arrow button
+        if(!OptionManager.instance.currentOption)
+        {
+            if (Input.GetKey(KeyCode.UpArrow) == true)
+            {
+                SelectBeforeMusic();
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) == true)
+            {
+                SelectNextMusic();
+            }
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SelectMusic();
+            }
+        }
+    }
+
     public void TrackObjAnim(MusicElement curr)
     {
         musicTrackObj.transform.localPosition = new Vector3(-250f, 0, 0f);
@@ -88,23 +108,6 @@ public class MusicListManager : MonoBehaviour
         musicListCont.transform.DOLocalMoveY(moveY, 0.5f);
         SetMusicInfo(musicList[current_music]);
         yield return new WaitForSeconds(0.1f);
-    }
-
-    void Update()
-    {
-        //Select Music when push arrow button 
-        if (Input.GetKey(KeyCode.UpArrow) == true)
-        {
-            SelectBeforeMusic();
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) == true)
-        {
-            SelectNextMusic();
-        }
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SelectMusic();
-        }
     }
 
     public void InitMusicList()

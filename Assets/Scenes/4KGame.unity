@@ -580,14 +580,15 @@ MonoBehaviour:
   sfxVolume: 0
   noteSpeed: 1
   userSync: 0
+  currentOption: 0
   currentInGame: 0
   gameType: 4K
   loadRecordDataManager: {fileID: 0}
   noteMoveManager: {fileID: 0}
-  inputBtnKey1: 100
-  inputBtnKey2: 102
-  inputBtnKey3: 106
-  inputBtnKey4: 107
+  input4KBtnKey_1: 97
+  input4KBtnKey_2: 115
+  input4KBtnKey_3: 59
+  input4KBtnKey_4: 39
 --- !u!1 &234436835
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,7 +4266,7 @@ MonoBehaviour:
   sfxClips: []
   sfxVolume: 0
   channels: 0
-  test_play: 0
+  test_bgm: 0
 --- !u!1 &1993912755
 GameObject:
   m_ObjectHideFlags: 0
