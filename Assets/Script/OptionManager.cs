@@ -5,18 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class OptionManager : MonoBehaviour
 {
     public static OptionManager instance;
-
-    public GameObject optionSet;
-    public GameObject optionCursor;
-    public int cursorPointer;
-
-    private float[] cursor1MovePoint = { 85f, -40f, -165f};
-    private float[] cursor2MovePoint = { };
-    private float[] cursor3MovePoint = { };
-
 
     public int frameRate = 60;
     public float musicVolume;
@@ -45,7 +37,6 @@ public class OptionManager : MonoBehaviour
     {
         currentOption = false;
         currentInGame = false;
-        cursorPointer = 0;
 
         if (instance == null)
         {
@@ -60,67 +51,6 @@ public class OptionManager : MonoBehaviour
             }
         }
         noteSpeed = 1.5f;
-    }
-
-    private void Update()
-    {
-        /*
-        KeyCode keyCode = DetectPressedKeyCode();
-        if (keyCode != KeyCode.None)
-        {
-            Debug.Log(keyCode);
-        }*/
-        if(currentOption)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                currentOption = false;
-            }
-
-            if (Input.GetKey(KeyCode.UpArrow) == true)
-            {
-
-            }
-            else if (Input.GetKey(KeyCode.DownArrow) == true)
-            {
-
-            }
-            else if (Input.GetKeyDown(KeyCode.Return))
-            {
-            }
-
-
-
-            if (Input.GetKeyDown(KeyCode.LeftBracket))
-            {
-                ChangeSpeed(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightBracket))
-            {
-                ChangeSpeed(true);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                ReloadGame();
-            }
-        } else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                currentOption = true;
-            }
-        }
-    }
-
-    public void MoveOptionCursor(int type)
-    {
-        //type : 0 = up, 1 = down, 2 = return
-        if(type == 0)
-        {
-
-        }
     }
 
 
@@ -173,11 +103,11 @@ public class OptionManager : MonoBehaviour
 
     public void KeySetting()
     {
-            KeyCode keyCode = DetectPressedKeyCode();
-    if (keyCode != KeyCode.None)
-    {
-    	Debug.Log(keyCode);	// 감지된 키코드를 로그로 남긴다.
-    }
+        KeyCode keyCode = DetectPressedKeyCode();
+        if (keyCode != KeyCode.None)
+        {
+    	    Debug.Log(keyCode);	// 감지된 키코드를 로그로 남긴다.
+        }
     }
 
     private KeyCode DetectPressedKeyCode()
