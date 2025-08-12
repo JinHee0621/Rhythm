@@ -32,7 +32,6 @@ public class OptionManager : MonoBehaviour
     public KeyCode input4KBtnKey_3 = KeyCode.J;
     public KeyCode input4KBtnKey_4 = KeyCode.K;
 
-
     private void Awake()
     {
         currentOption = false;

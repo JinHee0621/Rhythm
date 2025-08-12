@@ -14,7 +14,7 @@ public class OptionMenuManager : MonoBehaviour
 
     private float cursorXpos = 0f;
     private float[] cursor1MovePoint = { 85f, -40f, -165f };
-    private float[] cursor2MovePoint = { };
+    private float[] cursor2MovePoint = { 150f, 37f, -70f, -192f, -285f};
     private float[] cursor3MovePoint = { };
 
     public bool currentOption;
@@ -24,6 +24,7 @@ public class OptionMenuManager : MonoBehaviour
     {
         cursorPointer = 0;
         cursorDepth = 0;
+        currentOption = OptionManager.instance.currentOption;
     }
 
     private void Update()
@@ -40,7 +41,10 @@ public class OptionMenuManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 currentOption = false;
-                ShowOptionMenu(currentOption);
+                OptionManager.instance.currentOption = currentOption;
+                ShowFirstOptionMenu(currentOption);
+                cursorPointer = 0;
+                cursorDepth = 0;
             }
 
             if (Input.GetKeyDown(KeyCode.UpArrow) == true)
@@ -54,7 +58,8 @@ public class OptionMenuManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-
+                Debug.Log(cursorDepth + " : " + cursorPointer);
+                SelectOption(cursorDepth, cursorPointer);
             }
         }
         else
@@ -62,15 +67,18 @@ public class OptionMenuManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 currentOption = true;
-                ShowOptionMenu(currentOption);
+                OptionManager.instance.currentOption = currentOption;
+                ShowFirstOptionMenu(currentOption);
+                MoveOptionCursor(0, 0, 0);
             }
         }
     }
 
-    public void ShowOptionMenu(bool enable)
+    public void ShowFirstOptionMenu(bool enable)
     {
         menuSet.SetActive(enable);
         menuPage[0].SetActive(enable);
+        menuPage[1].SetActive(false);
     }
 
     public void MoveOptionCursor(int depth, int index, int updown)
@@ -96,14 +104,19 @@ public class OptionMenuManager : MonoBehaviour
             if (cursorPointer > 0)
             {
                 cursorPointer -= 1;
-                if (depth == 1 && cursorPointer <= 2)
-                {
-                    cursorXpos = -330f;
-                }
             }
             else
             {
                 cursorPointer = 0;
+            }
+
+            if (depth == 1 && cursorPointer <= 2)
+            {
+                cursorXpos = -330f;
+            }
+            else if (depth == 1 && cursorPointer > 2)
+            {
+                cursorXpos = -150f;
             }
         }
         else
@@ -111,23 +124,35 @@ public class OptionMenuManager : MonoBehaviour
             if (cursorPointer < maxIndex)
             {
                 cursorPointer += 1;
-                if (depth == 1 && cursorPointer > 2)
-                {
-                    cursorXpos = -150f;
-                }
             }
             else
             {
                 cursorPointer = maxIndex;
             }
+
+            if (depth == 1 && cursorPointer > 2)
+            {
+                cursorXpos = -150f;
+            }
         }
 
-        float nextPos = targetPosArr[index];
+        float nextPos = targetPosArr[cursorPointer];
         menuCursor.transform.DOLocalMove(new Vector3(cursorXpos, nextPos), 0.25f).SetEase(Ease.OutBack);
     }
 
-    public void SelectOption(int depth, int index)
+    public void SelectOption(int depth, int pointer)
     {
-
+        if(depth == 0)
+        {
+            if(pointer == 0)
+            {
+                menuPage[depth].SetActive(false);
+                depth += 1;
+                cursorDepth = depth;
+                cursorPointer = 0;
+                menuPage[depth].SetActive(true);
+                MoveOptionCursor(cursorDepth, cursorPointer, 0);
+            }
+        }
     }
 }
