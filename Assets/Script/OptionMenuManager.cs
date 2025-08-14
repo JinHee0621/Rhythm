@@ -144,10 +144,23 @@ public class OptionMenuManager : MonoBehaviour
     {
         if(depth == 0)
         {
+            //go to setting
             if(pointer == 0)
             {
                 menuPage[depth].SetActive(false);
                 depth += 1;
+                cursorDepth = depth;
+                cursorPointer = 0;
+                menuPage[depth].SetActive(true);
+                MoveOptionCursor(cursorDepth, cursorPointer, 0);
+            }
+        } else if(depth == 1)
+        {
+            //go to back
+            if(pointer == 4)
+            {
+                menuPage[depth].SetActive(false);
+                depth -= 1;
                 cursorDepth = depth;
                 cursorPointer = 0;
                 menuPage[depth].SetActive(true);
