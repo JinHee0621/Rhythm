@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class OptionMenuManager : MonoBehaviour
@@ -13,12 +14,19 @@ public class OptionMenuManager : MonoBehaviour
     public int cursorDepth;
 
     private float cursorXpos = 0f;
+    private float cursorYpos = 0f;
     private float[] cursor1MovePoint = { 85f, -40f, -165f };
     private float[] cursor2MovePoint = { 150f, 37f, -70f, -192f, -285f};
-    private float[] cursor3MovePoint = { };
+    private float[] cursor3MovePoint = { -270f, -90f, 90f, 270f};
 
     public bool currentOption;
     public bool currentInGame;
+
+    [Header("4KText")]
+    public Text Button1Text;
+    public Text Button2Text;
+    public Text Button3Text;
+    public Text Button4Text;
 
     void Start()
     {
@@ -55,6 +63,14 @@ public class OptionMenuManager : MonoBehaviour
             {
                 MoveOptionCursor(cursorDepth, cursorPointer, 1);
             }
+            else if(Input.GetKeyDown(KeyCode.RightArrow) == true)
+            {
+                MoveOptionCursor(cursorDepth, cursorPointer, 2);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) == true)
+            {
+                MoveOptionCursor(cursorDepth, cursorPointer, 3);
+            }
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -79,11 +95,13 @@ public class OptionMenuManager : MonoBehaviour
         menuSet.SetActive(enable);
         menuPage[0].SetActive(enable);
         menuPage[1].SetActive(false);
+        menuPage[2].SetActive(false);
     }
 
     public void MoveOptionCursor(int depth, int index, int updown)
     {
         int maxIndex = 0;
+        float nextPos = 0f;
         float[] targetPosArr = { };
         if (depth == 0)
         {
@@ -97,47 +115,120 @@ public class OptionMenuManager : MonoBehaviour
             maxIndex = 4;
             targetPosArr = cursor2MovePoint;
         }
+        else if (depth == 2)
+        {
+            cursorYpos = 100f;
+            maxIndex = 3;
+            targetPosArr = cursor3MovePoint;
+        }
 
-        // 0 : up, 1 : down
+        // 0 : up, 1 : down, 2: right, 3: left
         if (updown == 0)
         {
-            if (cursorPointer > 0)
+            if(cursorDepth < 2)
             {
-                cursorPointer -= 1;
-            }
-            else
-            {
-                cursorPointer = 0;
-            }
+                if (cursorPointer > 0)
+                {
+                    cursorPointer -= 1;
+                }
+                else
+                {
+                    cursorPointer = 0;
+                }
 
-            if (depth == 1 && cursorPointer <= 2)
+                if (depth == 1 && cursorPointer <= 2)
+                {
+                    cursorXpos = -330f;
+                }
+                else if (depth == 1 && cursorPointer > 2)
+                {
+                    cursorXpos = -150f;
+                }
+                nextPos = targetPosArr[cursorPointer];
+                MoveYPos(nextPos);
+            } else
             {
-                cursorXpos = -330f;
-            }
-            else if (depth == 1 && cursorPointer > 2)
-            {
-                cursorXpos = -150f;
+                //Move Still
             }
         }
-        else
+        else if(updown == 1)
         {
-            if (cursorPointer < maxIndex)
+            if(cursorDepth < 2)
             {
-                cursorPointer += 1;
+                if (cursorPointer < maxIndex)
+                {
+                    cursorPointer += 1;
+                }
+                else
+                {
+                    cursorPointer = maxIndex;
+                }
+
+                if (depth == 1 && cursorPointer > 2)
+                {
+                    cursorXpos = -150f;
+                }
+                nextPos = targetPosArr[cursorPointer];
+                MoveYPos(nextPos);
+            } else
+            {
+                //Move Still
+            }
+        }
+        else if(updown == 2)
+        {
+            if (cursorDepth == 2)
+            {
+                if (cursorPointer < maxIndex)
+                {
+                    cursorPointer += 1;
+                }
+                else
+                {
+                    cursorPointer = maxIndex;
+                }
+                nextPos = targetPosArr[cursorPointer];
+                MoveXPos(nextPos);
+            } else
+            {
+                //Move Still
+            }
+        }
+        else if(updown == 3)
+        {
+            if (cursorDepth == 2)
+            {
+                if (cursorPointer > 0)
+                {
+                    cursorPointer -= 1;
+                }
+                else
+                {
+                    cursorPointer = 0;
+                }
+                nextPos = targetPosArr[cursorPointer];
+                MoveXPos(nextPos);
             }
             else
             {
-                cursorPointer = maxIndex;
-            }
-
-            if (depth == 1 && cursorPointer > 2)
-            {
-                cursorXpos = -150f;
+                //Move Still
             }
         }
+    }
 
-        float nextPos = targetPosArr[cursorPointer];
+    public void MoveYPos(float nextPos)
+    {
         menuCursor.transform.DOLocalMove(new Vector3(cursorXpos, nextPos), 0.25f).SetEase(Ease.OutBack);
+    }
+
+    public void MoveXPos(float nextPos)
+    {
+        menuCursor.transform.DOLocalMove(new Vector3(nextPos, cursorYpos), 0.25f).SetEase(Ease.OutBack);
+    }
+
+    public void MoveStill()
+    {
+
     }
 
     public void SelectOption(int depth, int pointer)
@@ -165,6 +256,14 @@ public class OptionMenuManager : MonoBehaviour
                 cursorPointer = 0;
                 menuPage[depth].SetActive(true);
                 MoveOptionCursor(cursorDepth, cursorPointer, 0);
+            } else if(pointer == 3)
+            {
+                menuPage[depth].SetActive(false);
+                depth += 1;
+                cursorDepth = depth;
+                cursorPointer = 0;
+                menuPage[depth].SetActive(true);
+                MoveOptionCursor(cursorDepth, cursorPointer, 3);
             }
         }
     }
