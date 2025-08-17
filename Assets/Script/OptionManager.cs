@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -100,24 +99,5 @@ public class OptionManager : MonoBehaviour
         }
     }
 
-    public void KeySetting()
-    {
-        KeyCode keyCode = DetectPressedKeyCode();
-        if (keyCode != KeyCode.None)
-        {
-    	    Debug.Log(keyCode);	// 감지된 키코드를 로그로 남긴다.
-        }
-    }
 
-    private KeyCode DetectPressedKeyCode()
-    {
-        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKeyDown(kcode))
-            {
-                return kcode;
-            }
-        }
-        return KeyCode.None;
-    }
 }
