@@ -8,6 +8,9 @@ using DG.Tweening;
 public class ScoreManager : MonoBehaviour
 {
     public InGameUIManager inGameUIManager;
+    public NoteMoveManager noteMoveManager;
+    public ResultManager resultManager;
+
 
     private const int MAX_SCORE = 1000000;
     private int current_score = 0;
@@ -23,8 +26,8 @@ public class ScoreManager : MonoBehaviour
     public int in_note_count = 0;
     public Text accuracyText;
 
-    public NoteMoveManager noteMoveManager;
-    public ResultManager resultManager;
+    public string rank;
+
 
     //public Text[] hitText = new Text[5];
     public Text hitText;
@@ -175,5 +178,30 @@ public class ScoreManager : MonoBehaviour
     public void reset_note_count()
     {
         in_note_count = 0;
+    }
+
+
+    public void SetRank()
+    {
+        if(accuracy_rate >= 95.00f)
+        {
+            if(accuracy_rate == 100.00f)
+            {
+                rank = "Kirby";
+            } else
+            {
+                rank = "S";
+            }
+        } else if(accuracy_rate >= 90.00f && accuracy_rate < 95.00f)
+        {
+            rank = "A";
+        } else if(accuracy_rate >= 85.00f && accuracy_rate < 90.00f)
+        {
+            rank = "B";
+        } else if(accuracy_rate < 85.00f)
+        {
+            rank = "Doe";
+        }
+        Debug.Log(rank);
     }
 }
