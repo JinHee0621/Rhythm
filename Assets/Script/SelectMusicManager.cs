@@ -13,6 +13,8 @@ public class SelectMusicManager : MonoBehaviour
     public string select_name;
     public AudioClip select_audio;
 
+    public float score;
+    public float accuracy;
 
     public static SelectMusicManager instance { get; set; }
 
@@ -32,11 +34,13 @@ public class SelectMusicManager : MonoBehaviour
         }
     }
 
-    public void SetMusic(MusicElement target, int index)
+    public void SetMusic(MusicElement target, int index, float currScore, string currAcc)
     {
         instance.music_index = index;
         instance.select_name = target.music_name;
         instance.select_audio = target.music;
+        instance.score = currScore;
+        //instance.accuracy = currAcc;
     }
 
 

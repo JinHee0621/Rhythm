@@ -112,9 +112,11 @@ public class DataManager : MonoBehaviour
             {
                 string content = reader.ReadToEnd();
                 List<MusicData> loadData = JsonHelper.ReadFromJson<MusicData>(content);
-                for(int i = 0; i < loadData.Count; i++)
+                musicList = new MusicData[loadData.Count];
+                for (int i = 0; i < loadData.Count; i++)
                 {
                     musicListManager.MusicListAdd(loadData[i]);
+                    musicList[i] = loadData[i];
                 }
             }
         }
@@ -123,7 +125,7 @@ public class DataManager : MonoBehaviour
 
     public void FixScore(int id, int diffType, int score)
     {
-
+        Debug.Log(musicList[id]);
     }
 
     public void SaveFileData(string data)
