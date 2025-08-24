@@ -13,7 +13,7 @@ public class MusicElement : MonoBehaviour
     public int difficultyIdx;
     public int difficulty;
 
-    public string accuracy;
+    public float accuracy;
     public int music_score;
     public Image music_cover;
 
@@ -28,7 +28,7 @@ public class MusicElement : MonoBehaviour
         //Debug.Log(gameObject.transform.GetChild(0).transform.GetChild(0).name);
     }
 
-    public void MusicInit(int id, string name, int diffType, int diff, string acc, int score)
+    public void MusicInit(int id, string name, int diffType, int diff, float acc, int score)
     {
         music_id = id;
         music_name = name;

@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour
     public NoteMoveManager noteMoveManager;
     public ResultManager resultManager;
 
-
     private const int MAX_SCORE = 1000000;
     private int current_score = 0;
     private int total_note_count = 0;
@@ -180,7 +179,6 @@ public class ScoreManager : MonoBehaviour
         in_note_count = 0;
     }
 
-
     public void SetRank()
     {
         if(accuracy_rate >= 95.00f)
@@ -203,5 +201,10 @@ public class ScoreManager : MonoBehaviour
             rank = "Doe";
         }
         Debug.Log(rank);
+    }
+
+    public void CheckScore()
+    {
+        SelectMusicManager.instance.CheckResult(current_score, accuracy_rate);
     }
 }

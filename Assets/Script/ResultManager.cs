@@ -45,6 +45,7 @@ public class ResultManager : MonoBehaviour
             hitTypeCntTxt[idx].text = hitTypeCnt[idx].ToString();
         }
 
+        scoreManager.CheckScore();
         inGameUIManager.FadeIn();
         yield return new WaitForSeconds(5f);
         StartCoroutine(MoveMusicSelect());

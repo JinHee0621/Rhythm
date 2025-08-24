@@ -98,9 +98,26 @@ public class MusicListManager : MonoBehaviour
         int score;
         int.TryParse(data.score, out score);
 
-        addData.GetComponentInChildren<MusicElement>().MusicInit(id, data.musicName, diffIdx, diff, data.accuracy, score);
+        float accuracy;
+        float.TryParse(data.accuracy, out accuracy);
+
+        addData.GetComponentInChildren<MusicElement>().MusicInit(id, data.musicName, diffIdx, diff, accuracy, score);
         musicList.Add(addData.GetComponentInChildren<MusicElement>());
     }
+
+    public void MusicListFix(MusicData data, int index)
+    {
+        int score;
+        int.TryParse(data.score, out score);
+
+        musicList[index].music_score = score;
+
+        float accuracy;
+        float.TryParse(data.accuracy, out accuracy);
+
+        musicList[index].accuracy = accuracy;
+    }
+
 
     IEnumerator MoveListFirst()
     {
@@ -155,7 +172,7 @@ public class MusicListManager : MonoBehaviour
         TrackObjAnim(curr);
         select_Music_Name.text = curr.music_name;
         select_Music_Diff.text = curr.difficulty.ToString();
-        select_Music_Acc.text = curr.accuracy.ToString();
+        select_Music_Acc.text = curr.accuracy.ToString() + "%";
         select_Music_Score.text = curr.music_score.ToString();
         curr.transform.DOLocalMove(new Vector3(-50f, curr.transform.localPosition.y, curr.transform.localPosition.z), 1.5f);
 
@@ -200,7 +217,8 @@ public class MusicListManager : MonoBehaviour
     public void SelectMusic()
     {
         GameObject selected = musicList[current_music].gameObject;
-        SelectMusicManager.instance.SetMusic(selected.GetComponent<MusicElement>(), current_music);
+        MusicElement selectedMusic = selected.GetComponent<MusicElement>();
+        SelectMusicManager.instance.SetMusic(selectedMusic, current_music, selectedMusic.music_score, selectedMusic.accuracy);
         StartCoroutine(SelectAnim(selected));
     }
 

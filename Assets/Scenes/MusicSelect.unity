@@ -670,6 +670,8 @@ MonoBehaviour:
   select_track: {fileID: 0}
   select_name: 
   select_audio: {fileID: 0}
+  score: 0
+  accuracy: 0
 --- !u!1 &204887057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,10 +2653,10 @@ MonoBehaviour:
   gameType: 4K
   loadRecordDataManager: {fileID: 0}
   noteMoveManager: {fileID: 0}
-  input4KBtnKey_1: 97
-  input4KBtnKey_2: 115
-  input4KBtnKey_3: 59
-  input4KBtnKey_4: 39
+  input4KBtnKey_1: 100
+  input4KBtnKey_2: 102
+  input4KBtnKey_3: 106
+  input4KBtnKey_4: 107
 --- !u!4 &1361522329
 Transform:
   m_ObjectHideFlags: 0

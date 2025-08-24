@@ -67,7 +67,14 @@ public class DataManager : MonoBehaviour
     {
         if(isTest)
         {
+            //Debug.Log("Load File Data");
             LoadMusicTrack();
+        }
+
+        if (SelectMusicManager.instance.isPlayed)
+        {
+            SetPlayedData(SelectMusicManager.instance.music_index, SelectMusicManager.instance.score, SelectMusicManager.instance.accuracy);
+            SelectMusicManager.instance.isPlayed = false;
         }
     }
 
@@ -81,7 +88,7 @@ public class DataManager : MonoBehaviour
         musicList[0].musicName = "lemonmeloncookie";
         musicList[0].musicDiffType = "0";
         musicList[0].musicDiff = "3";
-        musicList[0].accuracy = "0.00%";
+        musicList[0].accuracy = "0.00";
         musicList[0].score = "0";
 
         musicList[1] = new MusicData();
@@ -89,7 +96,7 @@ public class DataManager : MonoBehaviour
         musicList[1].musicName = "duipalam_head_lether";
         musicList[1].musicDiffType = "0";
         musicList[1].musicDiff = "5";
-        musicList[1].accuracy = "0.00%";
+        musicList[1].accuracy = "0.00";
         musicList[1].score = "0";
 
         musicList[2] = new MusicData();
@@ -97,7 +104,7 @@ public class DataManager : MonoBehaviour
         musicList[2].musicName = "gamegemothe";
         musicList[2].musicDiffType = "0";
         musicList[2].musicDiff = "1";
-        musicList[2].accuracy = "0.00%";
+        musicList[2].accuracy = "0.00";
         musicList[2].score = "0";
 
         string saveData = JsonHelper.ToJson(musicList, true);
@@ -123,16 +130,18 @@ public class DataManager : MonoBehaviour
         musicListManager.ListStart();
     }
 
-    public void FixScore(int id, int diffType, int score)
-    {
-        Debug.Log(musicList[id]);
-    }
-
     public void SaveFileData(string data)
     {
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             outputFile.WriteLine(data);
         }
+    }
+
+    public void SetPlayedData(int index, int score, float accuracy)
+    {
+        musicList[index].score = score.ToString();
+        musicList[index].accuracy = accuracy.ToString();
+        musicListManager.MusicListFix(musicList[index], index);
     }
 }

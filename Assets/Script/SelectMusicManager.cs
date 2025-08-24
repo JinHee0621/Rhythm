@@ -13,8 +13,9 @@ public class SelectMusicManager : MonoBehaviour
     public string select_name;
     public AudioClip select_audio;
 
-    public float score;
+    public int score;
     public float accuracy;
+    public bool isPlayed;
 
     public static SelectMusicManager instance { get; set; }
 
@@ -34,19 +35,32 @@ public class SelectMusicManager : MonoBehaviour
         }
     }
 
-    public void SetMusic(MusicElement target, int index, float currScore, string currAcc)
+    public void SetMusic(MusicElement target, int index, int currScore, float currAcc)
     {
         instance.music_index = index;
         instance.select_name = target.music_name;
         instance.select_audio = target.music;
         instance.score = currScore;
-        //instance.accuracy = currAcc;
+        instance.accuracy = currAcc;
     }
 
+    public void CheckResult(int currScore, float currAcc)
+    {
+        if(instance.score < currScore)
+        {
+            instance.score = currScore;
+        }
+
+        if(instance.accuracy < currAcc)
+        {
+            instance.accuracy = currAcc;
+        }
+
+        isPlayed = true;
+    }
 
     public void SelectMusic()
     {
         SceneManager.LoadScene("4KGame");
     }
-
 }
