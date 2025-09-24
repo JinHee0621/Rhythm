@@ -23,12 +23,18 @@ public class OptionMenuManager : MonoBehaviour
     public bool currentOption;
     public bool currentInGame;
 
+    [Header("VolumeSet")]
+    public GameObject BGMObject;
+    public GameObject SFXObject;
+
+
     [Header("KeyText")]
     public GameObject[] ButtonTextArr;
     private bool keySettingEnabled = false;
     private GameObject buttonImg;
     private Text buttonText;
     private int keyIndex;
+
 
     void Start()
     {
@@ -287,7 +293,15 @@ public class OptionMenuManager : MonoBehaviour
                 cursorPointer = 0;
                 menuPage[depth].SetActive(true);
                 MoveOptionCursor(cursorDepth, cursorPointer, 3);
+            } else if(pointer == 0)
+            {
+                Debug.Log("Setting BGM");
+            } else if(pointer == 1)
+            {
+                Debug.Log("Setting SFX");
             }
+
+
         } else if(depth == 2)
         {
             //4K Setting

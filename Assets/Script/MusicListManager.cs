@@ -56,6 +56,7 @@ public class MusicListManager : MonoBehaviour
 
     public void TrackObjAnim(MusicElement curr)
     {
+        musicTrackObj.transform.DOComplete(true);
         musicTrackObj.transform.localPosition = new Vector3(-250f, 0, 0f);
         StopCoroutine(FixTrackPos());
         musicTrackImage.sprite = curr.coverImage;
@@ -224,11 +225,14 @@ public class MusicListManager : MonoBehaviour
 
     IEnumerator SelectAnim(GameObject selected)
     {
-        selected.transform.DOKill();
+        selected.transform.DOComplete(true);
+        musicTrackObj.transform.DOComplete(true);
         selected.transform.DOLocalMove(new Vector3(-60f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.25f);
         musicTrackObj.transform.DOLocalMove(new Vector3(60f, 0f, 0f), 0.25f);
         yield return new WaitForSeconds(0.25f);
         selected.transform.DOLocalMove(new Vector3(350f, selected.transform.localPosition.y, selected.transform.localPosition.z), 0.75f);
+
+        musicTrackObj.transform.localPosition = new Vector3(60f, 0f, 0f);
         musicTrackObj.transform.DOLocalMove(new Vector3(-350f, 0f, 0f), 0.75f);
         yield return new WaitForSeconds(0.75f);
         StartCoroutine(FadeOut());
