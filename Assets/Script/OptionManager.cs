@@ -10,8 +10,8 @@ public class OptionManager : MonoBehaviour
     public static OptionManager instance;
 
     public int frameRate = 60;
-    public float musicVolume;
-    public float sfxVolume;
+    public int musicVolume;
+    public int sfxVolume;
     public float noteSpeed;
     public float userSync;
 
@@ -35,6 +35,8 @@ public class OptionManager : MonoBehaviour
     {
         currentOption = false;
         currentInGame = false;
+        musicVolume = 5;
+        sfxVolume = 5;
 
         if (instance == null)
         {
@@ -99,5 +101,44 @@ public class OptionManager : MonoBehaviour
         }
     }
 
+    public void ChangeBGMVolume(bool updown)
+    {
+        if(updown == true)
+        {
+            if(musicVolume < 10)
+            {
+                SoundManager.instance.bgmVolume += 0.1f;
+                musicVolume += 1;
+            }
+        } else
+        {
+            if(musicVolume > 0)
+            {
+                SoundManager.instance.bgmVolume -= 0.1f;
+                musicVolume -= 1;
+            }
+        }
+        SoundManager.instance.ReInitVolume();
+    }
 
+    public void ChangeSFXVolume(bool updown)
+    {
+        if (updown == true)
+        {
+            if(sfxVolume < 10)
+            {
+                SoundManager.instance.sfxVolume += 0.1f;
+                sfxVolume += 1;
+            }
+        }
+        else
+        {
+            if(sfxVolume > 0)
+            {
+                SoundManager.instance.sfxVolume -= 0.1f;
+                sfxVolume -= 1;
+            }
+        }
+        SoundManager.instance.ReInitVolume();
+    }
 }

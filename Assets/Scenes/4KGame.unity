@@ -445,12 +445,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameUIManager: {fileID: 728059406}
+  noteMoveManager: {fileID: 578458914}
+  resultManager: {fileID: 103811027}
   scoreText: {fileID: 1913190150}
   comboText: {fileID: 40293503}
   in_note_count: 0
   accuracyText: {fileID: 609866986}
-  noteMoveManager: {fileID: 578458914}
-  resultManager: {fileID: 103811027}
+  rank: 
   hitText: {fileID: 2000538339}
 --- !u!1 &214363226
 GameObject:
@@ -4262,9 +4263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: bf7fe2b5d48d9b040888514e4cd72143, type: 3}
-  bgmVolume: 0.3
+  bgmVolume: 0.5
   sfxClips: []
-  sfxVolume: 0
+  sfxVolume: 0.5
   channels: 0
   test_bgm: 0
 --- !u!1 &1993912755

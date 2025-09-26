@@ -24,13 +24,20 @@ public class OptionMenuManager : MonoBehaviour
     public bool currentInGame;
 
     [Header("VolumeSet")]
-    public GameObject BGMObject;
-    public GameObject SFXObject;
+    public Text BGMText;
+    public Text SFXText;
+    public Image BGMUp;
+    public Image BGMDown;
+    public Image SFXUp;
+    public Image SFXDown;
+    private bool soundSettingEnabled = false;
+    private int soundSettingCase; //0 : BGM , 1 : SFX
 
 
     [Header("KeyText")]
     public GameObject[] ButtonTextArr;
     private bool keySettingEnabled = false;
+
     private GameObject buttonImg;
     private Text buttonText;
     private int keyIndex;
@@ -41,23 +48,25 @@ public class OptionMenuManager : MonoBehaviour
         cursorPointer = 0;
         cursorDepth = 0;
         currentOption = OptionManager.instance.currentOption;
+        InitBGMText();
+        InitSFXText();
     }
 
     private void Update()
     {
         if (currentOption)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if(!keySettingEnabled && !soundSettingEnabled)
             {
-                currentOption = false;
-                OptionManager.instance.currentOption = currentOption;
-                ShowFirstOptionMenu(currentOption);
-                cursorPointer = 0;
-                cursorDepth = 0;
-            }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentOption = false;
+                    OptionManager.instance.currentOption = currentOption;
+                    ShowFirstOptionMenu(currentOption);
+                    cursorPointer = 0;
+                    cursorDepth = 0;
+                }
 
-            if(!keySettingEnabled)
-            {
                 if (Input.GetKeyDown(KeyCode.UpArrow) == true)
                 {
                     MoveOptionCursor(cursorDepth, cursorPointer, 0);
@@ -77,11 +86,10 @@ public class OptionMenuManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                   // Debug.Log(cursorDepth + " : " + cursorPointer);
                     SelectOption(cursorDepth, cursorPointer);
                 }
             }
-            else
+            else if(keySettingEnabled && !soundSettingEnabled)
             {
                 KeyCode keyCode = DetectPressedKeyCode();
                 if (keyCode != KeyCode.None && keyCode != KeyCode.Return)
@@ -96,15 +104,57 @@ public class OptionMenuManager : MonoBehaviour
                     keySettingEnabled = false;
                 }
             }
+            else if(!keySettingEnabled && soundSettingEnabled)
+            {
+                //Sound Setting
+                if (Input.GetKeyDown(KeyCode.UpArrow) == true)
+                {
+                    //Sound Up
+                    if(soundSettingCase == 0)
+                    {
+                        OptionManager.instance.ChangeBGMVolume(true);
+                        InitBGMText();
+                    } else if(soundSettingCase == 1)
+                    {
+                        OptionManager.instance.ChangeSFXVolume(true);
+                        InitSFXText();
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow) == true)
+                {
+                    //Sound Down
+                    if (soundSettingCase == 0)
+                    {
+                        OptionManager.instance.ChangeBGMVolume(false);
+                        InitBGMText();
+                    }
+                    else if (soundSettingCase == 1)
+                    {
+                        OptionManager.instance.ChangeSFXVolume(false);
+                        InitSFXText();
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape))
+                {
+                    //Out Sound Setting
+                    BGMText.color = new Color(138 / 255f, 138 / 255f, 138 / 255f);
+                    SFXText.color = new Color(138 / 255f, 138 / 255f, 138 / 255f);
+                    soundSettingEnabled = false;
+                }
+            }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if(!keySettingEnabled && !soundSettingEnabled)
             {
-                currentOption = true;
-                OptionManager.instance.currentOption = currentOption;
-                ShowFirstOptionMenu(currentOption);
-                MoveOptionCursor(0, 0, 0);
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentOption = true;
+                    OptionManager.instance.currentOption = currentOption;
+                    ShowFirstOptionMenu(currentOption);
+                    MoveOptionCursor(0, 0, 0);
+                }
             }
         }
     }
@@ -295,10 +345,14 @@ public class OptionMenuManager : MonoBehaviour
                 MoveOptionCursor(cursorDepth, cursorPointer, 3);
             } else if(pointer == 0)
             {
-                Debug.Log("Setting BGM");
+                BGMText.color = new Color(1f,1f,1f);
+                soundSettingCase = 0;
+                soundSettingEnabled = true;
             } else if(pointer == 1)
             {
-                Debug.Log("Setting SFX");
+                SFXText.color = new Color(1f,1f,1f);
+                soundSettingCase = 1;
+                soundSettingEnabled = true;
             }
 
 
@@ -362,4 +416,15 @@ public class OptionMenuManager : MonoBehaviour
         }
         return KeyCode.None;
     }
+
+    public void InitBGMText()
+    {
+        BGMText.text = OptionManager.instance.musicVolume.ToString();
+    }
+
+    public void InitSFXText()
+    {
+        SFXText.text = OptionManager.instance.sfxVolume.ToString();
+    }
+
 }

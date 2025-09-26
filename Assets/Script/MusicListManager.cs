@@ -31,6 +31,7 @@ public class MusicListManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn());
+        SoundManager.instance.ReInitVolume();
         TrackRotate();
     }
 

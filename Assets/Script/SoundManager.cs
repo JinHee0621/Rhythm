@@ -7,11 +7,13 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     [Header("BGM")]
+    GameObject bgmObject;
     public AudioClip bgmClip;
     public float bgmVolume;
     AudioSource bgmPlayer;
 
     [Header("SFX")]
+    GameObject sfxObject;
     public AudioClip[] sfxClips;
     public float sfxVolume;
     public int channels;
@@ -36,8 +38,14 @@ public class SoundManager : MonoBehaviour
 
     void Init()
     {
+        if (OptionManager.instance != null)
+        {
+            bgmVolume = OptionManager.instance.musicVolume / 10f;
+            sfxVolume = OptionManager.instance.sfxVolume / 10f;
+        }
+
         //BGM Init
-        GameObject bgmObject = new GameObject("BgmPlayer");
+        bgmObject = new GameObject("BgmPlayer");
         bgmObject.transform.parent = transform;
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
@@ -46,7 +54,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.clip = bgmClip;
 
         //SFX init
-        GameObject sfxObject = new GameObject("SfxPlayer");
+        sfxObject = new GameObject("SfxPlayer");
         sfxObject.transform.parent = transform;
         sfxPlayers = new AudioSource[channels];
 
@@ -56,8 +64,19 @@ public class SoundManager : MonoBehaviour
             sfxPlayers[index].playOnAwake = false;
             sfxPlayers[index].volume = sfxVolume;
         }
+
     }
-    
+
+    public void ReInitVolume()
+    {
+        bgmPlayer.volume = bgmVolume;
+        for(int index=0; index < sfxPlayers.Length; index++)
+        {
+            sfxPlayers[index].volume = sfxVolume;
+        }
+    }
+
+
     public void SetBgm(AudioClip target)
     {
         bgmPlayer.clip = target;

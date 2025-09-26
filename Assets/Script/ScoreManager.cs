@@ -27,7 +27,6 @@ public class ScoreManager : MonoBehaviour
 
     public string rank;
 
-
     //public Text[] hitText = new Text[5];
     public Text hitText;
 
@@ -198,7 +197,7 @@ public class ScoreManager : MonoBehaviour
             rank = "B";
         } else if(accuracy_rate < 85.00f)
         {
-            rank = "Doe";
+            rank = "Kim Doe";
         }
         Debug.Log(rank);
     }
